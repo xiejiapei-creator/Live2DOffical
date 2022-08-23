@@ -11,8 +11,6 @@
 		E96B1D9D28ACDE6800678943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E96B1D9C28ACDE6800678943 /* Assets.xcassets */; };
 		E96B1DA028ACDE6800678943 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96B1D9E28ACDE6800678943 /* LaunchScreen.storyboard */; };
 		E96B1DA328ACDE6800678943 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E96B1DA228ACDE6800678943 /* main.m */; };
-		E96B24C028AD077600678943 /* MetalLive2DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E96B24BF28AD077600678943 /* MetalLive2DViewController.m */; };
-		E96B24C628AD078900678943 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E96B24C528AD078900678943 /* AppDelegate.m */; };
 		E96B252628AD0AE000678943 /* CubismJson.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E96B24CA28AD0AE000678943 /* CubismJson.cpp */; };
 		E96B252728AD0AE000678943 /* CubismString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E96B24CB28AD0AE000678943 /* CubismString.cpp */; };
 		E96B252828AD0AE000678943 /* CubismDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E96B24CE28AD0AE000678943 /* CubismDebug.cpp */; };
@@ -54,6 +52,18 @@
 		E98E197F28B4BC77005EE294 /* CubismRenderingInstanceSingleton_Metal.m in Sources */ = {isa = PBXBuildFile; fileRef = E98E197928B4BC77005EE294 /* CubismRenderingInstanceSingleton_Metal.m */; };
 		E98E198028B4BC77005EE294 /* CubismRenderer_Metal.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E197A28B4BC77005EE294 /* CubismRenderer_Metal.mm */; };
 		E98E198128B4BC77005EE294 /* MetalShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = E98E197C28B4BC77005EE294 /* MetalShaders.metal */; };
+		E98E198628B4C0E9005EE294 /* LAppAllocator.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E198528B4C0E9005EE294 /* LAppAllocator.mm */; };
+		E98E198A28B4C12D005EE294 /* LAppDefine.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E198928B4C12D005EE294 /* LAppDefine.mm */; };
+		E98E198E28B4C159005EE294 /* LAppLive2DManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E198D28B4C159005EE294 /* LAppLive2DManager.mm */; };
+		E98E199228B4C18D005EE294 /* LAppModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E199128B4C18D005EE294 /* LAppModel.mm */; };
+		E98E199628B4C1FC005EE294 /* LAppPal.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E199528B4C1FC005EE294 /* LAppPal.mm */; };
+		E98E199A28B4C21D005EE294 /* LAppSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E199928B4C21D005EE294 /* LAppSprite.mm */; };
+		E98E199E28B4C23B005EE294 /* LAppTextureManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E199D28B4C23B005EE294 /* LAppTextureManager.mm */; };
+		E98E19A428B4C261005EE294 /* MetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = E98E19A228B4C261005EE294 /* MetalView.m */; };
+		E98E19A528B4C261005EE294 /* MetalUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = E98E19A328B4C261005EE294 /* MetalUIView.m */; };
+		E98E19A928B4C276005EE294 /* TouchManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19A828B4C276005EE294 /* TouchManager.mm */; };
+		E98E19AD28B4C51C005EE294 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19AC28B4C51C005EE294 /* ViewController.mm */; };
+		E98E19B028B4C526005EE294 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19AF28B4C526005EE294 /* AppDelegate.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,10 +75,6 @@
 		E96B1D9F28ACDE6800678943 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E96B1DA128ACDE6800678943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E96B1DA228ACDE6800678943 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E96B24BE28AD077600678943 /* MetalLive2DViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalLive2DViewController.h; sourceTree = "<group>"; };
-		E96B24BF28AD077600678943 /* MetalLive2DViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetalLive2DViewController.m; sourceTree = "<group>"; };
-		E96B24C428AD078900678943 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		E96B24C528AD078900678943 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E96B24CA28AD0AE000678943 /* CubismJson.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CubismJson.cpp; sourceTree = "<group>"; };
 		E96B24CB28AD0AE000678943 /* CubismString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CubismString.cpp; sourceTree = "<group>"; };
 		E96B24CC28AD0AE000678943 /* CubismDebug.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CubismDebug.hpp; sourceTree = "<group>"; };
@@ -159,6 +165,32 @@
 		E98E197A28B4BC77005EE294 /* CubismRenderer_Metal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CubismRenderer_Metal.mm; sourceTree = "<group>"; };
 		E98E197B28B4BC77005EE294 /* CubismCommandBuffer_Metal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CubismCommandBuffer_Metal.hpp; sourceTree = "<group>"; };
 		E98E197C28B4BC77005EE294 /* MetalShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = MetalShaders.metal; sourceTree = "<group>"; };
+		E98E198428B4C0D3005EE294 /* LAppAllocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAppAllocator.h; sourceTree = "<group>"; };
+		E98E198528B4C0E9005EE294 /* LAppAllocator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LAppAllocator.mm; sourceTree = "<group>"; };
+		E98E198828B4C125005EE294 /* LAppDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAppDefine.h; sourceTree = "<group>"; };
+		E98E198928B4C12D005EE294 /* LAppDefine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LAppDefine.mm; sourceTree = "<group>"; };
+		E98E198C28B4C153005EE294 /* LAppLive2DManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAppLive2DManager.h; sourceTree = "<group>"; };
+		E98E198D28B4C159005EE294 /* LAppLive2DManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LAppLive2DManager.mm; sourceTree = "<group>"; };
+		E98E199028B4C180005EE294 /* LAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAppModel.h; sourceTree = "<group>"; };
+		E98E199128B4C18D005EE294 /* LAppModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LAppModel.mm; sourceTree = "<group>"; };
+		E98E199428B4C1F4005EE294 /* LAppPal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAppPal.h; sourceTree = "<group>"; };
+		E98E199528B4C1FC005EE294 /* LAppPal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LAppPal.mm; sourceTree = "<group>"; };
+		E98E199828B4C216005EE294 /* LAppSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAppSprite.h; sourceTree = "<group>"; };
+		E98E199928B4C21D005EE294 /* LAppSprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LAppSprite.mm; sourceTree = "<group>"; };
+		E98E199C28B4C236005EE294 /* LAppTextureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAppTextureManager.h; sourceTree = "<group>"; };
+		E98E199D28B4C23B005EE294 /* LAppTextureManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LAppTextureManager.mm; sourceTree = "<group>"; };
+		E98E19A028B4C25A005EE294 /* MetalUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalUIView.h; sourceTree = "<group>"; };
+		E98E19A128B4C25A005EE294 /* MetalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalView.h; sourceTree = "<group>"; };
+		E98E19A228B4C261005EE294 /* MetalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetalView.m; sourceTree = "<group>"; };
+		E98E19A328B4C261005EE294 /* MetalUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetalUIView.m; sourceTree = "<group>"; };
+		E98E19A728B4C270005EE294 /* TouchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchManager.h; sourceTree = "<group>"; };
+		E98E19A828B4C276005EE294 /* TouchManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TouchManager.mm; sourceTree = "<group>"; };
+		E98E19AA28B4C44B005EE294 /* MetalConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalConfig.h; sourceTree = "<group>"; };
+		E98E19AB28B4C51C005EE294 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E98E19AC28B4C51C005EE294 /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		E98E19AE28B4C526005EE294 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E98E19AF28B4C526005EE294 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		E98E19B128B4C667005EE294 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +243,7 @@
 		E96B1D8F28ACDE6700678943 /* Live2DNewTest */ = {
 			isa = PBXGroup;
 			children = (
+				E98E198228B4C00E005EE294 /* Live2DHelper */,
 				E96B254B28AD0B4D00678943 /* Live2DResources */,
 				E96B24C828AD0AB400678943 /* Live2DSDK */,
 				E96B24BD28AD076D00678943 /* Use */,
@@ -233,10 +266,10 @@
 		E96B24BD28AD076D00678943 /* Use */ = {
 			isa = PBXGroup;
 			children = (
-				E96B24C428AD078900678943 /* AppDelegate.h */,
-				E96B24C528AD078900678943 /* AppDelegate.m */,
-				E96B24BE28AD077600678943 /* MetalLive2DViewController.h */,
-				E96B24BF28AD077600678943 /* MetalLive2DViewController.m */,
+				E98E19AE28B4C526005EE294 /* AppDelegate.h */,
+				E98E19AF28B4C526005EE294 /* AppDelegate.mm */,
+				E98E19AB28B4C51C005EE294 /* ViewController.h */,
+				E98E19AC28B4C51C005EE294 /* ViewController.mm */,
 			);
 			path = Use;
 			sourceTree = "<group>";
@@ -426,6 +459,107 @@
 			path = Metal;
 			sourceTree = "<group>";
 		};
+		E98E198228B4C00E005EE294 /* Live2DHelper */ = {
+			isa = PBXGroup;
+			children = (
+				E98E19A628B4C26A005EE294 /* Touch */,
+				E98E199F28B4C246005EE294 /* MetalView */,
+				E98E199B28B4C22A005EE294 /* Texture */,
+				E98E199728B4C20F005EE294 /* Sprite */,
+				E98E199328B4C1E1005EE294 /* Pal */,
+				E98E198F28B4C173005EE294 /* Model */,
+				E98E198B28B4C14B005EE294 /* Manager */,
+				E98E198728B4C10A005EE294 /* Define */,
+				E98E198328B4C069005EE294 /* Allocator */,
+			);
+			path = Live2DHelper;
+			sourceTree = "<group>";
+		};
+		E98E198328B4C069005EE294 /* Allocator */ = {
+			isa = PBXGroup;
+			children = (
+				E98E198528B4C0E9005EE294 /* LAppAllocator.mm */,
+				E98E198428B4C0D3005EE294 /* LAppAllocator.h */,
+			);
+			path = Allocator;
+			sourceTree = "<group>";
+		};
+		E98E198728B4C10A005EE294 /* Define */ = {
+			isa = PBXGroup;
+			children = (
+				E98E198928B4C12D005EE294 /* LAppDefine.mm */,
+				E98E198828B4C125005EE294 /* LAppDefine.h */,
+			);
+			path = Define;
+			sourceTree = "<group>";
+		};
+		E98E198B28B4C14B005EE294 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				E98E198C28B4C153005EE294 /* LAppLive2DManager.h */,
+				E98E198D28B4C159005EE294 /* LAppLive2DManager.mm */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		E98E198F28B4C173005EE294 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E98E199128B4C18D005EE294 /* LAppModel.mm */,
+				E98E199028B4C180005EE294 /* LAppModel.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E98E199328B4C1E1005EE294 /* Pal */ = {
+			isa = PBXGroup;
+			children = (
+				E98E199428B4C1F4005EE294 /* LAppPal.h */,
+				E98E199528B4C1FC005EE294 /* LAppPal.mm */,
+			);
+			path = Pal;
+			sourceTree = "<group>";
+		};
+		E98E199728B4C20F005EE294 /* Sprite */ = {
+			isa = PBXGroup;
+			children = (
+				E98E199828B4C216005EE294 /* LAppSprite.h */,
+				E98E199928B4C21D005EE294 /* LAppSprite.mm */,
+			);
+			path = Sprite;
+			sourceTree = "<group>";
+		};
+		E98E199B28B4C22A005EE294 /* Texture */ = {
+			isa = PBXGroup;
+			children = (
+				E98E19B128B4C667005EE294 /* stb_image.h */,
+				E98E199C28B4C236005EE294 /* LAppTextureManager.h */,
+				E98E199D28B4C23B005EE294 /* LAppTextureManager.mm */,
+			);
+			path = Texture;
+			sourceTree = "<group>";
+		};
+		E98E199F28B4C246005EE294 /* MetalView */ = {
+			isa = PBXGroup;
+			children = (
+				E98E19AA28B4C44B005EE294 /* MetalConfig.h */,
+				E98E19A328B4C261005EE294 /* MetalUIView.m */,
+				E98E19A228B4C261005EE294 /* MetalView.m */,
+				E98E19A028B4C25A005EE294 /* MetalUIView.h */,
+				E98E19A128B4C25A005EE294 /* MetalView.h */,
+			);
+			path = MetalView;
+			sourceTree = "<group>";
+		};
+		E98E19A628B4C26A005EE294 /* Touch */ = {
+			isa = PBXGroup;
+			children = (
+				E98E19A728B4C270005EE294 /* TouchManager.h */,
+				E98E19A828B4C276005EE294 /* TouchManager.mm */,
+			);
+			path = Touch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -523,7 +657,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E96B252C28AD0AE000678943 /* CubismBreath.cpp in Sources */,
+				E98E199228B4C18D005EE294 /* LAppModel.mm in Sources */,
 				E96B252E28AD0AE000678943 /* CubismIdManager.cpp in Sources */,
+				E98E198628B4C0E9005EE294 /* LAppAllocator.mm in Sources */,
 				E96B253628AD0AE000678943 /* CubismModelUserData.cpp in Sources */,
 				E96B254328AD0AE000678943 /* CubismExpressionMotion.cpp in Sources */,
 				E96B253C28AD0AE000678943 /* CubismPhysics.cpp in Sources */,
@@ -531,23 +667,30 @@
 				E96B254228AD0AE000678943 /* CubismMotionQueueManager.cpp in Sources */,
 				E96B252828AD0AE000678943 /* CubismDebug.cpp in Sources */,
 				E96B253D28AD0AE000678943 /* csmString.cpp in Sources */,
+				E98E198E28B4C159005EE294 /* LAppLive2DManager.mm in Sources */,
+				E98E19AD28B4C51C005EE294 /* ViewController.mm in Sources */,
+				E98E199628B4C1FC005EE294 /* LAppPal.mm in Sources */,
 				E96B253828AD0AE000678943 /* CubismUserModel.cpp in Sources */,
 				E98E197F28B4BC77005EE294 /* CubismRenderingInstanceSingleton_Metal.m in Sources */,
 				E96B253528AD0AE000678943 /* CubismMatrix44.cpp in Sources */,
 				E96B252928AD0AE000678943 /* CubismFramework.cpp in Sources */,
+				E98E19A928B4C276005EE294 /* TouchManager.mm in Sources */,
 				E96B253128AD0AE000678943 /* CubismViewMatrix.cpp in Sources */,
 				E96B254428AD0AE000678943 /* CubismMotionJson.cpp in Sources */,
 				E96B253028AD0AE000678943 /* CubismModelMatrix.cpp in Sources */,
+				E98E19A528B4C261005EE294 /* MetalUIView.m in Sources */,
 				E98E197E28B4BC77005EE294 /* CubismOffscreenSurface_Metal.mm in Sources */,
-				E96B24C028AD077600678943 /* MetalLive2DViewController.m in Sources */,
+				E98E199A28B4C21D005EE294 /* LAppSprite.mm in Sources */,
 				E96B252A28AD0AE000678943 /* CubismPose.cpp in Sources */,
 				E96B254528AD0AE000678943 /* CubismMotionQueueEntry.cpp in Sources */,
 				E96B252F28AD0AE000678943 /* CubismId.cpp in Sources */,
+				E98E199E28B4C23B005EE294 /* LAppTextureManager.mm in Sources */,
 				E96B254028AD0AE000678943 /* CubismMotion.cpp in Sources */,
 				E96B254128AD0AE000678943 /* CubismMotionManager.cpp in Sources */,
+				E98E198A28B4C12D005EE294 /* LAppDefine.mm in Sources */,
 				E96B1DA328ACDE6800678943 /* main.m in Sources */,
+				E98E19A428B4C261005EE294 /* MetalView.m in Sources */,
 				E96B252B28AD0AE000678943 /* CubismEyeBlink.cpp in Sources */,
-				E96B24C628AD078900678943 /* AppDelegate.m in Sources */,
 				E96B253E28AD0AE000678943 /* csmRectF.cpp in Sources */,
 				E96B254728AD0AE000678943 /* CubismRenderer.cpp in Sources */,
 				E96B252728AD0AE000678943 /* CubismString.cpp in Sources */,
@@ -560,6 +703,7 @@
 				E96B253428AD0AE000678943 /* CubismMath.cpp in Sources */,
 				E96B253A28AD0AE000678943 /* CubismModel.cpp in Sources */,
 				E98E198128B4BC77005EE294 /* MetalShaders.metal in Sources */,
+				E98E19B028B4C526005EE294 /* AppDelegate.mm in Sources */,
 				E96B253228AD0AE000678943 /* CubismVector2.cpp in Sources */,
 				E96B253928AD0AE000678943 /* CubismMoc.cpp in Sources */,
 				E96B253B28AD0AE000678943 /* CubismPhysicsJson.cpp in Sources */,
