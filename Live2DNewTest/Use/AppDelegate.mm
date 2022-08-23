@@ -8,25 +8,10 @@
 #import "AppDelegate.h"
 #import <iostream>
 #import "ViewController.h"
-#import "LAppAllocator.h"
-#import "LAppPal.h"
-#import "LAppDefine.h"
+
 #import "LAppLive2DManager.h"
-#import "LAppTextureManager.h"
-
+#import "LAppDefine.h"
 #import "L2DCubism.h"
-
-@interface AppDelegate ()
-
-
-@property (nonatomic) bool captured; // 是否单击
-@property (nonatomic) float mouseX; // 鼠标X坐标
-@property (nonatomic) float mouseY; // 鼠标Y坐标
-
-
-@property (nonatomic) Csm::csmInt32 sceneIndex;// 应用程序在后台运行时临时保存场景索引值
-
-@end
 
 @implementation AppDelegate
 
@@ -47,13 +32,13 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     [[L2DCubism sharedInstance] destroyTextureManager];
-    _sceneIndex = [[LAppLive2DManager getInstance] sceneIndex];
+    [[L2DCubism sharedInstance] saveRoleState];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     [[L2DCubism sharedInstance] createTextureManager];
-    [[LAppLive2DManager getInstance] changeScene:_sceneIndex];
+    [[L2DCubism sharedInstance] restoreRoleState];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

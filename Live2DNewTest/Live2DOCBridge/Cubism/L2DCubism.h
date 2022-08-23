@@ -29,6 +29,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 销毁纹理管理器
 - (void)destroyTextureManager;
 
+/// 保存角色状态
+- (void)saveRoleState;
+/// 恢复角色状态
+- (void)restoreRoleState;
+
 @end
 
 NS_ASSUME_NONNULL_END

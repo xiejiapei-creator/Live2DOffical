@@ -17,10 +17,14 @@
 
 // Cubism SDK 分配器
 @property (nonatomic) LAppAllocator cubismAllocator;
-// 立体主义 Cubism SDK 选项
+// Cubism SDK 选项
 @property (nonatomic) Csm::CubismFramework::Option cubismOption;
+
 // 纹理管理器
 @property (nonatomic, readwrite) LAppTextureManager *textureManager;
+
+// 应用程序在后台运行时临时保存角色模型索引值
+@property (nonatomic) Csm::csmInt32 roleIndex;
 
 @end
 
@@ -34,6 +38,8 @@
     });
     return sharedInstance;
 }
+
+#pragma mark - Cubism SDK
 
 - (void)initializeCubism {
     _cubismOption.LogFunction = LAppPal::PrintMessage;
@@ -59,12 +65,24 @@
     Csm::CubismFramework::Dispose();
 }
 
+#pragma mark - 纹理管理器
+
 - (void)createTextureManager {
     _textureManager = [[LAppTextureManager alloc] init];
 }
 
 - (void)destroyTextureManager {
     _textureManager = nil;
+}
+
+#pragma mark - 角色模型
+
+- (void)saveRoleState {
+    _roleIndex = [[LAppLive2DManager getInstance] sceneIndex];
+}
+
+- (void)restoreRoleState {
+    [[LAppLive2DManager getInstance] changeScene:_roleIndex];
 }
 
 @end
