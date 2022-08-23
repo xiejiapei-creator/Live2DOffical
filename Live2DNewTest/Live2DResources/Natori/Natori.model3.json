@@ -8,52 +8,52 @@
 		"Physics": "Natori.physics3.json",
 		"Pose": "Natori.pose3.json",
 		"DisplayInfo": "Natori.cdi3.json",
-        "Expressions": [
-            {
-                "Name": "Angry",
-                "File": "exp/Angry.exp3.json"
-            },
-            {
-                "Name": "Blushing",
-                "File": "exp/Blushing.exp3.json"
-            },
-            {
-                "Name": "Normal",
-                "File": "exp/Normal.exp3.json"
-            },
-            {
-                "Name": "Sad",
-                "File": "exp/Sad.exp3.json"
-            },
-            {
-                "Name": "Smile",
-                "File": "exp/Smile.exp3.json"
-            },
-            {
-                "Name": "Surprised",
-                "File": "exp/Surprised.exp3.json"
-            },
-            {
-                "Name": "exp_01",
-                "File": "exp/exp_01.exp3.json"
-            },
-            {
-                "Name": "exp_02",
-                "File": "exp/exp_02.exp3.json"
-            },
-            {
-                "Name": "exp_03",
-                "File": "exp/exp_03.exp3.json"
-            },
-            {
-                "Name": "exp_04",
-                "File": "exp/exp_04.exp3.json"
-            },
-            {
-                "Name": "exp_05",
-                "File": "exp/exp_05.exp3.json"
-            }
-        ],
+		"Expressions": [
+			{
+				"Name": "Angry",
+				"File": "exp/Angry.exp3.json"
+			},
+			{
+				"Name": "Blushing",
+				"File": "exp/Blushing.exp3.json"
+			},
+			{
+				"Name": "Normal",
+				"File": "exp/Normal.exp3.json"
+			},
+			{
+				"Name": "Sad",
+				"File": "exp/Sad.exp3.json"
+			},
+			{
+				"Name": "Smile",
+				"File": "exp/Smile.exp3.json"
+			},
+			{
+				"Name": "Surprised",
+				"File": "exp/Surprised.exp3.json"
+			},
+			{
+				"Name": "exp_01",
+				"File": "exp/exp_01.exp3.json"
+			},
+			{
+				"Name": "exp_02",
+				"File": "exp/exp_02.exp3.json"
+			},
+			{
+				"Name": "exp_03",
+				"File": "exp/exp_03.exp3.json"
+			},
+			{
+				"Name": "exp_04",
+				"File": "exp/exp_04.exp3.json"
+			},
+			{
+				"Name": "exp_05",
+				"File": "exp/exp_05.exp3.json"
+			}
+		],
 		"Motions": {
 			"Idle": [
 				{
