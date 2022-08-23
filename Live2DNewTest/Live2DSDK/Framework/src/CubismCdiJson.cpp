@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -23,12 +23,12 @@ const csmChar* Name = "Name";
 
 CubismCdiJson::CubismCdiJson(const csmByte* buffer, csmSizeInt size)
 {
-    _json = Utils::CubismJson::Create(buffer, size);
+    CreateCubismJson(buffer, size);
 }
 
 CubismCdiJson::~CubismCdiJson()
 {
-    Utils::CubismJson::Delete(_json);
+    DeleteCubismJson();
 }
 
 // キーが存在するかどうかのチェック

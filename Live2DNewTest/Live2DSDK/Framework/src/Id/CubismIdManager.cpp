@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -78,21 +78,14 @@ const CubismId* CubismIdManager::RegisterId(const csmString& id)
 
 CubismId* CubismIdManager::FindId(const csmChar* id) const
 {
-    csmInt32 size = _ids.GetSize();
-    
-    //if (size < 0 || isinf(size)) return NULL;
-    
     for (csmUint32 i = 0; i < _ids.GetSize(); ++i)
     {
-        CubismId *_id = _ids[i];
-        if (_id == NULL) {
-            continue;
-        } else {
-            if (_id->GetString() == id) {
-                return _ids[i];
-            }
+        if (_ids[i]->GetString() == id)
+        {
+            return _ids[i];
         }
     }
+
     return NULL;
 }
 

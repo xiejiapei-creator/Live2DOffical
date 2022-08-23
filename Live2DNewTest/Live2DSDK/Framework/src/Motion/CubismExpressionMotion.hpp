@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -55,18 +55,6 @@ public:
      * @return  作成されたインスタンス
      */
     static CubismExpressionMotion* Create(const csmByte* buf, csmSizeInt size);
-    
-    /**
-     * @brief インスタンスの作成
-     *
-     * インスタンスを作成する。
-     *
-     * @param[in]   buffer     expファイルが読み込まれているバッファ
-     * @param[in]   size    バッファのサイズ
-     * @param[in]   fadeTime    淡入淡出时间
-     * @return  作成されたインスタンス
-     */
-    static CubismExpressionMotion* Create(const csmByte* buffer, csmSizeInt size, csmFloat32 fadeTime);
 
     /**
     * @brief モデルのパラメータの更新の実行

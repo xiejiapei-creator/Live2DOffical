@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -152,18 +152,6 @@ public:
      * @return  モーションクラス
      */
     virtual ACubismMotion*  LoadMotion(const csmByte* buffer, csmSizeInt size, const csmChar* name, ACubismMotion::FinishedMotionCallback onFinishedMotionHandler = NULL);
-    
-    /**
-     * @brief 表情データの読み込み
-     *
-     * 表情データを読み込む。
-     *
-     * @param[in]   buffer  expファイルが読み込まれているバッファ
-     * @param[in]   size    バッファのサイズ
-     * @param[in]   name    表情の名前
-     * @param[in]   fadeTime    淡入淡出时间
-     */
-    virtual ACubismMotion*   LoadExpression(const csmByte* buffer, csmSizeInt size, const csmChar* name, csmFloat32 fadeTime);
 
     /**
      * @brief 表情データの読み込み
@@ -275,34 +263,34 @@ public:
     * @param[in]    customData          CubismUserModelを継承したインスタンスを想定
     */
     static void   CubismDefaultMotionEventCallback(const CubismMotionQueueManager* caller, const csmString& eventValue, void* customData);
-    
+protected:
+    CubismMoc*              _moc;                       ///< Mocデータ
+    CubismModel*            _model;                     ///< Modelインスタンス
+
+    CubismMotionManager*    _motionManager;             ///< モーション管理
     CubismMotionManager*    _expressionManager;         ///< 表情管理
     CubismEyeBlink*         _eyeBlink;                  ///< 自動まばたき
     CubismBreath*           _breath;                    ///< 呼吸
-    CubismMotionManager*    _motionManager;             ///< モーション管理
+    CubismModelMatrix*      _modelMatrix;               ///< モデル行列
+    CubismPose*             _pose;                      ///< ポーズ管理
     CubismTargetPoint*      _dragManager;               ///< マウスドラッグ
     CubismPhysics*          _physics;                   ///< 物理演算
-    csmBool     _lipSync;                               ///< リップシンクするかどうか
-    CubismPose*             _pose;                      ///< ポーズ管理
-    csmFloat32  _dragX;                                 ///< マウスドラッグのX位置
-    csmFloat32  _dragY;                                 ///< マウスドラッグのY位置
-    csmFloat32  _opacity;                               ///< 不透明度
-    Rendering::CubismRenderer* _renderer;               ///< レンダラ
-    CubismModelMatrix*      _modelMatrix;               ///< モデル行列
-protected:
-    CubismMoc*              _moc;                       ///< Mocデータ
     CubismModelUserData*    _modelUserData;             ///< ユーザデータ
-    CubismModel*            _model;                     ///< Modelインスタンス
 
     csmBool     _initialized;                   ///< 初期化されたかどうか
     csmBool     _updating;                      ///< 更新されたかどうか
+    csmFloat32  _opacity;                       ///< 不透明度
+    csmBool     _lipSync;                       ///< リップシンクするかどうか
     csmFloat32  _lastLipSyncValue;              ///< 最後のリップシンクの制御値
+    csmFloat32  _dragX;                         ///< マウスドラッグのX位置
+    csmFloat32  _dragY;                         ///< マウスドラッグのY位置
     csmFloat32  _accelerationX;                 ///< X軸方向の加速度
     csmFloat32  _accelerationY;                 ///< Y軸方向の加速度
     csmFloat32  _accelerationZ;                 ///< Z軸方向の加速度
     csmBool     _debugMode;                     ///< デバッグモードかどうか
 
 private:
+    Rendering::CubismRenderer* _renderer;       ///< レンダラ
 };
 
 }}}

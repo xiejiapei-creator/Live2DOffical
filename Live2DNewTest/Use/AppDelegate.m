@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "MetalLive2DViewController.h"
-#include "L2DCubism.h"
 
 @interface AppDelegate ()
 
@@ -25,12 +24,10 @@
     [window makeKeyAndVisible];
     self.window = window;
 
-    [L2DCubism initializeLive2D];
 
     return YES;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    [L2DCubism dispose];
 }
 @end

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -29,62 +29,6 @@ CubismExpressionMotion::CubismExpressionMotion()
 
 CubismExpressionMotion::~CubismExpressionMotion()
 { }
-
-CubismExpressionMotion* CubismExpressionMotion::Create(const csmByte* buffer, csmSizeInt size, csmFloat32 fadeTime)
-{
-    CubismExpressionMotion* expression = CSM_NEW CubismExpressionMotion();
-
-    Utils::CubismJson* json = Utils::CubismJson::Create(buffer, size);
-    Utils::Value& root = json->GetRoot();
-
-    expression->SetFadeInTime(fadeTime);   // フェードイン
-    expression->SetFadeOutTime(fadeTime); // フェードアウト
-
-    // 各パラメータについて
-    const csmInt32 parameterCount = root[ExpressionKeyParameters].GetSize();
-    expression->_parameters.PrepareCapacity(parameterCount);
-
-    for (csmInt32 i = 0; i < parameterCount; ++i)
-    {
-        Utils::Value& param = root[ExpressionKeyParameters][i];
-        const CubismIdHandle parameterId = CubismFramework::GetIdManager()->GetId(param[ExpressionKeyId].GetRawString()); // パラメータID
-        const csmFloat32 value = static_cast<csmFloat32>(param[ExpressionKeyValue].ToFloat());   // 値
-
-        // 計算方法の設定
-        ExpressionBlendType blendType;
-
-        if (param[ExpressionKeyBlend].IsNull() || param[ExpressionKeyBlend].GetString() == BlendValueAdd)
-        {
-            blendType = ExpressionBlendType_Add;
-        }
-        else if (param[ExpressionKeyBlend].GetString() == BlendValueMultiply)
-        {
-            blendType = ExpressionBlendType_Multiply;
-        }
-        else if (param[ExpressionKeyBlend].GetString() == BlendValueOverwrite)
-        {
-            blendType = ExpressionBlendType_Overwrite;
-        }
-        else
-        {
-            // その他 仕様にない値を設定したときは加算モードにすることで復旧
-            blendType = ExpressionBlendType_Add;
-        }
-
-        // 設定オブジェクトを作成してリストに追加する
-        ExpressionParameter item;
-
-        item.ParameterId = parameterId;
-        item.BlendType   = blendType;
-        item.Value       = value;
-
-        expression->_parameters.PushBack(item);
-    }
-
-    Utils::CubismJson::Delete(json); // JSONデータは不要になったら削除する
-
-    return expression;
-}
 
 CubismExpressionMotion* CubismExpressionMotion::Create(const csmByte* buffer, csmSizeInt size)
 {

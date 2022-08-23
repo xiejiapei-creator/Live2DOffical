@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -7,52 +7,31 @@
 
 #pragma once
 
+#include <MetalKit/MetalKit.h>
 #include "../CubismRenderer.hpp"
 #include "CubismFramework.hpp"
-#include "CubismOffscreenSurface_OpenGLES2.hpp"
+#include "CubismOffscreenSurface_Metal.hpp"
+#include "CubismCommandBuffer_Metal.hpp"
 #include "Type/csmVector.hpp"
 #include "Type/csmRectF.hpp"
 #include "Type/csmMap.hpp"
-
-#ifdef CSM_TARGET_ANDROID_ES2
-#include <jni.h>
-#include <errno.h>
-#include <GLES2/gl2.h>
-#include <GLES2/gl2ext.h>
-#endif
-
-#ifdef CSM_TARGET_IPHONE_ES2
-#include <OpenGLES/ES2/gl.h>
-#include <OpenGLES/ES2/glext.h>
-#endif
-
-#if defined(CSM_TARGET_WIN_GL) || defined(CSM_TARGET_LINUX_GL)
-#include <GL/glew.h>
-#include <GL/gl.h>
-#endif
-
-#ifdef CSM_TARGET_MAC_GL
-#ifndef CSM_TARGET_COCOS
-#include <GL/glew.h>
-#endif
-#include <OpenGL/gl.h>
-#endif
+#include "Math/CubismVector2.hpp"
 
 //------------ LIVE2D NAMESPACE ------------
 namespace Live2D { namespace Cubism { namespace Framework { namespace Rendering {
 
 //  前方宣言
-class CubismRenderer_OpenGLES2;
+class CubismRenderer_Metal;
 class CubismClippingContext;
 
 /**
  * @brief  クリッピングマスクの処理を実行するクラス
  *
  */
-class CubismClippingManager_OpenGLES2
+class CubismClippingManager_Metal
 {
-    friend class CubismShader_OpenGLES2;
-    friend class CubismRenderer_OpenGLES2;
+    friend class CubismShader_Metal;
+    friend class CubismRenderer_Metal;
 
 private:
 
@@ -74,12 +53,12 @@ private:
     /**
      * @brief    コンストラクタ
      */
-    CubismClippingManager_OpenGLES2();
+    CubismClippingManager_Metal();
 
     /**
      * @brief    デストラクタ
      */
-    virtual ~CubismClippingManager_OpenGLES2();
+    virtual ~CubismClippingManager_Metal();
 
     /**
      * @brief    マネージャの初期化処理<br>
@@ -100,7 +79,7 @@ private:
      * @param[in]   lastFBO      ->  フレームバッファ
      * @param[in]   lastViewport ->  ビューポート
      */
-    void SetupClippingContext(CubismModel& model, CubismRenderer_OpenGLES2* renderer, GLint lastFBO, GLint lastViewport[4]);
+    void SetupClippingContext(CubismModel& model, CubismRenderer_Metal* renderer, CubismOffscreenFrame_Metal* lastColorBuffer, csmRectF lastViewport);
 
     /**
      * @brief   既にマスクを作っているかを確認。<br>
@@ -130,27 +109,27 @@ private:
     csmVector<CubismClippingContext*>* GetClippingContextListForDraw();
 
     /**
-     *@brief  クリッピングマスクバッファのサイズを設定する
+     * @brief  クリッピングマスクバッファのサイズを設定する
      *
-     *@param  size -> クリッピングマスクバッファのサイズ
+     * @param  size -> クリッピングマスクバッファのサイズ
      *
      */
-    void SetClippingMaskBufferSize(csmInt32 size);
+    void SetClippingMaskBufferSize(csmFloat32 width, csmFloat32 height);
 
     /**
-     *@brief  クリッピングマスクバッファのサイズを取得する
+     * @brief  クリッピングマスクバッファのサイズを取得する
      *
-     *@return クリッピングマスクバッファのサイズ
+     * @return クリッピングマスクバッファのサイズ
      *
      */
-    csmInt32 GetClippingMaskBufferSize() const;
+    CubismVector2 GetClippingMaskBufferSize() const;
 
     csmInt32    _currentFrameNo;         ///< マスクテクスチャに与えるフレーム番号
 
     csmVector<CubismRenderer::CubismTextureColor*>  _channelColors;
     csmVector<CubismClippingContext*>               _clippingContextListForMask;   ///< マスク用クリッピングコンテキストのリスト
     csmVector<CubismClippingContext*>               _clippingContextListForDraw;   ///< 描画用クリッピングコンテキストのリスト
-    csmInt32                                        _clippingMaskBufferSize; ///< クリッピングマスクのバッファサイズ（初期値:256）
+    CubismVector2                                   _clippingMaskBufferSize; ///< クリッピングマスクのバッファサイズ（初期値:256）
 
     CubismMatrix44  _tmpMatrix;              ///< マスク計算用の行列
     CubismMatrix44  _tmpMatrixForMask;       ///< マスク計算用の行列
@@ -164,16 +143,16 @@ private:
  */
 class CubismClippingContext
 {
-    friend class CubismClippingManager_OpenGLES2;
-    friend class CubismShader_OpenGLES2;
-    friend class CubismRenderer_OpenGLES2;
+    friend class CubismClippingManager_Metal;
+    friend class CubismShader_Metal;
+    friend class CubismRenderer_Metal;
 
 private:
     /**
      * @brief   引数付きコンストラクタ
      *
      */
-    CubismClippingContext(CubismClippingManager_OpenGLES2* manager, const csmInt32* clippingDrawableIndices, csmInt32 clipCount);
+    CubismClippingContext(CubismClippingManager_Metal* manager, CubismModel& model, const csmInt32* clippingDrawableIndices, csmInt32 clipCount);
 
     /**
      * @brief   デストラクタ
@@ -192,7 +171,7 @@ private:
      *
      * @return  クリッピングマネージャのインスタンス
      */
-    CubismClippingManager_OpenGLES2* GetClippingManager();
+    CubismClippingManager_Metal* GetClippingManager();
 
     csmBool _isUsing;                                ///< 現在の描画状態でマスクの準備が必要ならtrue
     const csmInt32* _clippingIdList;                 ///< クリッピングマスクのIDリスト
@@ -203,18 +182,19 @@ private:
     CubismMatrix44 _matrixForMask;                   ///< マスクの位置計算結果を保持する行列
     CubismMatrix44 _matrixForDraw;                   ///< 描画オブジェクトの位置計算結果を保持する行列
     csmVector<csmInt32>* _clippedDrawableIndexList;  ///< このマスクにクリップされる描画オブジェクトのリスト
+    csmVector<CubismCommandBuffer_Metal::DrawCommandBuffer*>* _clippingCommandBufferList;
 
-    CubismClippingManager_OpenGLES2* _owner;        ///< このマスクを管理しているマネージャのインスタンス
+    CubismClippingManager_Metal* _owner;        ///< このマスクを管理しているマネージャのインスタンス
 };
 
 /**
- * @brief   OpenGLES2用のシェーダプログラムを生成・破棄するクラス<br>
- *           シングルトンなクラスであり、CubismShader_OpenGLES2::GetInstance()からアクセスする。
+ * @brief   Metal用のシェーダプログラムを生成・破棄するクラス<br>
+ *           シングルトンなクラスであり、CubismShader_Metal::GetInstance()からアクセスする。
  *
  */
-class CubismShader_OpenGLES2
+class CubismShader_Metal
 {
-    friend class CubismRenderer_OpenGLES2;
+    friend class CubismRenderer_Metal;
 
 private:
     /**
@@ -222,12 +202,18 @@ private:
      *
      * @return  インスタンスのポインタ
      */
-    static CubismShader_OpenGLES2* GetInstance();
+    static CubismShader_Metal* GetInstance();
 
     /**
      * @brief   インスタンスを解放する（シングルトン）。
      */
     static void DeleteInstance();
+
+    struct ShaderProgram
+    {
+        id <MTLFunction> vertexFunction;
+        id <MTLFunction> fragmentFunction;
+    };
 
     /**
     * @bref    シェーダープログラムとシェーダ変数のアドレスを保持する構造体
@@ -235,26 +221,21 @@ private:
     */
     struct CubismShaderSet
     {
-        GLuint ShaderProgram;               ///< シェーダプログラムのアドレス
-        GLuint AttributePositionLocation;   ///< シェーダプログラムに渡す変数のアドレス(Position)
-        GLuint AttributeTexCoordLocation;   ///< シェーダプログラムに渡す変数のアドレス(TexCoord)
-        GLint UniformMatrixLocation;        ///< シェーダプログラムに渡す変数のアドレス(Matrix)
-        GLint UniformClipMatrixLocation;    ///< シェーダプログラムに渡す変数のアドレス(ClipMatrix)
-        GLint SamplerTexture0Location;      ///< シェーダプログラムに渡す変数のアドレス(Texture0)
-        GLint SamplerTexture1Location;      ///< シェーダプログラムに渡す変数のアドレス(Texture1)
-        GLint UniformBaseColorLocation;     ///< シェーダプログラムに渡す変数のアドレス(BaseColor)
-        GLint UnifromChannelFlagLocation;   ///< シェーダプログラムに渡す変数のアドレス(ChannelFlag)
+        ShaderProgram *ShaderProgram; ///< シェーダプログラムのアドレス
+        id<MTLRenderPipelineState> RenderPipelineState;
+        id<MTLDepthStencilState> DepthStencilState;
+        id<MTLSamplerState> SamplerState;
     };
 
     /**
      * @brief   privateなコンストラクタ
      */
-    CubismShader_OpenGLES2();
+    CubismShader_Metal();
 
     /**
      * @brief   privateなデストラクタ
      */
-    virtual ~CubismShader_OpenGLES2();
+    virtual ~CubismShader_Metal();
 
     /**
      * @brief   シェーダプログラムの一連のセットアップを実行する
@@ -270,24 +251,20 @@ private:
      * @param[in]   isPremultipliedAlpha  ->  乗算済みアルファかどうか
      * @param[in]   matrix4x4             ->  Model-View-Projection行列
      * @param[in]   invertedMask           ->  マスクを反転して使用するフラグ
+     * @param[in]   renderEncoder           ->  MTLRenderCommandEncoder
      */
-    void SetupShaderProgram(CubismRenderer_OpenGLES2* renderer, GLuint textureId
-                            , csmInt32 vertexCount, csmFloat32* vertexArray
-                            , csmFloat32* uvArray, csmFloat32 opacity
+    void SetupShaderProgram(CubismCommandBuffer_Metal::DrawCommandBuffer* drawCommandBuffer, CubismRenderer_Metal* renderer, id <MTLTexture> texture
+                            , csmFloat32 opacity
                             , CubismRenderer::CubismBlendMode colorBlendMode
                             , CubismRenderer::CubismTextureColor baseColor
                             , csmBool isPremultipliedAlpha, CubismMatrix44 matrix4x4
-                            , csmBool invertedMask);
-
-    /**
-     * @brief   シェーダプログラムを解放する
-     */
-    void ReleaseShaderProgram();
+                            , csmBool invertedMask
+                            , id <MTLRenderCommandEncoder> renderEncoder);
 
     /**
      * @brief   シェーダプログラムを初期化する
      */
-    void GenerateShaders();
+    void GenerateShaders(CubismRenderer_Metal* renderer);
 
     /**
      * @brief   シェーダプログラムをロードしてアドレス返す。
@@ -297,135 +274,60 @@ private:
      *
      * @return  シェーダプログラムのアドレス
      */
-    GLuint LoadShaderProgram(const csmChar* vertShaderSrc, const csmChar* fragShaderSrc);
+    ShaderProgram* LoadShaderProgram(const csmChar* vertShaderSrc, const csmChar* fragShaderSrc);
+    id<MTLRenderPipelineState> MakeRenderPipelineState(id<MTLDevice> device, ShaderProgram* shaderProgram, int blendMode);
+    id<MTLDepthStencilState> MakeDepthStencilState(id<MTLDevice> device);
+    id<MTLSamplerState> MakeSamplerState(id<MTLDevice> device, CubismRenderer_Metal* renderer);
 
-    /**
-     * @brief   シェーダプログラムをコンパイルする
-     *
-     * @param[out]  outShader       ->  コンパイルされたシェーダプログラムのアドレス
-     * @param[in]   shaderType      ->  シェーダタイプ(Vertex/Fragment)
-     * @param[in]   shaderSource    ->  シェーダソースコード
-     *
-     * @retval      true         ->      コンパイル成功
-     * @retval      false        ->      コンパイル失敗
-     */
-    csmBool CompileShaderSource(GLuint* outShader, GLenum shaderType, const csmChar* shaderSource);
-
-    /**
-     * @brief   シェーダプログラムをリンクする
-     *
-     * @param[in]   shaderProgram   ->  リンクするシェーダプログラムのアドレス
-     *
-     * @retval      true            ->  リンク成功
-     * @retval      false           ->  リンク失敗
-     */
-    csmBool LinkProgram(GLuint shaderProgram);
-
-    /**
-     * @brief   シェーダプログラムを検証する
-     *
-     * @param[in]   shaderProgram   ->  検証するシェーダプログラムのアドレス
-     *
-     * @retval      true            ->  正常
-     * @retval      false           ->  異常
-     */
-    csmBool ValidateProgram(GLuint shaderProgram);
-
-#ifdef CSM_TARGET_ANDROID_ES2
-public:
-    /**
-     * @brief   Tegraプロセッサ対応。拡張方式による描画の有効・無効
-     *
-     * @param[in]   extMode     ->  trueなら拡張方式で描画する
-     * @param[in]   extPAMode   ->  trueなら拡張方式のPA設定を有効にする
-     */
-    static void SetExtShaderMode(csmBool extMode, csmBool extPAMode);
-
-private:
-    static csmBool  s_extMode;      ///< Tegra対応.拡張方式で描画
-    static csmBool  s_extPAMode;    ///< 拡張方式のPA設定用の変数
-#endif
+    id<MTLLibrary> _shaderLib;
 
     csmVector<CubismShaderSet*> _shaderSets;   ///< ロードしたシェーダプログラムを保持する変数
 
 };
 
 /**
- * @brief   Cubismモデルを描画する直前のOpenGLES2のステートを保持・復帰させるクラス
+ * @brief   Cubismモデルを描画する直前のMetalのステートを保持・復帰させるクラス
  *
  */
-class CubismRendererProfile_OpenGLES2
+class CubismRendererProfile_Metal
 {
-    friend class CubismRenderer_OpenGLES2;
+    friend class CubismRenderer_Metal;
 
 private:
     /**
-     * @biref   privateなコンストラクタ
+     * @brief   privateなコンストラクタ
      */
-    CubismRendererProfile_OpenGLES2() {};
+    CubismRendererProfile_Metal() {};
 
     /**
-     * @biref   privateなデストラクタ
+     * @brief   privateなデストラクタ
      */
-    virtual ~CubismRendererProfile_OpenGLES2() {};
+    virtual ~CubismRendererProfile_Metal() {};
 
-    /**
-     * @brief   OpenGLES2のステートを保持する
-     */
-    void Save();
-
-    /**
-     * @brief   保持したOpenGLES2のステートを復帰させる
-     *
-     */
-    void Restore();
-
-    /**
-     * @brief   OpenGLES2の機能の有効・無効をセットする
-     *
-     * @param[in]   index   ->  有効・無効にする機能
-     * @param[in]   enabled ->  trueなら有効にする
-     */
-    void SetGlEnable(GLenum index, GLboolean enabled);
-
-    /**
-     * @brief   OpenGLES2のVertex Attribute Array機能の有効・無効をセットする
-     *
-     * @param[in]   index   ->  有効・無効にする機能
-     * @param[in]   enabled ->  trueなら有効にする
-     */
-    void SetGlEnableVertexAttribArray(GLuint index, GLint enabled);
-
-    GLint _lastArrayBufferBinding;          ///< モデル描画直前の頂点バッファ
-    GLint _lastElementArrayBufferBinding;   ///< モデル描画直前のElementバッファ
-    GLint _lastProgram;                     ///< モデル描画直前のシェーダプログラムバッファ
-    GLint _lastActiveTexture;               ///< モデル描画直前のアクティブなテクスチャ
-    GLint _lastTexture0Binding2D;           ///< モデル描画直前のテクスチャユニット0
-    GLint _lastTexture1Binding2D;           ///< モデル描画直前のテクスチャユニット1
-    GLint _lastVertexAttribArrayEnabled[4]; ///< モデル描画直前のテクスチャユニット1
-    GLboolean _lastScissorTest;             ///< モデル描画直前のGL_VERTEX_ATTRIB_ARRAY_ENABLEDパラメータ
-    GLboolean _lastBlend;                   ///< モデル描画直前のGL_SCISSOR_TESTパラメータ
-    GLboolean _lastStencilTest;             ///< モデル描画直前のGL_STENCIL_TESTパラメータ
-    GLboolean _lastDepthTest;               ///< モデル描画直前のGL_DEPTH_TESTパラメータ
-    GLboolean _lastCullFace;                ///< モデル描画直前のGL_CULL_FACEパラメータ
-    GLint _lastFrontFace;                   ///< モデル描画直前のGL_CULL_FACEパラメータ
-    GLboolean _lastColorMask[4];            ///< モデル描画直前のGL_COLOR_WRITEMASKパラメータ
-    GLint _lastBlending[4];                 ///< モデル描画直前のカラーブレンディングパラメータ
-    GLint _lastFBO;                         ///< モデル描画直前のフレームバッファ
-    GLint _lastViewport[4];                 ///< モデル描画直前のビューポート
+    csmBool _lastScissorTest;             ///< モデル描画直前のGL_VERTEX_ATTRIB_ARRAY_ENABLEDパラメータ
+    csmBool _lastBlend;                   ///< モデル描画直前のGL_SCISSOR_TESTパラメータ
+    csmBool _lastStencilTest;             ///< モデル描画直前のGL_STENCIL_TESTパラメータ
+    csmBool _lastDepthTest;               ///< モデル描画直前のGL_DEPTH_TESTパラメータ
+    CubismOffscreenFrame_Metal* _lastColorBuffer;                         ///< モデル描画直前のフレームバッファ
+    id <MTLTexture> _lastDepthBuffer;
+    id <MTLTexture> _lastStencilBuffer;
+    csmRectF _lastViewport;                 ///< モデル描画直前のビューポート
 };
 
 /**
- * @brief   OpenGLES2用の描画命令を実装したクラス
+ * @brief   Metal用の描画命令を実装したクラス
  *
  */
-class CubismRenderer_OpenGLES2 : public CubismRenderer
+class CubismRenderer_Metal : public CubismRenderer
 {
     friend class CubismRenderer;
-    friend class CubismClippingManager_OpenGLES2;
-    friend class CubismShader_OpenGLES2;
+    friend class CubismClippingManager_Metal;
+    friend class CubismShader_Metal;
 
 public:
+
+    static void StartFrame(id<MTLDevice> device, id<MTLCommandBuffer> commandBuffer, MTLRenderPassDescriptor* renderPassDescriptor);
+
     /**
      * @brief    レンダラの初期化処理を実行する<br>
      *           引数に渡したモデルからレンダラの初期化処理に必要な情報を取り出すことができる
@@ -435,21 +337,21 @@ public:
     void Initialize(Framework::CubismModel* model);
 
     /**
-     * @brief   OpenGLテクスチャのバインド処理<br>
+     * @brief   テクスチャのバインド処理<br>
      *           CubismRendererにテクスチャを設定し、CubismRenderer中でその画像を参照するためのIndex値を戻り値とする
      *
      * @param[in]   modelTextureNo  ->  セットするモデルテクスチャの番号
-     * @param[in]   glTextureNo     ->  OpenGLテクスチャの番号
+     * @param[in]   texture     ->  バックエンドテクスチャ
      *
      */
-    void BindTexture(csmUint32 modelTextureNo, GLuint glTextureNo);
+    void BindTexture(csmUint32 modelTextureNo, id <MTLTexture> texture);
 
     /**
-     * @brief   OpenGLにバインドされたテクスチャのリストを取得する
+     * @brief   バインドされたテクスチャのリストを取得する
      *
      * @return  テクスチャのアドレスのリスト
      */
-    const csmMap<csmInt32, GLuint>& GetBindedTextures() const;
+    const csmMap<csmInt32, id <MTLTexture>>& GetBindedTextures() const;
 
     /**
      * @brief  クリッピングマスクバッファのサイズを設定する<br>
@@ -458,7 +360,7 @@ public:
      * @param[in]  size -> クリッピングマスクバッファのサイズ
      *
      */
-    void SetClippingMaskBufferSize(csmInt32 size);
+    void SetClippingMaskBufferSize(csmFloat32 width, csmFloat32 height);
 
     /**
      * @brief  クリッピングマスクバッファのサイズを取得する
@@ -466,18 +368,23 @@ public:
      * @return クリッピングマスクバッファのサイズ
      *
      */
-    csmInt32 GetClippingMaskBufferSize() const;
+    CubismVector2 GetClippingMaskBufferSize() const;
+
+    CubismCommandBuffer_Metal* GetCommandBuffer()
+    {
+        return &_commandBuffer;
+    }
 
 protected:
     /**
      * @brief   コンストラクタ
      */
-    CubismRenderer_OpenGLES2();
+    CubismRenderer_Metal();
 
     /**
      * @brief   デストラクタ
      */
-    virtual ~CubismRenderer_OpenGLES2();
+    virtual ~CubismRenderer_Metal();
 
     /**
      * @brief   モデルを描画する実際の処理
@@ -499,59 +406,57 @@ protected:
      * @param[in]   opacity         ->  不透明度
      * @param[in]   colorBlendMode  ->  カラー合成タイプ
      * @param[in]   invertedMask     ->  マスク使用時のマスクの反転使用
+     * @param[in]   drawableIndex     ->  DrawCommandBuffer番号
+     * @param[in]   renderEncoder     ->  MTLRenderCommandEncoder
      *
      */
-    void DrawMesh(csmInt32 textureNo, csmInt32 indexCount, csmInt32 vertexCount
+
+    void DrawMesh(csmInt32 textureNo, csmInt32 indexCount, csmInt32 vertexCount, csmUint16* indexArray, csmFloat32* vertexArray, csmFloat32* uvArray, csmFloat32 opacity, CubismBlendMode colorBlendMode, csmBool invertedMask);
+
+    void DrawMeshMetal(CubismCommandBuffer_Metal::DrawCommandBuffer* drawCommandBuffer, csmInt32 textureNo, csmInt32 indexCount, csmInt32 vertexCount
                   , csmUint16* indexArray, csmFloat32* vertexArray, csmFloat32* uvArray
-                  , csmFloat32 opacity, CubismBlendMode colorBlendMode, csmBool invertedMask);
+                  , csmFloat32 opacity, CubismBlendMode colorBlendMode, csmBool invertedMask
+                  , csmInt32 drawableIndex
+                  , id <MTLRenderCommandEncoder> renderEncoder);
 
-
-#ifdef CSM_TARGET_ANDROID_ES2
-public:
-    /**
-     * @brief   Tegraプロセッサ対応。拡張方式による描画の有効・無効
-     *
-     * @param[in]   extMode     ->  trueなら拡張方式で描画する
-     * @param[in]   extPAMode   ->  trueなら拡張方式のPA設定を有効にする
-     */
-    static void SetExtShaderMode(csmBool extMdoe, csmBool extPAMode = false);
-
-    /**
-     * @brief   Android-Tegra対応. シェーダプログラムをリロードする。
-     */
-    static void ReloadShader();
-#endif
+    CubismCommandBuffer_Metal::DrawCommandBuffer* GetDrawCommandBufferData(csmInt32 drawableIndex);
 
 private:
+
     // Prevention of copy Constructor
-    CubismRenderer_OpenGLES2(const CubismRenderer_OpenGLES2&);
-    CubismRenderer_OpenGLES2& operator=(const CubismRenderer_OpenGLES2&);
+    CubismRenderer_Metal(const CubismRenderer_Metal&);
+    CubismRenderer_Metal& operator=(const CubismRenderer_Metal&);
+
+    static id<MTLCommandBuffer> s_commandBuffer;
+    static id<MTLDevice> s_device;
+    static MTLRenderPassDescriptor* s_renderPassDescriptor;
 
     /**
      * @brief   レンダラが保持する静的なリソースを解放する<br>
-     *           OpenGLES2の静的なシェーダプログラムを解放する
+     *           Metalの静的なシェーダプログラムを解放する
      */
     static void DoStaticRelease();
 
     /**
      * @brief   描画開始時の追加処理。<br>
      *           モデルを描画する前にクリッピングマスクに必要な処理を実装している。
+     * @return  描画に使うMTLRenderCommandEncoder
      */
-    void PreDraw();
+    id <MTLRenderCommandEncoder> PreDraw(id <MTLCommandBuffer> commandBuffer, MTLRenderPassDescriptor* drawableRenderDescriptor);
 
     /**
      * @brief   描画完了後の追加処理。
      *
      */
-    void PostDraw(){};
+    void PostDraw(id <MTLRenderCommandEncoder> renderEncoder);
 
     /**
-     * @brief   モデル描画直前のOpenGLES2のステートを保持する
+     * @brief   SuperClass対応
      */
     virtual void SaveProfile();
 
     /**
-     * @brief   モデル描画直前のOpenGLES2のステートを保持する
+     * @brief   SuperClass対応
      */
     virtual void RestoreProfile();
 
@@ -579,31 +484,16 @@ private:
      */
     CubismClippingContext* GetClippingContextBufferForDraw() const;
 
-#ifdef CSM_TARGET_WIN_GL
-    /**
-     * @brief   Windows対応。OpenGL命令のバインドを行う。
-     */
-    void  InitializeGlFunctions();
-
-    /**
-     * @brief   Windows対応。OpenGL命令のバインドする際に関数ポインタを取得する。
-     */
-    void* WinGlGetProcAddress(const csmChar* name);
-
-    /**
-     * @brief   Windows対応。OpenGLのエラーチェック。
-     */
-    void  CheckGlError(const csmChar* message);
-#endif
-
-    csmMap<csmInt32, GLuint>            _textures;                      ///< モデルが参照するテクスチャとレンダラでバインドしているテクスチャとのマップ
+    csmMap<csmInt32, id <MTLTexture>>            _textures;                      ///< モデルが参照するテクスチャとレンダラでバインドしているテクスチャとのマップ
     csmVector<csmInt32>                 _sortedDrawableIndexList;       ///< 描画オブジェクトのインデックスを描画順に並べたリスト
-    CubismRendererProfile_OpenGLES2     _rendererProfile;               ///< OpenGLのステートを保持するオブジェクト
-    CubismClippingManager_OpenGLES2*    _clippingManager;               ///< クリッピングマスク管理オブジェクト
+    CubismRendererProfile_Metal     _rendererProfile;               ///< Metalのステートを保持するオブジェクト
+    CubismClippingManager_Metal*    _clippingManager;               ///< クリッピングマスク管理オブジェクト
     CubismClippingContext*              _clippingContextBufferForMask;  ///< マスクテクスチャに描画するためのクリッピングコンテキスト
     CubismClippingContext*              _clippingContextBufferForDraw;  ///< 画面上描画するためのクリッピングコンテキスト
 
-    CubismOffscreenFrame_OpenGLES2      _offscreenFrameBuffer;          ///< マスク描画用のフレームバッファ
+    CubismOffscreenFrame_Metal      _offscreenFrameBuffer;          ///< マスク描画用のフレームバッファ
+    CubismCommandBuffer_Metal       _commandBuffer;
+    csmVector<CubismCommandBuffer_Metal::DrawCommandBuffer*>  _drawableDrawCommandBuffer;
 };
 
 }}}}
