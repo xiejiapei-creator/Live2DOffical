@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -21,7 +21,7 @@
 
 
 //========================================================
-//  カスタムアロケータをインクルード
+//  包含客户分配器
 //========================================================
 #include <new>
 #include "ICubismAllocator.hpp"

@@ -25,6 +25,8 @@
 #import <Math/CubismViewMatrix.hpp>
 #import "Rendering/Metal/CubismRenderingInstanceSingleton_Metal.h"
 
+#import "L2DCubism.h"
+
 #define BUFFER_OFFSET(bytes) ((GLubyte *)NULL + (bytes))
 
 using namespace std;
@@ -204,7 +206,7 @@ using namespace LAppDefine;
     float width = view.view.frame.size.width;
     float height = view.view.frame.size.height;
 
-    LAppTextureManager* textureManager = [delegate getTextureManager];
+    LAppTextureManager* textureManager = [[L2DCubism sharedInstance] getTextureManager];
     const string resourcesPath = ResourcesPath;
 
     //背景

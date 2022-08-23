@@ -1,0 +1,70 @@
+//
+//  L2DCubism.m
+//  Live2DNewTest
+//
+//  Created by 谢佳培 on 2022/8/23.
+//
+
+#import "L2DCubism.h"
+
+#import "LAppAllocator.h"// 分配器
+#import "LAppLive2DManager.h"// 管理者
+#import "LAppPal.h"// 协助者
+#import "LAppTextureManager.h"// 纹理
+#import "LAppDefine.h"// SDK头文件
+
+@interface L2DCubism ()
+
+// Cubism SDK 分配器
+@property (nonatomic) LAppAllocator cubismAllocator;
+// 立体主义 Cubism SDK 选项
+@property (nonatomic) Csm::CubismFramework::Option cubismOption;
+// 纹理管理器
+@property (nonatomic, readwrite) LAppTextureManager *textureManager;
+
+@end
+
+@implementation L2DCubism
+
++ (instancetype)sharedInstance {
+    static L2DCubism *sharedInstance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[L2DCubism alloc] init];
+    });
+    return sharedInstance;
+}
+
+- (void)initializeCubism {
+    _cubismOption.LogFunction = LAppPal::PrintMessage;
+    _cubismOption.LoggingLevel = LAppDefine::CubismLoggingLevel;
+    _textureManager = [[LAppTextureManager alloc] init];
+
+    Csm::CubismFramework::StartUp(&_cubismAllocator,&_cubismOption);
+
+    Csm::CubismFramework::Initialize();
+
+    [LAppLive2DManager getInstance];
+
+    Csm::CubismMatrix44 projection;
+
+    LAppPal::UpdateTime();
+}
+
+- (void)disposeCubism {
+    _textureManager = nil;
+    
+    [LAppLive2DManager releaseInstance];
+
+    Csm::CubismFramework::Dispose();
+}
+
+- (void)createTextureManager {
+    _textureManager = [[LAppTextureManager alloc] init];
+}
+
+- (void)destroyTextureManager {
+    _textureManager = nil;
+}
+
+@end

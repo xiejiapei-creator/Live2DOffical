@@ -64,6 +64,7 @@
 		E98E19A928B4C276005EE294 /* TouchManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19A828B4C276005EE294 /* TouchManager.mm */; };
 		E98E19AD28B4C51C005EE294 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19AC28B4C51C005EE294 /* ViewController.mm */; };
 		E98E19B028B4C526005EE294 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19AF28B4C526005EE294 /* AppDelegate.mm */; };
+		E98E19B628B4CADF005EE294 /* L2DCubism.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19B528B4CADF005EE294 /* L2DCubism.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -191,6 +192,8 @@
 		E98E19AE28B4C526005EE294 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E98E19AF28B4C526005EE294 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		E98E19B128B4C667005EE294 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		E98E19B428B4CADF005EE294 /* L2DCubism.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = L2DCubism.h; sourceTree = "<group>"; };
+		E98E19B528B4CADF005EE294 /* L2DCubism.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = L2DCubism.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				E96B24BD28AD076D00678943 /* Use */,
+				E98E19B228B4CA7E005EE294 /* Live2DOCBridge */,
 				E98E198228B4C00E005EE294 /* Live2DUtilities */,
 				E96B254B28AD0B4D00678943 /* Live2DResources */,
 				E96B24C828AD0AB400678943 /* Live2DSDK */,
@@ -560,6 +564,23 @@
 			path = Touch;
 			sourceTree = "<group>";
 		};
+		E98E19B228B4CA7E005EE294 /* Live2DOCBridge */ = {
+			isa = PBXGroup;
+			children = (
+				E98E19B328B4CABE005EE294 /* Cubism */,
+			);
+			path = Live2DOCBridge;
+			sourceTree = "<group>";
+		};
+		E98E19B328B4CABE005EE294 /* Cubism */ = {
+			isa = PBXGroup;
+			children = (
+				E98E19B428B4CADF005EE294 /* L2DCubism.h */,
+				E98E19B528B4CADF005EE294 /* L2DCubism.mm */,
+			);
+			path = Cubism;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -689,6 +710,7 @@
 				E96B254128AD0AE000678943 /* CubismMotionManager.cpp in Sources */,
 				E98E198A28B4C12D005EE294 /* LAppDefine.mm in Sources */,
 				E96B1DA328ACDE6800678943 /* main.m in Sources */,
+				E98E19B628B4CADF005EE294 /* L2DCubism.mm in Sources */,
 				E98E19A428B4C261005EE294 /* MetalView.m in Sources */,
 				E96B252B28AD0AE000678943 /* CubismEyeBlink.cpp in Sources */,
 				E96B253E28AD0AE000678943 /* csmRectF.cpp in Sources */,

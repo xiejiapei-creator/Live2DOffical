@@ -12,7 +12,6 @@
 #import "LAppDefine.h"
 #import "LAppPal.h"
 #import "LAppTextureManager.h"
-#import "AppDelegate.h"
 #import <CubismDefaultParameterId.hpp>
 #import <CubismModelSettingJson.hpp>
 #import <Id/CubismIdManager.hpp>
@@ -21,6 +20,8 @@
 #import <Physics/CubismPhysics.hpp>
 #import <Rendering/Metal/CubismRenderer_Metal.hpp>
 #import <Utils/CubismString.hpp>
+
+#import "L2DCubism.h"
 
 using namespace Live2D::Cubism::Framework;
 using namespace Live2D::Cubism::Framework::DefaultParameterId;
@@ -602,8 +603,8 @@ void LAppModel::SetupTextures()
             csmString texturePath = _modelSetting->GetTextureFileName(modelTextureNumber);
             texturePath = _modelHomeDir + texturePath;
 
-            AppDelegate *delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-            TextureInfo* texture = [[delegate getTextureManager] createTextureFromPngFile:texturePath.GetRawString()];
+            LAppTextureManager* textureManager = [[L2DCubism sharedInstance] getTextureManager];
+            TextureInfo* texture = [textureManager createTextureFromPngFile:texturePath.GetRawString()];
             id <MTLTexture> mtlTextueNumber = texture->id;
 
             //Metal
