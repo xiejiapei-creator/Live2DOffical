@@ -40,8 +40,4 @@ static id theSharedManager = nil;
     return self;
 }
 
-//- (void)dealloc {
-//    [super dealloc];
-//}
-
 @end
