@@ -71,13 +71,6 @@ using namespace LAppDefine;
 {
     [super viewDidLoad];
 
-#if TARGET_OS_MACCATALYST
-    if(AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate])
-    {
-        appDelegate.window.windowScene.titlebar.titleVisibility = UITitlebarTitleVisibilityHidden;
-    }
-#endif
-
     // 在Fremework层也注册为单个对象以引用MTLDevice
     CubismRenderingInstanceSingleton_Metal *single = [CubismRenderingInstanceSingleton_Metal sharedManager];
     id<MTLDevice> device = MTLCreateSystemDefaultDevice();

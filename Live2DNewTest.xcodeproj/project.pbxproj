@@ -243,10 +243,10 @@
 		E96B1D8F28ACDE6700678943 /* Live2DNewTest */ = {
 			isa = PBXGroup;
 			children = (
-				E98E198228B4C00E005EE294 /* Live2DHelper */,
+				E96B24BD28AD076D00678943 /* Use */,
+				E98E198228B4C00E005EE294 /* Live2DUtilities */,
 				E96B254B28AD0B4D00678943 /* Live2DResources */,
 				E96B24C828AD0AB400678943 /* Live2DSDK */,
-				E96B24BD28AD076D00678943 /* Use */,
 				E96B1DA928ACE04800678943 /* Origin */,
 				E96B1DA128ACDE6800678943 /* Info.plist */,
 			);
@@ -459,7 +459,7 @@
 			path = Metal;
 			sourceTree = "<group>";
 		};
-		E98E198228B4C00E005EE294 /* Live2DHelper */ = {
+		E98E198228B4C00E005EE294 /* Live2DUtilities */ = {
 			isa = PBXGroup;
 			children = (
 				E98E19A628B4C26A005EE294 /* Touch */,
@@ -472,7 +472,7 @@
 				E98E198728B4C10A005EE294 /* Define */,
 				E98E198328B4C069005EE294 /* Allocator */,
 			);
-			path = Live2DHelper;
+			path = Live2DUtilities;
 			sourceTree = "<group>";
 		};
 		E98E198328B4C069005EE294 /* Allocator */ = {
