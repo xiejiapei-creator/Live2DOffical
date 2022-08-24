@@ -52,10 +52,10 @@ typedef struct
 
 
 /**
- * @brief 画像読み込み
+ * @brief 图像读取
  *
- * @param[in] fileName  読み込む画像ファイルパス名
- * @return 画像情報。読み込み失敗時はNULLを返す
+ * @param[in] fileName  读取的图像文件路径名
+ * @return 图像信息。读入失败时返回空
  */
 - (TextureInfo*)createTextureFromPngFile:(std::string)fileName;
 

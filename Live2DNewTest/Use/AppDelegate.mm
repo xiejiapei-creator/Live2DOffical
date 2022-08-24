@@ -6,12 +6,10 @@
  */
 
 #import "AppDelegate.h"
-#import <iostream>
-#import "ViewController.h"
 
-#import "LAppLive2DManager.h"
-#import "LAppDefine.h"
 #import "L2DCubism.h"
+#import "L2DSprite.h"
+#import "L2DMetal.h"
 
 @implementation AppDelegate
 
@@ -23,8 +21,11 @@
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 
+    // 初始化 Cubism SDK
     [[L2DCubism sharedInstance] initializeCubism];
-    [self.viewController initializeSprite];
+    
+    // 创建角色模型以外的精灵（绘图）
+    [[L2DSprite sharedInstance] createSprite];
 
     return YES;
 }
@@ -50,7 +51,6 @@
     [[L2DCubism sharedInstance] disposeCubism];
 
     self.viewController = nil;
-    [self.viewController releaseView];
 
     self.window = nil;
     exit(0);

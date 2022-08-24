@@ -6,8 +6,7 @@
  */
 
 #import <UIKit/UIKit.h>
-
-@class ViewController;
+#include "ViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

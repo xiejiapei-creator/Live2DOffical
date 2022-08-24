@@ -12,9 +12,9 @@
 #import <CubismFramework.hpp>
 
 /**
- * @brief プラットフォーム依存機能を抽象化する Cubism Platform Abstraction Layer.
+ * @brief 依赖功能合集
  *
- * ファイル読み込みや時刻取得等のプラットフォームに依存する関数をまとめる
+ * 汇总 文件读取 和 时刻获取 等依赖于平台的函数
  *
  */
 class LAppPal
@@ -50,7 +50,7 @@ public:
     static double GetDeltaTime() {return s_deltaTime;}
 
     /**
-     * @brief 時間を更新する。
+     * @brief 更新时间
      */
     static void UpdateTime();
 

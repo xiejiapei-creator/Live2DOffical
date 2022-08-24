@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -12,24 +12,20 @@
 namespace Live2D { namespace Cubism { namespace Framework {
 
 /**
- * @brief 4x4の行列
+ * @brief 4x4矩阵
  *
- * 4x4行列の便利クラス。
+ * 4 × 4矩阵的方便类
  */
 class CubismMatrix44
 {
 public:
     /**
-     * @brief コンストラクタ
-     *
-     * コンストラクタ。
+     * @brief 矩阵构造器
      */
     CubismMatrix44();
 
     /**
-     * @brief デストラクタ
-     *
-     * デストラクタ。
+     * @brief 析构
      */
     virtual ~CubismMatrix44();
 
@@ -45,9 +41,7 @@ public:
     static void Multiply(csmFloat32* a, csmFloat32* b, csmFloat32* dst);
 
     /**
-     * @brief 単位行列に初期化
-     *
-     * 単位行列に初期化する。
+     * @brief 初始化为单位矩阵
      */
     void            LoadIdentity();
 
@@ -70,20 +64,16 @@ public:
     void            SetMatrix(csmFloat32* tr);
 
     /**
-     * @brief X軸の拡大率を取得
+     * @brief 获得X轴的放大率
      *
-     * X軸の拡大率を取得する。
-     *
-     * @return  X軸の拡大率
+     * @return  X轴放大率
      */
     csmFloat32      GetScaleX() const;
 
     /**
-     * @brief Y軸の拡大率を取得
+     * @brief 获得Y轴的放大率
      *
-     * Y軸の拡大率を取得する。
-     *
-     * @return  Y軸の拡大率
+     * @return  Y轴放大率
      */
     csmFloat32      GetScaleY() const;
 
@@ -127,12 +117,12 @@ public:
     csmFloat32      TransformY(csmFloat32 src);
 
     /**
-     * @brief X軸の値を現在の行列で逆計算
+     * @brief 用现在的矩阵逆计算X轴的值
      *
-     * X軸の値を現在の行列で逆計算する。
+     * 用当前的矩阵逆计算X轴的值
      *
-     * @param[in]   src     X軸の値
-     * @return  現在の行列で逆計算されたX軸の値
+     * @param[in]   src     X轴值
+     * @return  用现在的矩阵逆计算的X轴值
      */
     csmFloat32      InvertTransformX(csmFloat32 src);
 
@@ -147,12 +137,12 @@ public:
     csmFloat32      InvertTransformY(csmFloat32 src);
 
     /**
-     * @brief 現在の行列の位置を起点にして移動
+     * @brief 以矩阵现在的位置为起点
      *
-     * 現在の行列の位置を起点にして相対的に移動する。
+     * 以当前矩阵的位置为起点进行相对移动。
      *
-     * @param[in]   x   X軸の移動量
-     * @param[in]   y   Y軸の移動量
+     * @param[in]   x   X轴的移动量
+     * @param[in]   y   Y轴的移动量
      */
     void            TranslateRelative(csmFloat32 x, csmFloat32 y);
 
@@ -185,22 +175,20 @@ public:
     void            TranslateY(csmFloat32 y);
 
     /**
-     * @brief 現在の行列の拡大率を相対的に設定
+     * @brief 设定当前矩阵的相对放大率
      *
-     * 現在の行列の拡大率を相対的に設定する。
-     *
-     * @param[in]   x   X軸の拡大率
-     * @param[in]   y   Y軸の拡大率
+     * @param[in]   x   X轴放大率
+     * @param[in]   y   Y轴放大率
      */
     void            ScaleRelative(csmFloat32 x, csmFloat32 y);
 
     /**
-     * @brief 現在の行列の拡大率を設定
+     * @brief 设定当前矩阵的放大率
      *
-     * 現在の行列の拡大率を指定した倍率に設定する。
+     * 将当前矩阵的放大率设定为指定的倍率
      *
-     * @param[in]   x   X軸の拡大率
-     * @param[in]   y   Y軸の拡大率
+     * @param[in]   x   X轴放大率
+     * @param[in]   y   Y轴放大率
      */
     void            Scale(csmFloat32 x, csmFloat32 y);
 

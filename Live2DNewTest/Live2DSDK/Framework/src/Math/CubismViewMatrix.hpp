@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -11,41 +11,31 @@
 
 namespace Live2D { namespace Cubism { namespace Framework {
 /**
- * @brief カメラの位置変更に使うと便利な4x4行列
- *
- * カメラの位置変更に使うと便利な4x4行列のクラス。
+ * @brief 在照相机的位置变更中使用方便的4 × 4矩阵
  */
 class CubismViewMatrix : public CubismMatrix44
 {
 public:
     /**
-     * @brief コンストラクタ
-     *
-     * コンストラクタ。
+     * @brief 构造器
      */
     CubismViewMatrix();
 
     /**
-     * @brief デストラクタ
-     *
-     * デストラクタ。
+     * @brief 析构
      */
     virtual ~CubismViewMatrix();
 
     /**
-     * @brief 移動を調整
+     * @brief 调整移动
      *
-     * 移動を調整する。
-     *
-     * @param[in]   x   X軸の移動量
-     * @param[in]   y   Y軸の移動量
+     * @param[in]   x   X轴的移动量
+     * @param[in]   y   Y轴的移动量
      */
     void        AdjustTranslate(csmFloat32 x, csmFloat32 y);
 
     /**
-     * @brief 拡大率を調整
-     *
-     * 拡大率を調整する。
+     * @brief 调整放大率
      *
      * @param[in]   cx      拡大を行うX軸の中心位置
      * @param[in]   cy      拡大を行うY軸の中心位置
@@ -54,14 +44,12 @@ public:
     void        AdjustScale(csmFloat32 cx, csmFloat32 cy, csmFloat32 scale);
 
     /**
-     * @brief デバイスに対応する論理座標上の範囲の設定
+     * @brief 设置对应于设备的逻辑坐标上的范围
      *
-     * デバイスに対応する論理座標上の範囲の設定を行う。
-     *
-     * @param[in]   left    左辺のX軸の位置
-     * @param[in]   right   右辺のX軸の位置
-     * @param[in]   bottom  下辺のY軸の位置
-     * @param[in]   top     上辺のY軸の位置
+     * @param[in]   left    左边X轴的位置
+     * @param[in]   right   右边X轴的位置
+     * @param[in]   bottom  下边Y轴的位置
+     * @param[in]   top     上边Y轴的位置
      */
     void        SetScreenRect(csmFloat32 left, csmFloat32 right, csmFloat32 bottom, csmFloat32 top);
 
@@ -78,20 +66,16 @@ public:
     void        SetMaxScreenRect(csmFloat32 left, csmFloat32 right, csmFloat32 bottom, csmFloat32 top);
 
     /**
-     * @brief 最大拡大率の設定
+     * @brief 设定最大放大率
      *
-     * 最大拡大率を設定する。
-     *
-     * @param[in]   maxScale    最大拡大率
+     * @param[in]   maxScale    最大放大率
      */
     void        SetMaxScale(csmFloat32 maxScale);
 
     /**
-     * @brief 最小拡大率の設定
+     * @brief 设定最小放大率
      *
-     * 最小拡大率を設定する。
-     *
-     * @param[in]   minScale    最小拡大率
+     * @param[in]   minScale    最小放大率
      */
     void        SetMinScale(csmFloat32 minScale);
 
@@ -206,16 +190,16 @@ public:
     csmFloat32  GetMaxTop() const;
 
 private:
-    csmFloat32  _screenLeft;        ///< デバイスに対応する論理座標上の範囲（左辺X軸位置）
-    csmFloat32  _screenRight;       ///< デバイスに対応する論理座標上の範囲（右辺X軸位置）
-    csmFloat32  _screenTop;         ///< デバイスに対応する論理座標上の範囲（下辺Y軸位置）
-    csmFloat32  _screenBottom;      ///< デバイスに対応する論理座標上の範囲（上辺Y軸位置）
-    csmFloat32  _maxLeft;           ///< 論理座標上の移動可能範囲（左辺X軸位置）
-    csmFloat32  _maxRight;          ///< 論理座標上の移動可能範囲（右辺X軸位置）
-    csmFloat32  _maxTop;            ///< 論理座標上の移動可能範囲（下辺Y軸位置）
-    csmFloat32  _maxBottom;         ///< 論理座標上の移動可能範囲（上辺Y軸位置）
-    csmFloat32  _maxScale;          ///< 拡大率の最大値
-    csmFloat32  _minScale;          ///< 拡大率の最小値
+    csmFloat32  _screenLeft;        ///< 对应于设备的逻辑坐标上的范围(左边Y轴位置)
+    csmFloat32  _screenRight;       ///< 对应于设备的逻辑坐标上的范围(右边Y轴位置)
+    csmFloat32  _screenTop;         ///< 对应于设备的逻辑坐标上的范围(下边Y轴位置)
+    csmFloat32  _screenBottom;      ///< 对应于设备的逻辑坐标上的范围(上边Y轴位置)
+    csmFloat32  _maxLeft;           ///< 逻辑坐标上的可移动范围(左侧X轴位置)
+    csmFloat32  _maxRight;          ///< 逻辑坐标上的可移动范围(右侧X轴位置)
+    csmFloat32  _maxTop;            ///< 逻辑坐标上的可移动范围(下侧Y轴位置)
+    csmFloat32  _maxBottom;         ///< 逻辑坐标上的可移动范围(上侧Y轴位置)
+    csmFloat32  _maxScale;          ///< 放大率的最大值
+    csmFloat32  _minScale;          ///< 放大率的最小值
 };
 
 }}}

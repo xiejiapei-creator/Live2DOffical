@@ -40,10 +40,10 @@
 }
 
 
-- (TextureInfo*) createTextureFromPngFile:(std::string)fileName
+- (TextureInfo*)createTextureFromPngFile:(std::string)fileName
 {
 
-    //search loaded texture already.
+    // 倘若纹理已经加载则直接返回
     for (Csm::csmUint32 i = 0; i < _textures.GetSize(); i++)
     {
         if (_textures[i]->fileName == fileName)
@@ -60,7 +60,7 @@
 
     address = LAppPal::LoadFileAsBytes(fileName, &size);
 
-    // png情報を取得する
+    // 获取png信息
     png = stbi_load_from_memory(
                                 address,
                                 static_cast<int>(size),

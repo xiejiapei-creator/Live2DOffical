@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		49A6079355FB4B011846F9FB /* libPods-Live2DNewTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF089F2DCC64F4E0008D953 /* libPods-Live2DNewTest.a */; };
+		E958954B28B5B4AE00D7F6BB /* L2DTouch.mm in Sources */ = {isa = PBXBuildFile; fileRef = E958954A28B5B4AE00D7F6BB /* L2DTouch.mm */; };
 		E96B1D9D28ACDE6800678943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E96B1D9C28ACDE6800678943 /* Assets.xcassets */; };
 		E96B1DA028ACDE6800678943 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96B1D9E28ACDE6800678943 /* LaunchScreen.storyboard */; };
 		E96B1DA328ACDE6800678943 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E96B1DA228ACDE6800678943 /* main.m */; };
@@ -65,12 +66,16 @@
 		E98E19AD28B4C51C005EE294 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19AC28B4C51C005EE294 /* ViewController.mm */; };
 		E98E19B028B4C526005EE294 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19AF28B4C526005EE294 /* AppDelegate.mm */; };
 		E98E19B628B4CADF005EE294 /* L2DCubism.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19B528B4CADF005EE294 /* L2DCubism.mm */; };
+		E98E19C028B5039B005EE294 /* L2DMetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19BF28B5039B005EE294 /* L2DMetal.mm */; };
+		E98E19C428B53C28005EE294 /* L2DSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19C328B53C28005EE294 /* L2DSprite.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		42057C50B8260B796DE030D2 /* Pods-Live2DNewTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Live2DNewTest.release.xcconfig"; path = "Target Support Files/Pods-Live2DNewTest/Pods-Live2DNewTest.release.xcconfig"; sourceTree = "<group>"; };
 		4FF089F2DCC64F4E0008D953 /* libPods-Live2DNewTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Live2DNewTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54ECB69BE3B286CA5E5CF049 /* Pods-Live2DNewTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Live2DNewTest.debug.xcconfig"; path = "Target Support Files/Pods-Live2DNewTest/Pods-Live2DNewTest.debug.xcconfig"; sourceTree = "<group>"; };
+		E958954928B5B4AE00D7F6BB /* L2DTouch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = L2DTouch.h; sourceTree = "<group>"; };
+		E958954A28B5B4AE00D7F6BB /* L2DTouch.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = L2DTouch.mm; sourceTree = "<group>"; };
 		E96B1D8D28ACDE6700678943 /* Live2DNewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Live2DNewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E96B1D9C28ACDE6800678943 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E96B1D9F28ACDE6800678943 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -194,6 +199,10 @@
 		E98E19B128B4C667005EE294 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		E98E19B428B4CADF005EE294 /* L2DCubism.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = L2DCubism.h; sourceTree = "<group>"; };
 		E98E19B528B4CADF005EE294 /* L2DCubism.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = L2DCubism.mm; sourceTree = "<group>"; };
+		E98E19BE28B5039B005EE294 /* L2DMetal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = L2DMetal.h; sourceTree = "<group>"; };
+		E98E19BF28B5039B005EE294 /* L2DMetal.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = L2DMetal.mm; sourceTree = "<group>"; };
+		E98E19C228B53C28005EE294 /* L2DSprite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = L2DSprite.h; sourceTree = "<group>"; };
+		E98E19C328B53C28005EE294 /* L2DSprite.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = L2DSprite.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -567,6 +576,9 @@
 		E98E19B228B4CA7E005EE294 /* Live2DOCBridge */ = {
 			isa = PBXGroup;
 			children = (
+				E98E19C528B5B3A2005EE294 /* Touch */,
+				E98E19C128B53C10005EE294 /* Sprite */,
+				E98E19BD28B5032B005EE294 /* Metal */,
 				E98E19B328B4CABE005EE294 /* Cubism */,
 			);
 			path = Live2DOCBridge;
@@ -579,6 +591,33 @@
 				E98E19B528B4CADF005EE294 /* L2DCubism.mm */,
 			);
 			path = Cubism;
+			sourceTree = "<group>";
+		};
+		E98E19BD28B5032B005EE294 /* Metal */ = {
+			isa = PBXGroup;
+			children = (
+				E98E19BE28B5039B005EE294 /* L2DMetal.h */,
+				E98E19BF28B5039B005EE294 /* L2DMetal.mm */,
+			);
+			path = Metal;
+			sourceTree = "<group>";
+		};
+		E98E19C128B53C10005EE294 /* Sprite */ = {
+			isa = PBXGroup;
+			children = (
+				E98E19C228B53C28005EE294 /* L2DSprite.h */,
+				E98E19C328B53C28005EE294 /* L2DSprite.mm */,
+			);
+			path = Sprite;
+			sourceTree = "<group>";
+		};
+		E98E19C528B5B3A2005EE294 /* Touch */ = {
+			isa = PBXGroup;
+			children = (
+				E958954928B5B4AE00D7F6BB /* L2DTouch.h */,
+				E958954A28B5B4AE00D7F6BB /* L2DTouch.mm */,
+			);
+			path = Touch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -716,6 +755,7 @@
 				E96B253E28AD0AE000678943 /* csmRectF.cpp in Sources */,
 				E96B254728AD0AE000678943 /* CubismRenderer.cpp in Sources */,
 				E96B252728AD0AE000678943 /* CubismString.cpp in Sources */,
+				E98E19C428B53C28005EE294 /* L2DSprite.mm in Sources */,
 				E96B254A28AD0AE000678943 /* CubismCdiJson.cpp in Sources */,
 				E96B253328AD0AE000678943 /* CubismTargetPoint.cpp in Sources */,
 				E98E198028B4BC77005EE294 /* CubismRenderer_Metal.mm in Sources */,
@@ -726,6 +766,8 @@
 				E96B253A28AD0AE000678943 /* CubismModel.cpp in Sources */,
 				E98E198128B4BC77005EE294 /* MetalShaders.metal in Sources */,
 				E98E19B028B4C526005EE294 /* AppDelegate.mm in Sources */,
+				E98E19C028B5039B005EE294 /* L2DMetal.mm in Sources */,
+				E958954B28B5B4AE00D7F6BB /* L2DTouch.mm in Sources */,
 				E96B253228AD0AE000678943 /* CubismVector2.cpp in Sources */,
 				E96B253928AD0AE000678943 /* CubismMoc.cpp in Sources */,
 				E96B253B28AD0AE000678943 /* CubismPhysicsJson.cpp in Sources */,

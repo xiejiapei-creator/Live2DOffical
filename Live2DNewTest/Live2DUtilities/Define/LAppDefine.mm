@@ -12,20 +12,20 @@ namespace LAppDefine {
 
     using namespace Csm;
 
-    // 画面
-    const csmFloat32 ViewScale = 1.0f;
-    const csmFloat32 ViewMaxScale = 2.0f;
-    const csmFloat32 ViewMinScale = 0.8f;
+    // 逻辑视图frame相关属性
+    const csmFloat32 ViewScale = 1.0f;// 视图在X\Y轴的放大率
+    const csmFloat32 ViewMaxScale = 2.0f;// 视图的临界放大率
+    const csmFloat32 ViewMinScale = 0.8f;// 视图的临界缩小率
 
-    const csmFloat32 ViewLogicalLeft = -1.0f;
-    const csmFloat32 ViewLogicalRight = 1.0f;
-    const csmFloat32 ViewLogicalBottom = -1.0f;
-    const csmFloat32 ViewLogicalTop = 1.0f;
+    const csmFloat32 ViewLogicalLeft = -1.0f;// // 显示视图左边X轴的位置
+    const csmFloat32 ViewLogicalRight = 1.0f;// // 显示视图右边X轴的位置
+    const csmFloat32 ViewLogicalBottom = -1.0f;// 显示视图下边X轴的位置
+    const csmFloat32 ViewLogicalTop = 1.0f;// 显示视图上边X轴的位置
 
-    const csmFloat32 ViewLogicalMaxLeft = -2.0f;
-    const csmFloat32 ViewLogicalMaxRight = 2.0f;
-    const csmFloat32 ViewLogicalMaxBottom = -2.0f;
-    const csmFloat32 ViewLogicalMaxTop = 2.0f;
+    const csmFloat32 ViewLogicalMaxLeft = -2.0f;// 显示视图的最左
+    const csmFloat32 ViewLogicalMaxRight = 2.0f;// 显示视图的最右
+    const csmFloat32 ViewLogicalMaxBottom = -2.0f;// 显示视图的最底
+    const csmFloat32 ViewLogicalMaxTop = 2.0f;// // 显示视图的最上
 
     // 资源路径
     const csmChar* ResourcesPath = "Live2DResources/";

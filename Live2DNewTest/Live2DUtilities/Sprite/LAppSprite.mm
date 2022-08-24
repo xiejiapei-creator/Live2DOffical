@@ -17,7 +17,7 @@
 
 @interface LAppSprite()
 
-@property (nonatomic, readwrite) id <MTLTexture> texture; // テクスチャ
+@property (nonatomic, readwrite) id <MTLTexture> texture; // 纹理
 @property (nonatomic) SpriteRect rect; // 矩形
 @property (nonatomic) id <MTLBuffer> vertexBuffer;
 @property (nonatomic) id <MTLBuffer> fragmentBuffer;
@@ -65,13 +65,13 @@ typedef struct
     float width = _rect.right - _rect.left;
     float height = _rect.up - _rect.down;
 
-    //テクスチャ設定
+    // 纹理设定
     [renderEncoder setFragmentTexture:_texture atIndex:0];
 
     [renderEncoder setVertexBuffer:_vertexBuffer offset:0 atIndex:0];
     [renderEncoder setVertexBuffer:_fragmentBuffer offset:0 atIndex:1];
 
-    // パイプライン状態オブジェクトを設定する
+    // 设置管道状态对象
     [renderEncoder setRenderPipelineState:_pipelineState];
 
     vector_float2 metalUniforms = (vector_float2){width,height};

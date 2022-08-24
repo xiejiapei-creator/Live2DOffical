@@ -10,18 +10,21 @@
 #import <Metal/Metal.h>
 #import "MetalConfig.h"
 
-// Protocol to provide resize and redraw callbacks to a delegate
+// 为委托提供调整大小和重新绘制回调的协议
 @protocol MetalViewDelegate <NSObject>
 
+/// 调整大小回调
 - (void)drawableResize:(CGSize)size;
 
+/// 重新绘制回调
 - (void)renderToMetalLayer:(nonnull CAMetalLayer *)metalLayer;
 
 @end
 
-// Metal view base class
+// Metal 的视图基类
 @interface MetalView : UIView <CALayerDelegate>
 
+/// 显示在屏幕上的 Metal 渲染图层
 @property (nonatomic, nonnull, readonly) CAMetalLayer *metalLayer;
 
 @property (nonatomic, getter=isPaused) BOOL paused;
