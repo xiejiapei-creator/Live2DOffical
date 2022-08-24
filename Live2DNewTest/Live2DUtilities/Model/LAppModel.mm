@@ -366,9 +366,9 @@ void LAppModel::Update()
 
     //ドラッグによる変化
     //ドラッグによる顔の向きの調整
-    _model->AddParameterValue(_idParamAngleX, _dragX * 30); // -30から30の値を加える
-    _model->AddParameterValue(_idParamAngleY, _dragY * 30);
-    _model->AddParameterValue(_idParamAngleZ, _dragX * _dragY * -30);
+    _model->AddParameterValue(_idParamAngleX, _dragX * 120); // -30から30の値を加える
+    _model->AddParameterValue(_idParamAngleY, _dragY * 120);
+    _model->AddParameterValue(_idParamAngleZ, _dragX * _dragY * -120);
 
     //ドラッグによる体の向きの調整
     _model->AddParameterValue(_idParamBodyAngleX, _dragX * 10); // -10から10の値を加える
