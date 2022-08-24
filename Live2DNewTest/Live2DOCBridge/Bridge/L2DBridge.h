@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 销毁 Live2D 视图
 + (void)destroyLive2DView;
 
+// 创建角色模型以外的精灵（绘图）
++ (void)createSprite;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -1,9 +1,9 @@
-/**
- * Copyright(c) Live2D Inc. All rights reserved.
- *
- * Use of this source code is governed by the Live2D Open Software license
- * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
- */
+//
+//  Live2DView.m
+//  Live2DNewTest
+//
+//  Created by 谢佳培 on 2022/8/24.
+//
 
 #import "LAppDefine.h"
 #import <Foundation/Foundation.h>
@@ -13,33 +13,27 @@ namespace LAppDefine {
     using namespace Csm;
 
     // 逻辑视图frame相关属性
-    const csmFloat32 ViewScale = 1.0f;// 视图在X\Y轴的放大率
-    const csmFloat32 ViewMaxScale = 2.0f;// 视图的临界放大率
-    const csmFloat32 ViewMinScale = 0.8f;// 视图的临界缩小率
+    const csmFloat32 ViewScale = 1.0f;
+    const csmFloat32 ViewMaxScale = 2.0f;
+    const csmFloat32 ViewMinScale = 0.8f;
 
-    const csmFloat32 ViewLogicalLeft = -1.0f;// // 显示视图左边X轴的位置
-    const csmFloat32 ViewLogicalRight = 1.0f;// // 显示视图右边X轴的位置
-    const csmFloat32 ViewLogicalBottom = -1.0f;// 显示视图下边X轴的位置
-    const csmFloat32 ViewLogicalTop = 1.0f;// 显示视图上边X轴的位置
+    const csmFloat32 ViewLogicalLeft = -1.0f;
+    const csmFloat32 ViewLogicalRight = 1.0f;
+    const csmFloat32 ViewLogicalBottom = -1.0f;
+    const csmFloat32 ViewLogicalTop = 1.0f;
 
-    const csmFloat32 ViewLogicalMaxLeft = -2.0f;// 显示视图的最左
-    const csmFloat32 ViewLogicalMaxRight = 2.0f;// 显示视图的最右
-    const csmFloat32 ViewLogicalMaxBottom = -2.0f;// 显示视图的最底
-    const csmFloat32 ViewLogicalMaxTop = 2.0f;// // 显示视图的最上
+    const csmFloat32 ViewLogicalMaxLeft = -2.0f;
+    const csmFloat32 ViewLogicalMaxRight = 2.0f;
+    const csmFloat32 ViewLogicalMaxBottom = -2.0f;
+    const csmFloat32 ViewLogicalMaxTop = 2.0f;
 
-    // 资源路径
+
     const csmChar* ResourcesPath = "Live2DResources/";
-
-    // 模型后面的背景图像文件
     const csmChar* BackImageName = "back_class_normal.png";
-    // 齿轮
     const csmChar* GearImageName = "icon_gear.png";
-    // 关闭
     const csmChar* PowerImageName = "close.png";
 
-    // 模型定义
     // 放置模型的目录名数组
-    // 使目录名与model3.json的名字一致
     const csmChar* ModelDir[] = {
         "Haru",
         "Hiyori",
@@ -47,13 +41,12 @@ namespace LAppDefine {
         "Natori",
         "Rice"
     };
+
     const csmInt32 ModelDirSize = sizeof(ModelDir) / sizeof(const csmChar*);
 
-    // 与外部定义文件（json）匹配
     const csmChar* MotionGroupIdle = "Idle"; // 发呆
     const csmChar* MotionGroupTapBody = "TapBody"; // 点击身体的时候
 
-    // 与外部定义文件（json）匹配
     const csmChar* HitAreaNameHead = "Head";
     const csmChar* HitAreaNameBody = "Body";
 
@@ -67,6 +60,5 @@ namespace LAppDefine {
     const csmBool DebugLogEnable = true;
     const csmBool DebugTouchLogEnable = false;
 
-    // 从框架输出的日志级别设置
     const CubismFramework::Option::LogLevel CubismLoggingLevel = CubismFramework::Option::LogLevel_Verbose;
 }

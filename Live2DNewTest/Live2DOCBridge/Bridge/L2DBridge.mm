@@ -21,4 +21,11 @@
     [[L2DSprite sharedInstance] destroySprite];
 }
 
+#pragma mark - Sprite
+
+// 创建角色模型以外的精灵（绘图）
++ (void)createSprite {
+    [[L2DSprite sharedInstance] createSprite];
+}
+
 @end

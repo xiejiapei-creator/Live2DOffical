@@ -66,7 +66,7 @@
 		E98E19A528B4C261005EE294 /* LMetalUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = E98E19A328B4C261005EE294 /* LMetalUIView.m */; };
 		E98E19A928B4C276005EE294 /* LTouchManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19A828B4C276005EE294 /* LTouchManager.mm */; };
 		E98E19AD28B4C51C005EE294 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E98E19AC28B4C51C005EE294 /* ViewController.m */; };
-		E98E19B028B4C526005EE294 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19AF28B4C526005EE294 /* AppDelegate.mm */; };
+		E98E19B028B4C526005EE294 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E98E19AF28B4C526005EE294 /* AppDelegate.m */; };
 		E98E19B628B4CADF005EE294 /* L2DCubism.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19B528B4CADF005EE294 /* L2DCubism.mm */; };
 		E98E19C028B5039B005EE294 /* L2DMetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19BF28B5039B005EE294 /* L2DMetal.mm */; };
 		E98E19C428B53C28005EE294 /* L2DSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19C328B53C28005EE294 /* L2DSprite.mm */; };
@@ -201,7 +201,7 @@
 		E98E19AB28B4C51C005EE294 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E98E19AC28B4C51C005EE294 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E98E19AE28B4C526005EE294 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		E98E19AF28B4C526005EE294 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		E98E19AF28B4C526005EE294 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E98E19B128B4C667005EE294 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		E98E19B428B4CADF005EE294 /* L2DCubism.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = L2DCubism.h; sourceTree = "<group>"; };
 		E98E19B528B4CADF005EE294 /* L2DCubism.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = L2DCubism.mm; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				E98E19AE28B4C526005EE294 /* AppDelegate.h */,
-				E98E19AF28B4C526005EE294 /* AppDelegate.mm */,
+				E98E19AF28B4C526005EE294 /* AppDelegate.m */,
 				E98E19AB28B4C51C005EE294 /* ViewController.h */,
 				E98E19AC28B4C51C005EE294 /* ViewController.m */,
 			);
@@ -792,7 +792,7 @@
 				E96B253A28AD0AE000678943 /* CubismModel.cpp in Sources */,
 				E98E198128B4BC77005EE294 /* MetalShaders.metal in Sources */,
 				E933EDAE28B60E52002A61DB /* LAppDefine.mm in Sources */,
-				E98E19B028B4C526005EE294 /* AppDelegate.mm in Sources */,
+				E98E19B028B4C526005EE294 /* AppDelegate.m in Sources */,
 				E98E19C028B5039B005EE294 /* L2DMetal.mm in Sources */,
 				E958954B28B5B4AE00D7F6BB /* L2DTouch.mm in Sources */,
 				E96B253228AD0AE000678943 /* CubismVector2.cpp in Sources */,

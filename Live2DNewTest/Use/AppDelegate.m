@@ -1,14 +1,14 @@
-/**
- * Copyright(c) Live2D Inc. All rights reserved.
- *
- * Use of this source code is governed by the Live2D Open Software license
- * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
- */
+//
+//  AppDelegate.m
+//  Live2DNewTest
+//
+//  Created by 谢佳培 on 2022/8/24.
+//
 
 #import "AppDelegate.h"
 
 #import "L2DCubism.h"
-#import "L2DSprite.h"
+#import "L2DBridge.h"
 
 @implementation AppDelegate
 
@@ -24,7 +24,7 @@
     [[L2DCubism sharedInstance] initializeCubism];
     
     // 创建角色模型以外的精灵（绘图）
-    [[L2DSprite sharedInstance] createSprite];
+    [L2DBridge createSprite];
 
     return YES;
 }
