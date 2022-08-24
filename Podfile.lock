@@ -1,20 +1,16 @@
 PODS:
-  - LookinServer (1.0.6)
-  - YYModel (1.0.4)
+  - Masonry (1.1.0)
 
 DEPENDENCIES:
-  - LookinServer
-  - YYModel
+  - Masonry
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - LookinServer
-    - YYModel
+    - Masonry
 
 SPEC CHECKSUMS:
-  LookinServer: 18155b1e4a08213c236a1dd6b7ca52328a70a1e3
-  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
-PODFILE CHECKSUM: 89c17404fc0cd773eada93cc3697083f0f7a0056
+PODFILE CHECKSUM: 1bee32fc8d988eb9e1ba29dbfc82f6b6ab2d8774
 
 COCOAPODS: 1.11.3

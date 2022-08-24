@@ -1,9 +1,9 @@
-/**
- * Copyright(c) Live2D Inc. All rights reserved.
- *
- * Use of this source code is governed by the Live2D Open Software license
- * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
- */
+//
+//  LAppTextureManager.m
+//  Live2DNewTest
+//
+//  Created by 谢佳培 on 2022/8/24.
+//
 
 #import "LAppTextureManager.h"
 #import <Foundation/Foundation.h>
@@ -52,7 +52,6 @@
         }
     }
 
-    Csm::csmInt32 textureId;
     int width, height, channels;
     unsigned int size;
     unsigned char* png;
@@ -83,21 +82,20 @@
 
     MTLTextureDescriptor *textureDescriptor = [[MTLTextureDescriptor alloc] init];
 
-    // Indicate that each pixel has a blue, green, red, and alpha channel, where each channel is
-    // an 8-bit unsigned normalized value (i.e. 0 maps to 0.0 and 255 maps to 1.0)
+    // 指示每个像素有一个蓝色、绿色、红色和alpha通道，其中每个通道是一个8位无符号规范化值(即0映射到0.0,255映射到1.0)
     textureDescriptor.pixelFormat = MTLPixelFormatRGBA8Unorm;
 
-    // Set the pixel dimensions of the texture
+    // 设置纹理的像素尺寸
     textureDescriptor.width = width;
     textureDescriptor.height = height;
 
     CubismRenderingInstanceSingleton_Metal *single = [CubismRenderingInstanceSingleton_Metal sharedManager];
     id <MTLDevice> device = [single getMTLDevice];
 
-    // Create the texture from the device by using the descriptor
+    // 通过使用描述符从设备创建纹理
     id<MTLTexture> texture = [device newTextureWithDescriptor:textureDescriptor];
 
-    // Calculate the number of bytes per row in the image.
+    // 计算图像中每行的字节数
     NSUInteger bytesPerRow = 4 * width;
 
     MTLRegion region = {
@@ -105,13 +103,13 @@
         {(NSUInteger)width, (NSUInteger)height, 1} // MTLSize
     };
 
-    // Copy the bytes from the data object into the texture
+    // 将数据对象中的字节复制到纹理中
     [texture replaceRegion:region
                 mipmapLevel:0
                   withBytes:png
                 bytesPerRow:bytesPerRow];
 
-    // 解放処理
+    // 释放处理
     stbi_image_free(png);
     LAppPal::ReleaseBytes(address);
 

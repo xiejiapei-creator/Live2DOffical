@@ -1,9 +1,9 @@
-/**
- * Copyright(c) Live2D Inc. All rights reserved.
- *
- * Use of this source code is governed by the Live2D Open Software license
- * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
- */
+//
+//  LAppSprite.h
+//  Live2DNewTest
+//
+//  Created by 谢佳培 on 2022/8/24.
+//
 
 #ifndef LAppSprite_h
 #define LAppSprite_h
@@ -44,11 +44,6 @@ typedef struct
  * @param[in]       texture    纹理
  */
 - (id)initWithMyVar:(float)x Y:(float)y Width:(float)width Height:(float)height Texture:(id <MTLTexture>) texture;
-
-/**
- * @brief 释放处理
- */
-- (void)dealloc;
 
 /**
  * @brief 立刻绘制

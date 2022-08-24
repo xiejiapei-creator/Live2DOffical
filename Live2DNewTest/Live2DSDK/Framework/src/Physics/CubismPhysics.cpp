@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -408,8 +408,6 @@ CubismPhysics::~CubismPhysics()
 }
 
 /// Initializes physics.
-///
-/// @param  physics  Target rig.
 void CubismPhysics::Initialize()
 {
     CubismPhysicsParticle* strand;

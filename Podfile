@@ -9,9 +9,8 @@ source 'https://g.hz.netease.com/CocoaPods/Specs.git'
 platform :ios, '12.0'
 
 target 'Live2DNewTest' do
-
-  pod 'YYModel'
-  pod 'LookinServer', :configurations => ['Debug']
+  
+  pod 'Masonry'
 
 end
 

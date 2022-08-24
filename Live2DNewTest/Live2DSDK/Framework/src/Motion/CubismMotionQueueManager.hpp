@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -131,7 +131,7 @@ protected:
     *
     * @param[in]   model   対象のモデル
     * @param[in]   userTimeSeconds   デルタ時間の積算値[秒]
-    * @param[in][out]   opacity 透明度の値（Nullable）
+    * @param[in]   opacity 透明度の値（Nullable）
     * @retval  true    モデルへパラメータ値の反映あり
     * @retval  false   モデルへパラメータ値の反映なし(モーションの変化なし)
     */

@@ -37,7 +37,7 @@
 
 #pragma mark - 创建渲染视图
 
-- (void)createMetalView:(MetalUIView *)roleView {
+- (void)createMetalView:(LMetalUIView *)roleView {
     // 为 Metal 设置渲染图层的设备和显示在屏幕上的渲染图层
     [self configMetalSingletonInstance:roleView];
 
@@ -46,7 +46,7 @@
 }
 
 /// 为 Metal 设置渲染图层的设备和显示在屏幕上的渲染图层
-- (void)configMetalSingletonInstance:(MetalUIView *)roleView {
+- (void)configMetalSingletonInstance:(LMetalUIView *)roleView {
     // 为 Metal 设置渲染图层的设备
     CubismRenderingInstanceSingleton_Metal *single = [CubismRenderingInstanceSingleton_Metal sharedManager];
     id<MTLDevice> device = MTLCreateSystemDefaultDevice();

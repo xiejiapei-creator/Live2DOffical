@@ -12,7 +12,7 @@
 @implementation L2DBridge
 
 // 创建 Metal 渲染视图
-+ (void)createLive2DView:(MetalUIView *)view {
++ (void)createLive2DView:(LMetalUIView *)view {
     [[L2DMetal sharedInstance] createMetalView:view];
 }
 

@@ -84,13 +84,13 @@ void CubismCommandBuffer_Metal::DrawCommandBuffer::UpdateVertexBuffer(void* data
 
 void CubismCommandBuffer_Metal::DrawCommandBuffer::UpdateIndexBuffer(void* data, csmSizeInt count)
 {
-    csmSizeInt length = count * sizeof(csmInt16);
+    //csmSizeInt length = count * sizeof(csmInt16);
 
     csmInt16* dest = reinterpret_cast<csmInt16*>([_indices contents]);
 
     csmInt16* sourceIndices = reinterpret_cast<csmInt16*>(data);
 
-    for (csmUint32 i = 0, j = 0; i < count; ++i)
+    for (csmUint32 i = 0; i < count; ++i)
     {
 
         *dest = *sourceIndices;

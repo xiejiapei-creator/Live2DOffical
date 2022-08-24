@@ -34,8 +34,6 @@ csmBool CubismOffscreenFrame_Metal::CreateOffscreenFrame(csmUint32 displayBuffer
     {
         if (colorBuffer == nil)
         {
-            csmBool initResult = false;
-
             _renderPassDescriptor = [MTLRenderPassDescriptor renderPassDescriptor];
             _renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadActionClear;
             _renderPassDescriptor.colorAttachments[0].storeAction = MTLStoreActionStore;

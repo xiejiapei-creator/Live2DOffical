@@ -1,9 +1,9 @@
-/**
- * Copyright(c) Live2D Inc. All rights reserved.
- *
- * Use of this source code is governed by the Live2D Open Software license
- * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
- */
+//
+//  LAppModel.m
+//  Live2DNewTest
+//
+//  Created by 谢佳培 on 2022/8/24.
+//
 
 #import "LAppModel.h"
 #import <Foundation/Foundation.h>
@@ -114,7 +114,7 @@ void LAppModel::SetupModel(ICubismModelSetting* setting)
     csmByte* buffer;
     csmSizeInt size;
 
-    //Cubism Model
+    // 创建模型
     if (strcmp(_modelSetting->GetModelFileName(), "") != 0)
     {
         csmString path = _modelSetting->GetModelFileName();
@@ -130,7 +130,7 @@ void LAppModel::SetupModel(ICubismModelSetting* setting)
         DeleteBuffer(buffer, path.GetRawString());
     }
 
-    //Expression
+    // 人物表情
     if (_modelSetting->GetExpressionCount() > 0)
     {
         const csmInt32 count = _modelSetting->GetExpressionCount();
@@ -154,7 +154,7 @@ void LAppModel::SetupModel(ICubismModelSetting* setting)
         }
     }
 
-    //Physics
+    // 身体
     if (strcmp(_modelSetting->GetPhysicsFileName(), "") != 0)
     {
         csmString path = _modelSetting->GetPhysicsFileName();
@@ -165,7 +165,7 @@ void LAppModel::SetupModel(ICubismModelSetting* setting)
         DeleteBuffer(buffer, path.GetRawString());
     }
 
-    //Pose
+    // 姿势
     if (strcmp(_modelSetting->GetPoseFileName(), "") != 0)
     {
         csmString path = _modelSetting->GetPoseFileName();
@@ -176,13 +176,13 @@ void LAppModel::SetupModel(ICubismModelSetting* setting)
         DeleteBuffer(buffer, path.GetRawString());
     }
 
-    //EyeBlink
+    // 眨眼
     if (_modelSetting->GetEyeBlinkParameterCount() > 0)
     {
         _eyeBlink = CubismEyeBlink::Create(_modelSetting);
     }
 
-    //Breath
+    // 呼吸
     {
         _breath = CubismBreath::Create();
 
@@ -197,7 +197,7 @@ void LAppModel::SetupModel(ICubismModelSetting* setting)
         _breath->SetParameters(breathParameters);
     }
 
-    //UserData
+    // 用户数据
     if (strcmp(_modelSetting->GetUserDataFile(), "") != 0)
     {
         csmString path = _modelSetting->GetUserDataFile();
@@ -207,7 +207,7 @@ void LAppModel::SetupModel(ICubismModelSetting* setting)
         DeleteBuffer(buffer, path.GetRawString());
     }
 
-    // EyeBlinkIds
+    // 在模型中设置的眨眼功能参数ID
     {
         csmInt32 eyeBlinkIdCount = _modelSetting->GetEyeBlinkParameterCount();
         for (csmInt32 i = 0; i < eyeBlinkIdCount; ++i)
@@ -216,7 +216,7 @@ void LAppModel::SetupModel(ICubismModelSetting* setting)
         }
     }
 
-    // LipSyncIds
+    // 模型中设置的口型同步功能的参数ID
     {
         csmInt32 lipSyncIdCount = _modelSetting->GetLipSyncParameterCount();
         for (csmInt32 i = 0; i < lipSyncIdCount; ++i)
@@ -225,7 +225,7 @@ void LAppModel::SetupModel(ICubismModelSetting* setting)
         }
     }
 
-    //Layout
+    // 布局
     csmMap<csmString, csmFloat32> layout;
     _modelSetting->GetLayoutMap(layout);
     _modelMatrix->SetupFromLayout(layout);
@@ -250,7 +250,7 @@ void LAppModel::PreloadMotionGroup(const csmChar* group)
 
     for (csmInt32 i = 0; i < count; i++)
     {
-        //ex) idle_0
+        // idle_0
         csmString name = Utils::CubismString::GetFormatedString("%s_%d", group, i);
         csmString path = _modelSetting->GetMotionFileName(group, i);
         path = _modelHomeDir + path;
@@ -349,50 +349,50 @@ void LAppModel::Update()
     _model->SaveParameters(); // 保存状态
     //-----------------------------------------------------------------
 
-    // まばたき
+    //
     if (!motionUpdated)
     {
         if (_eyeBlink != NULL)
         {
-            // メインモーションの更新がないとき
-            _eyeBlink->UpdateParameters(_model, deltaTimeSeconds); // 目パチ
+            // 没有主动作更新的时候
+            _eyeBlink->UpdateParameters(_model, deltaTimeSeconds); // 眨巴眼睛
         }
     }
 
     if (_expressionManager != NULL)
     {
-        _expressionManager->UpdateMotion(_model, deltaTimeSeconds); // 表情でパラメータ更新（相対変化）
+        _expressionManager->UpdateMotion(_model, deltaTimeSeconds); // 更新表情
     }
 
-    //ドラッグによる変化
-    //ドラッグによる顔の向きの調整
-    _model->AddParameterValue(_idParamAngleX, _dragX * 120); // -30から30の値を加える
+    // 由于拖动而发生的变化
+    // 通过拖动来调整脸部方向
+    _model->AddParameterValue(_idParamAngleX, _dragX * 120);
     _model->AddParameterValue(_idParamAngleY, _dragY * 120);
     _model->AddParameterValue(_idParamAngleZ, _dragX * _dragY * -120);
 
-    //ドラッグによる体の向きの調整
-    _model->AddParameterValue(_idParamBodyAngleX, _dragX * 10); // -10から10の値を加える
+    // 通过拖动来调整身体方向
+    _model->AddParameterValue(_idParamBodyAngleX, _dragX * 10);
 
-    //ドラッグによる目の向きの調整
+    // 拖动以调整眼睛方向
     _model->AddParameterValue(_idParamEyeBallX, _dragX); // -1から1の値を加える
     _model->AddParameterValue(_idParamEyeBallY, _dragY);
 
-    // 呼吸など
+    // 呼吸
     if (_breath != NULL)
     {
         _breath->UpdateParameters(_model, deltaTimeSeconds);
     }
 
-    // 物理演算の設定
+    // 设置身体
     if (_physics != NULL)
     {
         _physics->Evaluate(_model, deltaTimeSeconds);
     }
 
-    // リップシンクの設定
+    // 嘴唇同步设置
     if (_lipSync)
     {
-        csmFloat32 value = 0; // リアルタイムでリップシンクを行う場合、システムから音量を取得して0〜1の範囲で値を入力します。
+        csmFloat32 value = 0; // 实时对口型时，从系统获取音量并输入0到1的数值
 
         for (csmUint32 i = 0; i < _lipSyncIds.GetSize(); ++i)
         {
@@ -400,7 +400,7 @@ void LAppModel::Update()
         }
     }
 
-    // ポーズの設定
+    // 姿势设定
     if (_pose != NULL)
     {
         _pose->UpdateParameters(_model, deltaTimeSeconds);
@@ -427,7 +427,7 @@ CubismMotionQueueEntryHandle LAppModel::StartMotion(const csmChar* group, csmInt
 
     const csmString fileName = _modelSetting->GetMotionFileName(group, no);
 
-    //ex) idle_0
+    // idle_0
     csmString name = Utils::CubismString::GetFormatedString("%s_%d", group, no);
     CubismMotion* motion = static_cast<CubismMotion*>(_motions[name.GetRawString()]);
     csmBool autoDelete = false;
@@ -453,7 +453,7 @@ CubismMotionQueueEntryHandle LAppModel::StartMotion(const csmChar* group, csmInt
             motion->SetFadeOutTime(fadeTime);
         }
         motion->SetEffectIds(_eyeBlinkIds, _lipSyncIds);
-        autoDelete = true; // 終了時にメモリから削除
+        autoDelete = true; // 结束时从内存中删除
 
         DeleteBuffer(buffer, path.GetRawString());
     }
@@ -462,7 +462,7 @@ CubismMotionQueueEntryHandle LAppModel::StartMotion(const csmChar* group, csmInt
         motion->SetFinishedMotionHandler(onFinishedMotionHandler);
     }
 
-    //voice
+    // 声音
     csmString voice = _modelSetting->GetMotionSoundFileName(group, no);
     if (strcmp(voice.GetRawString(), "") != 0)
     {
@@ -593,13 +593,13 @@ void LAppModel::SetupTextures()
 {
     for (csmInt32 modelTextureNumber = 0; modelTextureNumber < _modelSetting->GetTextureCount(); modelTextureNumber++)
         {
-            // テクスチャ名が空文字だった場合はロード・バインド処理をスキップ
+            // 如果纹理名是空字符，跳过加载绑定处理
             if (strcmp(_modelSetting->GetTextureFileName(modelTextureNumber), "") == 0)
             {
                 continue;
             }
 
-            //Metalテクスチャにテクスチャをロードする
+            // 在Metal纹理中加载纹理
             csmString texturePath = _modelSetting->GetTextureFileName(modelTextureNumber);
             texturePath = _modelHomeDir + texturePath;
 
@@ -607,7 +607,7 @@ void LAppModel::SetupTextures()
             TextureInfo* texture = [textureManager createTextureFromPngFile:texturePath.GetRawString()];
             id <MTLTexture> mtlTextueNumber = texture->id;
 
-            //Metal
+            // Metal
             GetRenderer<Rendering::CubismRenderer_Metal>()->BindTexture(modelTextureNumber, mtlTextueNumber);
         }
 }

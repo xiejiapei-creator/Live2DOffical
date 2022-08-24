@@ -7,7 +7,7 @@
 
 #import "L2DTouch.h"
 
-#import "TouchManager.h"// 触摸管理器
+#import "LTouchManager.h"// 触摸管理器
 #import "LAppLive2DManager.h"// 角色模型
 #import "L2DMetal.h"
 #import "L2DSprite.h"
@@ -16,7 +16,7 @@
 
 @interface L2DTouch ()
 
-@property (nonatomic) TouchManager *touchManager;// 触摸管理器
+@property (nonatomic) LTouchManager *touchManager;// 触摸管理器
 
 @end
 
@@ -35,7 +35,7 @@
     self = [super init];
     if (self) {
         // 创建触摸事件管理器
-        _touchManager = [[TouchManager alloc] init];
+        _touchManager = [[LTouchManager alloc] init];
     }
     return self;
 }

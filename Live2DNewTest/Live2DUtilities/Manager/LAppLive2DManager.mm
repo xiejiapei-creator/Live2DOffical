@@ -1,9 +1,9 @@
-/**
- * Copyright(c) Live2D Inc. All rights reserved.
- *
- * Use of this source code is governed by the Live2D Open Software license
- * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
- */
+//
+//  LAppLive2DManager.m
+//  Live2DNewTest
+//
+//  Created by 谢佳培 on 2022/8/24.
+//
 
 #import "LAppLive2DManager.h"
 #import <Foundation/Foundation.h>
@@ -182,7 +182,7 @@ void FinishedMotion(Csm::ACubismMotion* self)
             _renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadActionClear;
         }
 
-        //画面クリア
+        // 画面清晰
         id<MTLRenderCommandEncoder> renderEncoder = [commandBuffer renderCommandEncoderWithDescriptor:_renderBuffer->GetRenderPassDescriptor()];
         [renderEncoder endEncoding];
     }
@@ -194,7 +194,7 @@ void FinishedMotion(Csm::ACubismMotion* self)
         LAppModel* model = [self getModel:i];
         if (model->GetModel()->GetCanvasWidth() > 1.0f && width < height)
         {
-            // 横に長いモデルを縦長ウィンドウに表示する際モデルの横サイズでscaleを算出する
+            // 在纵长窗口上显示横向长的模型时，用模型的横向尺寸计算scale
             model->GetModelMatrix()->SetWidth(2.0f);
             projection.Scale(1.0f, static_cast<float>(width) / static_cast<float>(height));
         }
@@ -203,7 +203,7 @@ void FinishedMotion(Csm::ACubismMotion* self)
             projection.Scale(static_cast<float>(height) / static_cast<float>(width), 1.0f);
         }
 
-        // 必要があればここで乗算
+        // 如果有需要，在这里相乘
         if (_viewMatrix != NULL)
         {
             projection.MultiplyByMatrix(_viewMatrix);
@@ -214,8 +214,7 @@ void FinishedMotion(Csm::ACubismMotion* self)
             Csm::Rendering::CubismOffscreenFrame_Metal& useTarget = model->GetRenderBuffer();
 
             if (!useTarget.IsValid())
-            {// 描画ターゲット内部未作成の場合はここで作成
-                // モデル描画キャンバス
+            {// 绘图目标在这里创建
                 useTarget.SetMTLPixelFormat(MTLPixelFormatBGRA8Unorm);
                 useTarget.CreateOffscreenFrame(static_cast<LAppDefine::csmUint32>(width), static_cast<LAppDefine::csmUint32>(height));
             }
@@ -226,7 +225,7 @@ void FinishedMotion(Csm::ACubismMotion* self)
         }
 
         model->Update();
-        model->Draw(projection);///< 参照渡しなのでprojectionは変質する
+        model->Draw(projection);/// 因为是参考传递，projection会变质
 
         if (_renderTarget == SelectTarget_ViewFrameBuffer && _renderBuffer && _sprite)
         {
@@ -241,7 +240,7 @@ void FinishedMotion(Csm::ACubismMotion* self)
             [renderEncoder endEncoding];
         }
 
-        // 各モデルが持つ描画ターゲットをテクスチャとする場合はスプライトへの描画はここ
+        // 如果每个模型的绘制目标是纹理
         if (_renderTarget == SelectTarget_ModelFrameBuffer)
         {
             if (!model)
@@ -279,9 +278,9 @@ void FinishedMotion(Csm::ACubismMotion* self)
         LAppPal::PrintLog("[APP]model index: %d", _sceneIndex);
     }
 
-    // ModelDir[]に保持したディレクトリ名から
-    // model3.jsonのパスを決定する.
-    // ディレクトリ名とmodel3.jsonの名前を一致させておくこと.
+    // ModelDir[]中保存的目录名称
+    // model3.json的路径
+    // 目录名和model3.json的名字要一致
     std::string model = LAppDefine::ModelDir[index];
     std::string modelPath = LAppDefine::ResourcesPath + model + "/";
     std::string modelJsonName = LAppDefine::ModelDir[index];
@@ -292,24 +291,23 @@ void FinishedMotion(Csm::ACubismMotion* self)
     _models[0]->LoadAssets(modelPath.c_str(), modelJsonName.c_str());
 
     /*
-     * モデル半透明表示を行うサンプルを提示する。
-     * ここでUSE_RENDER_TARGET、USE_MODEL_RENDER_TARGETが定義されている場合
-     * 別のレンダリングターゲットにモデルを描画し、描画結果をテクスチャとして別のスプライトに張り付ける。
+     * 提供进行模型半透明显示的样本。
+     * 在另一个渲染目标上绘制模型，并将绘制结果作为纹理粘贴到另一个上。
      */
     {
 #if defined(USE_RENDER_TARGET)
-        // LAppViewの持つターゲットに描画を行う場合、こちらを選択
+        // 对LAppView的目标进行绘图时，选择这里
         SelectTarget useRenderTarget = SelectTarget_ViewFrameBuffer;
 #elif defined(USE_MODEL_RENDER_TARGET)
-        // 各LAppModelの持つターゲットに描画を行う場合、こちらを選択
+        // 在每个LAppModel的目标上绘图时，选择这里
         SelectTarget useRenderTarget = SelectTarget_ModelFrameBuffer;
 #else
-        // デフォルトのメインフレームバッファへレンダリングする(通常)
+        // 渲染到默认的主框架缓冲器(通常)
         SelectTarget useRenderTarget = SelectTarget_None;
 #endif
 
 #if defined(USE_RENDER_TARGET) || defined(USE_MODEL_RENDER_TARGET)
-        // モデル個別にαを付けるサンプルとして、もう1体モデルを作成し、少し位置をずらす
+        // 给模型单独添加α作为样本，制作另一个模型，稍微移开位置
         _models.PushBack(new LAppModel());
         _models[1]->LoadAssets(modelPath.c_str(), modelJsonName.c_str());
         _models[1]->GetModelMatrix()->TranslateX(0.2f);
@@ -318,9 +316,6 @@ void FinishedMotion(Csm::ACubismMotion* self)
         float clearColorR = 1.0f;
         float clearColorG = 1.0f;
         float clearColorB = 1.0f;
-
-        AppDelegate* delegate = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-        ViewController* view = [delegate viewController];
 
         [self SwitchRenderingTarget:useRenderTarget];
         [self SetRenderTargetClearColor:clearColorR g:clearColorG b:clearColorB];

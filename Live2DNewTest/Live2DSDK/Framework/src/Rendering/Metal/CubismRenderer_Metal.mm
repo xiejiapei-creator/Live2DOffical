@@ -547,7 +547,6 @@ CubismClippingContext::CubismClippingContext(CubismClippingManager_Metal* manage
 {
     CubismRenderingInstanceSingleton_Metal *single = [CubismRenderingInstanceSingleton_Metal sharedManager];
     id <MTLDevice> device = [single getMTLDevice];
-    CAMetalLayer* metalLayer = [single getMetalLayer];
 
     _owner = manager;
 
@@ -1147,7 +1146,6 @@ void CubismRenderer_Metal::Initialize(CubismModel* model)
 
     CubismRenderingInstanceSingleton_Metal *single = [CubismRenderingInstanceSingleton_Metal sharedManager];
     id <MTLDevice> device = [single getMTLDevice];
-    CAMetalLayer* metalLayer = [single getMetalLayer];
 
     if (model->IsUsingMasking())
     {
@@ -1285,7 +1283,8 @@ void CubismRenderer_Metal::DoDrawModel()
                 for (csmInt32 index = 0; index < clipDrawCount; index++)
                 {
                     const csmInt32 clipDrawIndex = clipContext->_clippingIdList[index];
-                    CubismCommandBuffer_Metal::DrawCommandBuffer::DrawCommand* drawCommandMask = clipContext->_clippingCommandBufferList->At(index)->GetCommandDraw();
+                    
+                    //CubismCommandBuffer_Metal::DrawCommandBuffer::DrawCommand* drawCommandMask = clipContext->_clippingCommandBufferList->At(index)->GetCommandDraw();
 
                     // 頂点情報が更新されておらず、信頼性がない場合は描画をパスする
                     if (!GetModel()->GetDrawableDynamicFlagVertexPositionsDidChange(clipDrawIndex))
@@ -1342,7 +1341,7 @@ void CubismRenderer_Metal::DoDrawModel()
             }
         }
 
-        CubismCommandBuffer_Metal::DrawCommandBuffer::DrawCommand* drawCommandDraw = _drawableDrawCommandBuffer[drawableIndex]->GetCommandDraw();
+        // CubismCommandBuffer_Metal::DrawCommandBuffer::DrawCommand* drawCommandDraw = _drawableDrawCommandBuffer[drawableIndex]->GetCommandDraw();
         _drawableDrawCommandBuffer[drawableIndex]->SetCommandBuffer(s_commandBuffer);
 
         // クリッピングマスクをセットする

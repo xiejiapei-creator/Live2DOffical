@@ -1,9 +1,9 @@
-/**
- * Copyright(c) Live2D Inc. All rights reserved.
- *
- * Use of this source code is governed by the Live2D Open Software license
- * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
- */
+//
+//  LAppModel.h
+//  Live2DNewTest
+//
+//  Created by 谢佳培 on 2022/8/24.
+//
 
 #ifndef LAppModel_h
 #define LAppModel_h
@@ -15,57 +15,56 @@
 #import <Rendering/Metal/CubismOffscreenSurface_Metal.hpp>
 
 /**
- * @brief ユーザーが実際に使用するモデルの実装クラス<br>
- *         モデル生成、機能コンポーネント生成、更新処理とレンダリングの呼び出しを行う。
+ * @brief 用户实际使用的模型
  *
  */
 class LAppModel : public Csm::CubismUserModel
 {
 public:
     /**
-     * @brief コンストラクタ
+     * @brief 构造器
      */
     LAppModel();
 
     /**
-     * @brief デストラクタ
+     * @brief 析构函数
      *
      */
     virtual ~LAppModel();
 
     /**
-     * @brief model3.jsonが置かれたディレクトリとファイルパスからモデルを生成する
+     * @brief 提供model3.json文件所在的目录和名称来生成模型
      *
      */
     void LoadAssets(const Csm::csmChar* dir, const  Csm::csmChar* fileName);
 
     /**
-     * @brief レンダラを再構築する
+     * @brief 重新加载渲染器
      *
      */
     void ReloadRenderer();
 
     /**
-     * @brief   モデルの更新処理。モデルのパラメータから描画状態を決定する。
+     * @brief   模型更新处理。根据模型参数来决定绘图状态
      *
      */
     void Update();
 
     /**
-     * @brief   モデルを描画する処理。モデルを描画する空間のView-Projection行列を渡す。
+     * @brief   绘制模型的处理。传递绘制模型的空间View-Projection矩阵。
      *
      * @param[in]  matrix  View-Projection行列
      */
     void Draw(Csm::CubismMatrix44& matrix);
 
     /**
-     * @brief   引数で指定したモーションの再生を開始する。
+     * @brief   开始运动
      *
-     * @param[in]   group                       モーショングループ名
-     * @param[in]   no                          グループ内の番号
-     * @param[in]   priority                    優先度
-     * @param[in]   onFinishedMotionHandler     モーション再生終了時に呼び出されるコールバック関数。NULLの場合、呼び出されない。
-     * @return                                  開始したモーションの識別番号を返す。個別のモーションが終了したか否かを判定するIsFinished()の引数で使用する。開始できない時は「-1」
+     * @param[in]   group                       运动组名
+     * @param[in]   no                          组内的号码
+     * @param[in]   priority                    优先级
+     * @param[in]   onFinishedMotionHandler     运动结束时调用的回调函数。如果为空，则不被调用。
+     * @return                                  返回开始的运动的识别号码。作为判断单独运动是否结束的IsFinished()的自变量使用。不能开始时用“-1”
      */
     Csm::CubismMotionQueueEntryHandle StartMotion(const Csm::csmChar* group, Csm::csmInt32 no, Csm::csmInt32 priority, Csm::ACubismMotion::FinishedMotionCallback onFinishedMotionHandler = NULL);
 
@@ -80,20 +79,20 @@ public:
     Csm::CubismMotionQueueEntryHandle StartRandomMotion(const Csm::csmChar* group, Csm::csmInt32 priority, Csm::ACubismMotion::FinishedMotionCallback onFinishedMotionHandler = NULL);
 
     /**
-     * @brief   引数で指定した表情モーションをセットする
+     * @brief   设置由参数指定的表情动作
      *
-     * @param   expressionID    表情モーションのID
+     * @param   expressionID    表情动作的ID
      */
     void SetExpression(const Csm::csmChar* expressionID);
 
     /**
-     * @brief   ランダムに選ばれた表情モーションをセットする
+     * @brief   设置随机选择的表情和动作
      *
      */
     void SetRandomExpression();
 
     /**
-     * @brief   イベントの発火を受け取る
+     * @brief   点燃运动事件
      *
      */
     virtual void MotionEventFired(const Live2D::Cubism::Framework::csmString& eventValue);
@@ -108,78 +107,75 @@ public:
     virtual Csm::csmBool HitTest(const Csm::csmChar* hitAreaName, Csm::csmFloat32 x, Csm::csmFloat32 y);
 
     /**
-     * @brief   別ターゲットに描画する際に使用するバッファの取得
+     * @brief   获取在绘制不同目标时使用的缓冲器
      */
     Csm::Rendering::CubismOffscreenFrame_Metal& GetRenderBuffer();
 
 protected:
     /**
-     * @brief  モデルを描画する処理。モデルを描画する空間のView-Projection行列を渡す。
+     * @brief  绘制模型的处理。传递绘制模型的空间View-Projection矩阵
      *
      */
     void DoDraw();
 
 private:
     /**
-     * @brief model3.jsonからモデルを生成する。<br>
-     *         model3.jsonの記述に従ってモデル生成、モーション、物理演算などのコンポーネント生成を行う。
+     * @brief 加载模型
      *
-     * @param[in]   setting     ICubismModelSettingのインスタンス
+     * @param[in]   setting     ICubismModelSetting 的实例
      *
      */
     void SetupModel(Csm::ICubismModelSetting* setting);
 
     /**
-     * @brief Metalテクスチャにテクスチャをロードする
+     * @brief 加载纹理
      *
      */
     void SetupTextures();
 
     /**
-     * @brief   モーションデータをグループ名から一括でロードする。<br>
-     *           モーションデータの名前は内部でModelSettingから取得する。
+     * @brief   从组名中统一加载运动数据
+     *          运动数据的名称在内部从ModelSetting获得
      *
-     * @param[in]   group  モーションデータのグループ名
+     * @param[in]   group  运动数据的组名
      */
     void PreloadMotionGroup(const Csm::csmChar* group);
 
     /**
-     * @brief   モーションデータをグループ名から一括で解放する。<br>
-     *           モーションデータの名前は内部でModelSettingから取得する。
+     * @brief   从组名中一次性释放运动数据
+     *          运动数据的名称在内部从ModelSetting获得
      *
-     * @param[in]   group  モーションデータのグループ名
+     * @param[in]   group  运动数据的组名
      */
     void ReleaseMotionGroup(const Csm::csmChar* group) const;
 
     /**
-     * @brief すべてのモーションデータの解放
+     * @brief 释放所有的运动数据
      *
-     * すべてのモーションデータを解放する。
      */
     void ReleaseMotions();
 
     /**
-     * @brief すべての表情データの解放
+     * @brief 释放所有的表情数据
      *
-     * すべての表情データを解放する。
      */
     void ReleaseExpressions();
 
     Csm::ICubismModelSetting* _modelSetting; /// 模型设置信息
-    Csm::csmString _modelHomeDir; ///< モデルセッティングが置かれたディレクトリ
+    Csm::csmString _modelHomeDir; /// 有模型设置的目录
     Csm::csmFloat32 _userTimeSeconds; /// 增量时间的累计值[秒]
-    Csm::csmVector<Csm::CubismIdHandle> _eyeBlinkIds; ///< モデルに設定されたまばたき機能用パラメータID
-    Csm::csmVector<Csm::CubismIdHandle> _lipSyncIds; ///< モデルに設定されたリップシンク機能用パラメータID
-    Csm::csmMap<Csm::csmString, Csm::ACubismMotion*>   _motions; ///< 読み込まれているモーションのリスト
-    Csm::csmMap<Csm::csmString, Csm::ACubismMotion*>   _expressions; ///< 読み込まれている表情のリスト
+    Csm::csmVector<Csm::CubismIdHandle> _eyeBlinkIds; /// 在模型中设置的眨眼功能参数ID
+    Csm::csmVector<Csm::CubismIdHandle> _lipSyncIds; /// 模型中设置的口型同步功能的参数ID
+    Csm::csmMap<Csm::csmString, Csm::ACubismMotion*>   _motions; /// 加载的动作列表
+    Csm::csmMap<Csm::csmString, Csm::ACubismMotion*>   _expressions; /// 已加载的面部表情列表
     Csm::csmVector<Csm::csmRectF> _hitArea;
     Csm::csmVector<Csm::csmRectF> _userArea;
-    const Csm::CubismId* _idParamAngleX; ///< パラメータID: ParamAngleX
-    const Csm::CubismId* _idParamAngleY; ///< パラメータID: ParamAngleX
-    const Csm::CubismId* _idParamAngleZ; ///< パラメータID: ParamAngleX
-    const Csm::CubismId* _idParamBodyAngleX; ///< パラメータID: ParamBodyAngleX
-    const Csm::CubismId* _idParamEyeBallX; ///< パラメータID: ParamEyeBallX
-    const Csm::CubismId* _idParamEyeBallY; ///< パラメータID: ParamEyeBallXY
+    const Csm::CubismId* _idParamAngleX; /// 参数ID: ParamAngleX
+    const Csm::CubismId* _idParamAngleY; /// 参数ID: ParamAngleX
+    const Csm::CubismId* _idParamAngleZ; /// 参数ID: ParamAngleX
+    const Csm::CubismId* _idParamBodyAngleX; /// 参数ID: ParamBodyAngleX
+    const Csm::CubismId* _idParamEyeBallX; /// 参数ID: ParamEyeBallX
+    const Csm::CubismId* _idParamEyeBallY; /// 参数ID: ParamEyeBallXY
 
     Live2D::Cubism::Framework::Rendering::CubismOffscreenFrame_Metal _renderBuffer;
 };

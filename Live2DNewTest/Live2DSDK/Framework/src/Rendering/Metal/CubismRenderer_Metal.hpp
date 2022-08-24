@@ -76,7 +76,7 @@ private:
      *
      * @param[in]   model        ->  モデルのインスタンス
      * @param[in]   renderer     ->  レンダラのインスタンス
-     * @param[in]   lastFBO      ->  フレームバッファ
+     * @param[in]   lastColorBuffer      ->  フレームバッファ
      * @param[in]   lastViewport ->  ビューポート
      */
     void SetupClippingContext(CubismModel& model, CubismRenderer_Metal* renderer, CubismOffscreenFrame_Metal* lastColorBuffer, csmRectF lastViewport);
@@ -110,8 +110,6 @@ private:
 
     /**
      * @brief  クリッピングマスクバッファのサイズを設定する
-     *
-     * @param  size -> クリッピングマスクバッファのサイズ
      *
      */
     void SetClippingMaskBufferSize(csmFloat32 width, csmFloat32 height);
@@ -241,10 +239,7 @@ private:
      * @brief   シェーダプログラムの一連のセットアップを実行する
      *
      * @param[in]   renderer              ->  レンダラのインスタンス
-     * @param[in]   textureId             ->  GPUのテクスチャID
-     * @param[in]   vertexCount           ->  ポリゴンメッシュの頂点数
-     * @param[in]   vertexArray           ->  ポリゴンメッシュの頂点配列
-     * @param[in]   uvArray               ->  uv配列
+     * @param[in]   texture             ->  GPUのテクスチャID
      * @param[in]   opacity               ->  不透明度
      * @param[in]   colorBlendMode        ->  カラーブレンディングのタイプ
      * @param[in]   baseColor             ->  ベースカラー
@@ -357,8 +352,6 @@ public:
      * @brief  クリッピングマスクバッファのサイズを設定する<br>
      *         マスク用のFrameBufferを破棄・再作成するため処理コストは高い。
      *
-     * @param[in]  size -> クリッピングマスクバッファのサイズ
-     *
      */
     void SetClippingMaskBufferSize(csmFloat32 width, csmFloat32 height);
 
@@ -406,8 +399,6 @@ protected:
      * @param[in]   opacity         ->  不透明度
      * @param[in]   colorBlendMode  ->  カラー合成タイプ
      * @param[in]   invertedMask     ->  マスク使用時のマスクの反転使用
-     * @param[in]   drawableIndex     ->  DrawCommandBuffer番号
-     * @param[in]   renderEncoder     ->  MTLRenderCommandEncoder
      *
      */
 

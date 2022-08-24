@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -75,6 +75,7 @@ csmFloat32 BezierEvaluate(const CubismMotionPoint* points, const csmFloat32 time
     return LerpPoints(p012, p123, t).Value;
 }
 
+/*
 csmFloat32 BezierEvaluateBinarySearch(const CubismMotionPoint* points, const csmFloat32 time)
 {
     const csmFloat32 x_error = 0.01f;
@@ -90,7 +91,7 @@ csmFloat32 BezierEvaluateBinarySearch(const CubismMotionPoint* points, const csm
     csmFloat32 t = 0.0f;
     int i = 0;
 
-    for (csmBool var33 = true; i < 20; ++i) {
+    for (; i < 20; ++i) {
         if (x < x1 + x_error) {
             t = ta;
             break;
@@ -151,6 +152,7 @@ csmFloat32 BezierEvaluateBinarySearch(const CubismMotionPoint* points, const csm
 
     return LerpPoints(p012, p123, t).Value;
 }
+*/
 
 csmFloat32 BezierEvaluateCardanoInterpretation(const CubismMotionPoint* points, const csmFloat32 time)
 {

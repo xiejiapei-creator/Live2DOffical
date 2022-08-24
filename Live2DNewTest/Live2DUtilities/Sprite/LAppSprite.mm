@@ -1,9 +1,9 @@
-/**
- * Copyright(c) Live2D Inc. All rights reserved.
- *
- * Use of this source code is governed by the Live2D Open Software license
- * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
- */
+//
+//  LAppSprite.m
+//  Live2DNewTest
+//
+//  Created by 谢佳培 on 2022/8/24.
+//
 
 #import "LAppSprite.h"
 #import <Foundation/Foundation.h>
@@ -59,9 +59,6 @@ typedef struct
 
 - (void)renderImmidiate:(id<MTLRenderCommandEncoder>)renderEncoder
 {
-    CubismRenderingInstanceSingleton_Metal *single = [CubismRenderingInstanceSingleton_Metal sharedManager];
-    id <MTLDevice> device = [single getMTLDevice];
-
     float width = _rect.right - _rect.left;
     float height = _rect.up - _rect.down;
 
@@ -187,10 +184,10 @@ typedef struct
     if(!shaderLib)
     {
         NSLog(@" ERROR: Couldnt create a Source shader library");
-        // assert here because if the shader libary isn't loading, nothing good will happen
+        // 在这里断言，因为如果着色器库没有加载，什么事都不会发生
         return;
     }
-    //頂点シェーダの取得
+    // 顶点着色器的获取
     id <MTLFunction> vertexProgram = [shaderLib newFunctionWithName:@"vertexShader"];
     if(!vertexProgram)
     {
@@ -198,7 +195,7 @@ typedef struct
         return;
     }
 
-    //フラグメントシェーダの取得
+    // 片段着色器的获取
     id <MTLFunction> fragmentProgram = [shaderLib newFunctionWithName:@"fragmentShader"];
     if(!fragmentProgram)
     {
@@ -211,14 +208,14 @@ typedef struct
 
 - (void)SetMTLRenderPipelineDescriptor:(id <MTLDevice>)device vertexProgram:(id <MTLFunction>)vertexProgram fragmentProgram:(id <MTLFunction>)fragmentProgram
 {
+    // 创建管线状态描述器
     MTLRenderPipelineDescriptor* pipelineDescriptor = [[MTLRenderPipelineDescriptor alloc] init];
-    //パイプライン・ステート・オブジェクトを作成するパイプライン・ステート・ディスクリプターの作成
-
-    //デバッグ時に便利
+    
+    // 调试时方便
     pipelineDescriptor.label                           = @"SpritePipeline";
-    // Vertexステージで実行する関数を指定する
+    // 指定在Vertex阶段执行的函数
     pipelineDescriptor.vertexFunction                  = vertexProgram;
-    // Fragmentステージで実行する関数を指定する
+    // 指定在Fragment阶段执行的函数
     pipelineDescriptor.fragmentFunction                = fragmentProgram;
     pipelineDescriptor.colorAttachments[0].pixelFormat = MTLPixelFormatBGRA8Unorm;
     pipelineDescriptor.colorAttachments[0].blendingEnabled = true;

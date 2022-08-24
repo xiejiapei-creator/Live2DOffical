@@ -1,9 +1,9 @@
-/**
- * Copyright(c) Live2D Inc. All rights reserved.
- *
- * Use of this source code is governed by the Live2D Open Software license
- * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
- */
+//
+//  LAppPal.m
+//  Live2DNewTest
+//
+//  Created by 谢佳培 on 2022/8/24.
+//
 
 #import "LAppPal.h"
 #import <Foundation/Foundation.h>
@@ -64,7 +64,7 @@ void LAppPal::PrintLog(const csmChar* format, ...)
     va_list args;
     Csm::csmChar buf[256];
     va_start(args, format);
-    vsnprintf(buf, sizeof(buf), format, args); // 標準出力でレンダリング;
+    vsnprintf(buf, sizeof(buf), format, args); // 标准输出渲染
     NSLog(@"%@",[NSString stringWithCString:buf encoding:NSUTF8StringEncoding]);
     va_end(args);
 }

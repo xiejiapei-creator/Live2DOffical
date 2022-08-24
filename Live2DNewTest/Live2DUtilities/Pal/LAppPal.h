@@ -1,9 +1,9 @@
-/**
- * Copyright(c) Live2D Inc. All rights reserved.
- *
- * Use of this source code is governed by the Live2D Open Software license
- * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
- */
+//
+//  LAppPal.h
+//  Live2DNewTest
+//
+//  Created by 谢佳培 on 2022/8/24.
+//
 
 #ifndef LAppPal_h
 #define LAppPal_h
@@ -21,23 +21,20 @@ class LAppPal
 {
 public:
     /**
-     * @brief ファイルをバイトデータとして読み込む
+     * @brief 把文件作为字节数据读取
      *
-     * ファイルをバイトデータとして読み込む
-     *
-     * @param[in]   filePath    読み込み対象ファイルのパス
-     * @param[out]  outSize     ファイルサイズ
-     * @return                  バイトデータ
+     * @param[in]   filePath    读取目标文件的路径
+     * @param[out]  outSize     文件大小
+     * @return                  字节数据
      */
     static Csm::csmByte* LoadFileAsBytes(const std::string filePath, Csm::csmSizeInt* outSize);
 
 
     /**
-     * @brief バイトデータを解放する
+     * @brief 释放字节数据
      *
-     * バイトデータを解放する
      *
-     * @param[in]   byteData    解放したいバイトデータ
+     * @param[in]   byteData    想要释放的字节数据
      */
     static void ReleaseBytes(Csm::csmByte* byteData);
 
@@ -55,22 +52,18 @@ public:
     static void UpdateTime();
 
     /**
-     * @brief ログを出力する
+     * @brief 输出日志
      *
-     * ログを出力する
-     *
-     * @param[in]   format  書式付文字列
-     * @param[in]   ...     (可変長引数)文字列
+     * @param[in]   format  格式字符串
+     * @param[in]   ...     (可变长度自变量)字符串
      *
      */
     static void PrintLog(const Csm::csmChar* format, ...);
 
     /**
-     * @brief メッセージを出力する
+     * @brief 输出信息
      *
-     * メッセージを出力する
-     *
-     * @param[in]   message  文字列
+     * @param[in]   message  信息
      *
      */
     static void PrintMessage(const Csm::csmChar* message);
