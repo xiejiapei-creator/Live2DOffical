@@ -9,7 +9,6 @@
 
 #import "L2DCubism.h"
 #import "L2DSprite.h"
-#import "L2DMetal.h"
 
 @implementation AppDelegate
 

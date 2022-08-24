@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -8,7 +8,7 @@
 #pragma once
 
 /**
- * @brief CubismFrameworkで用いる基本型の定義
+ * @brief CubismFramework 使用的基本类型的定义
  *
  */
 

@@ -8,7 +8,6 @@
 #import "L2DMetal.h"
 #import "AppDelegate.h"
 
-#import "MetalUIView.h"// Metal视图
 #import "Rendering/Metal/CubismRenderingInstanceSingleton_Metal.h"// 必须在 Metal 框架端保留的值
 #import <Math/CubismMatrix44.hpp>// 从设备到屏幕的矩阵
 #import "L2DSprite.h"// 精灵
@@ -38,7 +37,7 @@
 
 #pragma mark - 创建渲染视图
 
-- (void)createMetalView:(UIView *)roleView {
+- (void)createMetalView:(MetalUIView *)roleView {
     // 为 Metal 设置渲染图层的设备和显示在屏幕上的渲染图层
     [self configMetalSingletonInstance:roleView];
 
@@ -47,23 +46,21 @@
 }
 
 /// 为 Metal 设置渲染图层的设备和显示在屏幕上的渲染图层
-- (void)configMetalSingletonInstance:(UIView *)roleView {
+- (void)configMetalSingletonInstance:(MetalUIView *)roleView {
     // 为 Metal 设置渲染图层的设备
     CubismRenderingInstanceSingleton_Metal *single = [CubismRenderingInstanceSingleton_Metal sharedManager];
     id<MTLDevice> device = MTLCreateSystemDefaultDevice();
     [single setMTLDevice:device];
 
-    // 将传入视图转化为 Metal 视图
-    MetalUIView *view = (MetalUIView *)roleView;
     // 将此类设置为接收调整大小和渲染回调的委托
-    view.delegate = self;
+    roleView.delegate = self;
 
     // 图层纹理的像素格式
-    view.metalLayer.pixelFormat = MTLPixelFormatBGRA8Unorm;
-    view.metalLayer.device = device;
+    roleView.metalLayer.pixelFormat = MTLPixelFormatBGRA8Unorm;
+    roleView.metalLayer.device = device;
     
     // 为 Metal 设置显示在屏幕上的渲染图层
-    [single setMetalLayer:view.metalLayer];
+    [single setMetalLayer:roleView.metalLayer];
 
     // 命令队列对象与设备相关联
     // 通常，在应用程序启动时创建一个或多个命令队列，然后在应用程序的整个生命周期中保留这些队列
@@ -184,18 +181,13 @@
     _deviceToScreen->TranslateRelative(-width * 0.5f, -height * 0.5f);
 }
 
-#pragma mark - 销毁渲染视图
+#pragma mark - 删除矩阵
 
-- (void)destroyRenderView:(UIView *)roleView {
-    // 删除矩阵
+- (void)deleteMatrix {
     delete(_viewMatrix);
     _viewMatrix = nil;
     delete(_deviceToScreen);
     _deviceToScreen = nil;
-    
-    // 销毁视图
-    MetalUIView *view = (MetalUIView*)roleView;
-    view = nil;
 }
 
 @end

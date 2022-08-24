@@ -77,7 +77,7 @@ using namespace LAppDefine;
     _power = [[LAppSprite alloc] initWithMyVar:x Y:y Width:fWidth Height:fHeight Texture:powerTexture->id];
 }
 
-/// 销毁精灵
+/// 资源回收，销毁精灵
 - (void)destroySprite
 {
     _gear = nil;

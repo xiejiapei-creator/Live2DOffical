@@ -6,8 +6,11 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "Live2DView.h"
 
 @interface ViewController : UIViewController
 
+/// 展示 live2d 的 View
+@property (nonatomic, strong) Live2DView *live2DView;
 
 @end
