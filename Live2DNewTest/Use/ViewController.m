@@ -6,6 +6,7 @@
 //
 
 #import "ViewController.h"
+#import <Masonry/Masonry.h>
 
 @implementation ViewController
 
@@ -18,6 +19,10 @@
     
     [self.view addSubview:self.live2DView];
     self.live2DView.frame = self.view.bounds;
+    
+//    [self.live2DView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(self.view);
+//    }];
 }
 
 - (Live2DView *)live2DView {
