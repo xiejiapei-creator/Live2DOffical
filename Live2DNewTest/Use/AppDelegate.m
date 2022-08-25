@@ -6,9 +6,7 @@
 //
 
 #import "AppDelegate.h"
-
 #import "L2DCubism.h"
-#import "L2DBridge.h"
 
 @implementation AppDelegate
 
@@ -16,15 +14,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.viewController = [[ViewController alloc] initWithNibName:nil bundle:nil];
-    self.window.rootViewController = self.viewController;
+    ViewController *viewController = [[ViewController alloc] initWithNibName:nil bundle:nil];
+    self.window.rootViewController = viewController;
     [self.window makeKeyAndVisible];
-
+    
     // 初始化 Cubism SDK
     [[L2DCubism sharedInstance] initializeCubism];
-    
-    // 创建角色模型以外的精灵（绘图）
-    [L2DBridge createSprite];
 
     return YES;
 }

@@ -32,7 +32,7 @@ typedef struct
 
 } BaseColor;
 
-- (id)initWithMyVar:(float)x Y:(float)y Width:(float)width Height:(float)height Texture:(id <MTLTexture>) texture
+- (id)initWithMyVar:(float)x Y:(float)y Width:(float)width Height:(float)height Texture:(id <MTLTexture>)texture metalViewSize:(CGSize)metalViewSize
 {
     self = [super self];
 
@@ -49,7 +49,7 @@ typedef struct
         CubismRenderingInstanceSingleton_Metal *single = [CubismRenderingInstanceSingleton_Metal sharedManager];
         id <MTLDevice> device = [single getMTLDevice];
 
-        [self SetMTLBffer:device];
+        [self SetMTLBffer:device metalViewSize:metalViewSize];
 
         [self SetMTLFunction:device];
     }
@@ -80,7 +80,7 @@ typedef struct
     [renderEncoder drawPrimitives:MTLPrimitiveTypeTriangleStrip vertexStart:0 vertexCount:4];
 }
 
-- (void)resizeImmidiate:(float)x Y:(float)y Width:(float)width Height:(float)height
+- (void)resizeImmidiate:(float)x Y:(float)y Width:(float)width Height:(float)height metalViewSize:(CGSize)metalViewSize
 {
     _rect.left = (x - width * 0.5f);
     _rect.right = (x + width * 0.5f);
@@ -89,7 +89,7 @@ typedef struct
 
     CubismRenderingInstanceSingleton_Metal *single = [CubismRenderingInstanceSingleton_Metal sharedManager];
     id <MTLDevice> device = [single getMTLDevice];
-    [self SetMTLBffer:device];
+    [self SetMTLBffer:device metalViewSize:metalViewSize];
 }
 
 - (bool)isHit:(float)pointX PointY:(float)pointY
@@ -143,12 +143,10 @@ typedef struct
     return string;
 }
 
-- (void)SetMTLBffer:(id <MTLDevice>)device
+- (void)SetMTLBffer:(id <MTLDevice>)device metalViewSize:(CGSize)metalViewSize
 {
-    AppDelegate* delegate = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-    ViewController* view = [delegate viewController];
-    float maxWidth = view.view.frame.size.width;
-    float maxHeight = view.view.frame.size.height;
+    float maxWidth = metalViewSize.width;
+    float maxHeight = metalViewSize.height;
 
     vector_float4 positionVertex[] =
     {

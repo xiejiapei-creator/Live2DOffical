@@ -87,7 +87,8 @@
     [self createTexture:size];
 
     // 调整为渲染视图的实际宽高
-    [self resizeForRenderView];
+    CGSize metalSize = CGSizeMake(size.width/2, size.height/2);
+    [self resizeForRenderView:metalSize];
 }
 
 // 重新绘制回调
@@ -114,12 +115,10 @@
 }
 
 /// 调整为渲染视图的实际宽高
-- (void)resizeForRenderView
+- (void)resizeForRenderView:(CGSize)metalSize
 {
-    AppDelegate* delegate = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-    ViewController* vc = [delegate viewController];
-    int width = vc.view.frame.size.width;
-    int height = vc.view.frame.size.height;
+    int width = metalSize.width;
+    int height = metalSize.height;
 
     [self configViewMatrix:width height:height];
     [self configDeviceToScreenMatrix:width height:height];

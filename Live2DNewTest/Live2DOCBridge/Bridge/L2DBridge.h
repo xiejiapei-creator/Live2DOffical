@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)changeNextLive2DModel;
 
 // 创建角色模型以外的精灵（绘图）
-+ (void)createSprite;
++ (void)createSprite:(CGSize)metalViewSize;
 
 @end
 

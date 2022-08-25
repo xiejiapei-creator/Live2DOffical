@@ -9,6 +9,7 @@
 #define LAppSprite_h
 
 #import <Metal/Metal.h>
+#import <UIKit/UIKit.h>
 
 @interface LAppSprite : NSObject
 
@@ -43,7 +44,7 @@ typedef struct
  * @param[in]       height       高度
  * @param[in]       texture    纹理
  */
-- (id)initWithMyVar:(float)x Y:(float)y Width:(float)width Height:(float)height Texture:(id <MTLTexture>) texture;
+- (id)initWithMyVar:(float)x Y:(float)y Width:(float)width Height:(float)height Texture:(id <MTLTexture>) texture metalViewSize:(CGSize)metalViewSize;
 
 /**
  * @brief 立刻绘制
@@ -58,7 +59,7 @@ typedef struct
  * @param[in]       width        宽度
  * @param[in]       height       高度
  */
-- (void)resizeImmidiate:(float)x Y:(float)y Width:(float)width Height:(float)height;
+- (void)resizeImmidiate:(float)x Y:(float)y Width:(float)width Height:(float)height  metalViewSize:(CGSize)metalViewSize;
 
 /**
  * @brief 是否命中

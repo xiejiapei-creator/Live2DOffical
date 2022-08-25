@@ -5,15 +5,13 @@
 //  Created by 谢佳培 on 2022/8/24.
 //
 
-#import "LAppLive2DManager.h"
 #import <Foundation/Foundation.h>
-#import "AppDelegate.h"
-#import "ViewController.h"
+#import <Rendering/Metal/CubismRenderer_Metal.hpp>
+#import "Rendering/Metal/CubismRenderingInstanceSingleton_Metal.h"
+#import "LAppLive2DManager.h"
 #import "LAppModel.h"
 #import "LAppDefine.h"
 #import "LAppPal.h"
-#import <Rendering/Metal/CubismRenderer_Metal.hpp>
-#import "Rendering/Metal/CubismRenderingInstanceSingleton_Metal.h"
 
 @interface LAppLive2DManager()
 
@@ -170,7 +168,7 @@ void FinishedMotion(Csm::ACubismMotion* self)
 
             if (_renderTarget == SelectTarget_ViewFrameBuffer)
             {
-                _sprite = [[LAppSprite alloc] initWithMyVar:width * 0.5f Y:height * 0.5f Width:width Height:height Texture:_renderBuffer->GetColorBuffer()];
+                _sprite = [[LAppSprite alloc] initWithMyVar:width * 0.5f Y:height * 0.5f Width:width Height:height Texture:_renderBuffer->GetColorBuffer() metalViewSize:metalLayerSize];
             }
         }
 
@@ -254,7 +252,7 @@ void FinishedMotion(Csm::ACubismMotion* self)
             id<MTLRenderCommandEncoder> renderEncoder = [commandBuffer renderCommandEncoderWithDescriptor:renderPassDescriptor];
 
             Csm::Rendering::CubismOffscreenFrame_Metal& useTarget = model->GetRenderBuffer();
-            LAppSprite* depthSprite = [[LAppSprite alloc] initWithMyVar:width * 0.5f Y:height * 0.5f Width:width Height:height Texture:useTarget.GetColorBuffer()];
+            LAppSprite* depthSprite = [[LAppSprite alloc] initWithMyVar:width * 0.5f Y:height * 0.5f Width:width Height:height Texture:useTarget.GetColorBuffer() metalViewSize:metalLayerSize];
             [depthSprite SetColor:1.0f g:1.0f b:1.0f a:0.25f + (float)i * 0.5f];
             [depthSprite renderImmidiate:renderEncoder];
             [renderEncoder endEncoding];

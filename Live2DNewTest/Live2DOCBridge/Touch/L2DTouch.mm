@@ -16,7 +16,7 @@
 
 @interface L2DTouch ()
 
-@property (nonatomic) LTouchManager *touchManager;// 触摸管理器
+@property (nonatomic, strong) LTouchManager *touchManager;// 触摸管理器
 
 @end
 

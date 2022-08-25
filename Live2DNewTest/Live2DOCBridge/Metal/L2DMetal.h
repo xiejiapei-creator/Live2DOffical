@@ -19,9 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface L2DMetal : NSObject <MetalViewDelegate>
 
 /// 组织命令缓冲区供GPU执行的队列
-@property (nonatomic) id<MTLCommandQueue> commandQueue;
+@property (nonatomic, strong) id<MTLCommandQueue> commandQueue;
 /// 图像纹理
-@property (nonatomic) id<MTLTexture> depthTexture;
+@property (nonatomic, strong) id<MTLTexture> depthTexture;
 
 /// 用于模型绘制的视图矩阵
 @property (nonatomic) Csm::CubismViewMatrix *viewMatrix;

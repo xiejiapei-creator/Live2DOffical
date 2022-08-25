@@ -30,7 +30,7 @@ using namespace LAppDefine;
 # pragma mark - 创建和销毁角色模型以外的精灵（绘图）
 
 /// 创建角色模型以外的精灵（绘图）
-- (void)createSprite
+- (void)createSprite:(CGSize)metalViewSize
 {
     // 获取纹理管理器
     LAppTextureManager* textureManager = [[L2DCubism sharedInstance] getTextureManager];
@@ -44,17 +44,15 @@ using namespace LAppDefine;
     TextureInfo* backgroundTexture = [textureManager createTextureFromPngFile: resourcesPath+imageName];
     
     // 获取渲染视图的宽、高
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    ViewController* view = [delegate viewController];
-    float width = view.view.frame.size.width;
-    float height = view.view.frame.size.height;
+    float width = metalViewSize.width;
+    float height = metalViewSize.height;
     
     // 创建背景图精灵
     float x = width * 0.5f;
     float y = height * 0.5f;
     float fWidth = static_cast<float>(backgroundTexture->width * 2.0f);
     float fHeight = static_cast<float>(height) * 0.95f;
-    _back = [[LAppSprite alloc] initWithMyVar:x Y:y Width:fWidth Height:fHeight Texture:backgroundTexture->id];
+    _back = [[LAppSprite alloc] initWithMyVar:x Y:y Width:fWidth Height:fHeight Texture:backgroundTexture->id metalViewSize:metalViewSize];
 
     // 变换模型按钮
     imageName = GearImageName;
@@ -63,7 +61,7 @@ using namespace LAppDefine;
     y = static_cast<float>(height - gearTexture->height * 0.5f - 50);
     fWidth = static_cast<float>(gearTexture->width);
     fHeight = static_cast<float>(gearTexture->height);
-    _gear = [[LAppSprite alloc] initWithMyVar:x Y:y Width:fWidth Height:fHeight Texture:gearTexture->id];
+    _gear = [[LAppSprite alloc] initWithMyVar:x Y:y Width:fWidth Height:fHeight Texture:gearTexture->id  metalViewSize:metalViewSize];
 
     // 电源按钮
     imageName = PowerImageName;
@@ -72,15 +70,21 @@ using namespace LAppDefine;
     y = static_cast<float>(powerTexture->height * 0.5f + 50);
     fWidth = static_cast<float>(powerTexture->width);
     fHeight = static_cast<float>(powerTexture->height);
-    _power = [[LAppSprite alloc] initWithMyVar:x Y:y Width:fWidth Height:fHeight Texture:powerTexture->id];
+    _power = [[LAppSprite alloc] initWithMyVar:x Y:y Width:fWidth Height:fHeight Texture:powerTexture->id  metalViewSize:metalViewSize];
+    
+    self.existSprite = YES;
 }
 
 /// 资源回收，销毁精灵
 - (void)destroySprite
 {
-    _gear = nil;
-    _back = nil;
-    _power = nil;
+    if (self.existSprite) {
+        _gear = nil;
+        _back = nil;
+        _power = nil;
+        
+        self.existSprite = NO;
+    }
 }
 
 #pragma mark - 渲染精灵
@@ -88,9 +92,11 @@ using namespace LAppDefine;
 /// 立刻渲染角色模型以外的绘图（精灵）
 - (void)renderSprite:(id<MTLRenderCommandEncoder>)renderEncoder
 {
-    [_back renderImmidiate:renderEncoder];
-    [_gear renderImmidiate:renderEncoder];
-    [_power renderImmidiate:renderEncoder];
+    if (self.existSprite) {
+        [_back renderImmidiate:renderEncoder];
+        [_gear renderImmidiate:renderEncoder];
+        [_power renderImmidiate:renderEncoder];
+    }
 }
 
 @end

@@ -34,8 +34,8 @@
 #pragma mark - Sprite
 
 // 创建角色模型以外的精灵（绘图）
-+ (void)createSprite {
-    [[L2DSprite sharedInstance] createSprite];
++ (void)createSprite:(CGSize)metalViewSize {
+    [[L2DSprite sharedInstance] createSprite:metalViewSize];
 }
 
 @end
