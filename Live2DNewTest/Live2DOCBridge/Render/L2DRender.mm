@@ -105,8 +105,8 @@
     // 如果附件的loadAction属性设置为MTLLoadActionClear
     // 则在渲染过程开始时，GPU将使用clearColor属性中存储的值填充纹理
     // 否则，GPU将忽略clearColor属性
-    // clearColor属性表示一组RGBA组件 默认值为（0.0，0.0、0.0和1.0）（黑色）
-    renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0, 0, 0, 1);
+    // clearColor属性表示一组RGBA组件 默认值为（0.0，0.0、0.0和0.0）（透明色）
+    renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0, 0, 0, 0);
     
     return renderPassDescriptor;
 }

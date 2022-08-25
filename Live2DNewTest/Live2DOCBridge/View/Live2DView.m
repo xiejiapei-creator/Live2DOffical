@@ -30,8 +30,6 @@
 }
 
 - (void)commonInit {
-    self.backgroundColor = UIColor.clearColor;
-    
     [L2DBridge createLive2DView: self];
 }
 
