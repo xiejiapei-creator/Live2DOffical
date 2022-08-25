@@ -96,14 +96,21 @@
     CGPoint point = [touch locationInView: view];
     float pointY = [self transformTapY:point.y];// pointY = 332.5
 
+    // 点击精灵按钮触发的操作
+    [self touchSpriteAction:point.x y:pointY live2DManager:live2DManager];
+}
+
+// 点击精灵按钮触发的操作
+- (void)touchSpriteAction:(CGFloat)x y:(CGFloat)y live2DManager:(LAppLive2DManager*)live2DManager
+{
     // 点击了齿轮则切换到下一个人物模型
-    if ([[[L2DSprite sharedInstance] gear] isHit:point.x PointY:pointY])
+    if ([[[L2DSprite sharedInstance] gear] isHit:x PointY:y])
     {
         [live2DManager nextScene];
     }
 
     // 点击电源按钮则让APP结束运行
-    if ([[[L2DSprite sharedInstance] power] isHit:point.x PointY:pointY])
+    if ([[[L2DSprite sharedInstance] power] isHit:x PointY:y])
     {
         AppDelegate *delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
         [delegate finishApplication];
