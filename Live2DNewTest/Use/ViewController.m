@@ -6,9 +6,8 @@
 //
 
 #import "ViewController.h"
-#import <Masonry/Masonry.h>
-
 #import "L2DBridge.h"
+#import <Masonry/Masonry.h>
 
 @implementation ViewController
 
@@ -18,12 +17,9 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
-    
 
-    
-    [self.view addSubview:self.live2DView];
-    self.live2DView.frame = self.view.bounds;
-    
+//    [self.view addSubview:self.live2DView];
+//    self.live2DView.frame = self.view.bounds;
 //    [self.live2DView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.edges.equalTo(self.view);
 //    }];
@@ -35,5 +31,10 @@
     }
     return _live2DView;
 }
+
+- (IBAction)changeModel:(UIButton *)sender {
+    [L2DBridge changeNextLive2DModel];
+}
+
 
 @end

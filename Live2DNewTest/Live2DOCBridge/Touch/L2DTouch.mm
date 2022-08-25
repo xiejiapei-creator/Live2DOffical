@@ -9,8 +9,8 @@
 
 #import "LTouchManager.h"// 触摸管理器
 #import "LAppLive2DManager.h"// 角色模型
-#import "L2DMetal.h"
-#import "L2DSprite.h"
+#import "L2DMetal.h"// metal
+#import "L2DSprite.h"// 精灵
 
 #import "AppDelegate.h"
 
@@ -47,7 +47,7 @@
 #pragma mark - 触摸过程
 
 /// 触摸开始
-- (void)touchesBegan:(NSSet *)touches view:(UIView *)view
+- (void)touchesBegan:(NSSet *)touches view:(Live2DView *)view
 {
     // 获取触摸点在视图中的坐标位置 point = (x = 425.5, y = 57)
     UITouch *touch = [touches anyObject];
@@ -58,7 +58,7 @@
 }
 
 /// 触摸移动
-- (void)touchesMoved:(NSSet *)touches view:(UIView *)view
+- (void)touchesMoved:(NSSet *)touches view:(Live2DView *)view
 {
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView: view];
@@ -76,7 +76,7 @@
 }
 
 /// 触摸结束
-- (void)touchesEnded:(NSSet *)touches view:(UIView *)view
+- (void)touchesEnded:(NSSet *)touches view:(Live2DView *)view
 {
     // 人物模型移动结束，x和y轴上拖动的坐标点重置为0，眼睛回归到中央
     LAppLive2DManager* live2DManager = [LAppLive2DManager getInstance];
@@ -94,7 +94,7 @@
     // 获取触摸点在视图中的坐标位置
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView: view];
-    float pointY = [self transformTapY:point.y];// pointY = 332.5
+    float pointY = [self transformTapY:point.y view:view];// pointY = 332.5
 
     // 点击精灵按钮触发的操作
     [self touchSpriteAction:point.x y:pointY live2DManager:live2DManager];
@@ -137,12 +137,9 @@
 }
 
 /// 转换点击位置的Y坐标
-- (float)transformTapY:(float)deviceY
+- (float)transformTapY:(float)deviceY view:(Live2DView *)view
 {
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    ViewController* view = [delegate viewController];
-    float height = view.view.frame.size.height;
-    
+    float height = view.frame.size.height;
     return deviceY * -1 + height;
 }
 

@@ -23,10 +23,18 @@
     return self;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self initCommon];
+    }
+    return self;
+}
+
 - (void)initCommon
 {
     _metalLayer = (CAMetalLayer*) self.layer;
-
     self.layer.delegate = self;
 }
 

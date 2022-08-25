@@ -79,7 +79,7 @@ typedef NS_ENUM(NSUInteger, SelectTarget)
  * @brief   更新画面时的处理
  *          对模型进行更新和绘制
  */
-- (void)onUpdate:(id <MTLCommandBuffer>)commandBuffer currentDrawable:(id<CAMetalDrawable>)drawable depthTexture:(id<MTLTexture>)depthTarget;
+- (void)onUpdate:(id <MTLCommandBuffer>)commandBuffer currentDrawable:(id<CAMetalDrawable>)drawable depthTexture:(id<MTLTexture>)depthTarget metalLayerSize:(CGSize)metalLayerSize;
 
 /**
  * @brief   切换到下一个场景

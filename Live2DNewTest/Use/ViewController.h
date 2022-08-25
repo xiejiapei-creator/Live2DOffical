@@ -10,6 +10,8 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet Live2DView *live2DXibView;
+
 /// 展示 live2d 的 View
 @property (nonatomic, strong) Live2DView *live2DView;
 

@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "Live2DView.h"// 视图
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,13 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)sharedInstance;
 
 /// 触摸开始
-- (void)touchesBegan:(NSSet *)touches view:(UIView *)view;
+- (void)touchesBegan:(NSSet *)touches view:(Live2DView *)view;
 
 /// 触摸移动
-- (void)touchesMoved:(NSSet *)touches view:(UIView *)view;
+- (void)touchesMoved:(NSSet *)touches view:(Live2DView *)view;
 
 /// 触摸结束
-- (void)touchesEnded:(NSSet *)touches view:(UIView *)view;
+- (void)touchesEnded:(NSSet *)touches view:(Live2DView *)view;
 
 /// 销毁触摸事件管理器
 - (void)destroyTouchManager;

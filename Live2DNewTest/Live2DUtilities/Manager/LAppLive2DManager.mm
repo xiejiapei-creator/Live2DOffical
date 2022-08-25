@@ -114,7 +114,7 @@ void FinishedMotion(Csm::ACubismMotion* self)
     }
 }
 
-- (void)onTap:(Csm::csmFloat32)x floatY:(Csm::csmFloat32)y;
+- (void)onTap:(Csm::csmFloat32)x floatY:(Csm::csmFloat32)y
 {
     if (LAppDefine::DebugLogEnable)
     {
@@ -144,12 +144,10 @@ void FinishedMotion(Csm::ACubismMotion* self)
     }
 }
 
-- (void)onUpdate:(id <MTLCommandBuffer>)commandBuffer currentDrawable:(id<CAMetalDrawable>)drawable depthTexture:(id<MTLTexture>)depthTarget;
+- (void)onUpdate:(id <MTLCommandBuffer>)commandBuffer currentDrawable:(id<CAMetalDrawable>)drawable depthTexture:(id<MTLTexture>)depthTarget metalLayerSize:(CGSize)metalLayerSize
 {
-    AppDelegate* delegate = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-    ViewController* view = [delegate viewController];
-    float width = view.view.frame.size.width;
-    float height = view.view.frame.size.height;
+    float width = metalLayerSize.width;
+    float height = metalLayerSize.height;
 
     Csm::CubismMatrix44 projection;
     Csm::csmUint32 modelCount = _models.GetSize();
@@ -264,13 +262,13 @@ void FinishedMotion(Csm::ACubismMotion* self)
     }
 }
 
-- (void)nextScene;
+- (void)nextScene
 {
     Csm::csmInt32 no = (_sceneIndex + 1) % LAppDefine::ModelDirSize;
     [self changeScene:no];
 }
 
-- (void)changeScene:(Csm::csmInt32)index;
+- (void)changeScene:(Csm::csmInt32)index
 {
     _sceneIndex = index;
     if (LAppDefine::DebugLogEnable)
@@ -322,12 +320,12 @@ void FinishedMotion(Csm::ACubismMotion* self)
     }
 }
 
-- (Csm::csmUint32)GetModelNum;
+- (Csm::csmUint32)GetModelNum
 {
     return _models.GetSize();
 }
 
-- (void)SetViewMatrix:(Csm::CubismMatrix44*)m;
+- (void)SetViewMatrix:(Csm::CubismMatrix44*)m
 {
     for (int i = 0; i < 16; i++) {
         _viewMatrix->GetArray()[i] = m->GetArray()[i];

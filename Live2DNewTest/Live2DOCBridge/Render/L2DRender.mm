@@ -45,7 +45,7 @@
     [renderEncoder endEncoding];
     
     // 对角色模型进行更新和绘制
-    [L2DRender renderRole:commandBuffer currentDrawable:currentDrawable];
+    [L2DRender renderRole:commandBuffer currentDrawable:currentDrawable metalLayerSize:layer.bounds.size];
     
     // 注册您想要呈现的绘图让其尽快出现
     [commandBuffer presentDrawable:currentDrawable];
@@ -55,7 +55,7 @@
 }
 
 /// 对角色模型进行更新和绘制
-+ (void)renderRole:(id <MTLCommandBuffer>)commandBuffer currentDrawable:(id<CAMetalDrawable>)currentDrawable {
++ (void)renderRole:(id <MTLCommandBuffer>)commandBuffer currentDrawable:(id<CAMetalDrawable>)currentDrawable  metalLayerSize:(CGSize)metalLayerSize {
     // 获取模型管理器
     LAppLive2DManager* Live2DManager = [LAppLive2DManager getInstance];
     
@@ -63,7 +63,7 @@
     [Live2DManager SetViewMatrix:[[L2DMetal sharedInstance] viewMatrix]];
     
     // 对模型进行更新和绘制
-    [Live2DManager onUpdate:commandBuffer currentDrawable:currentDrawable depthTexture:[[L2DMetal sharedInstance] depthTexture]];
+    [Live2DManager onUpdate:commandBuffer currentDrawable:currentDrawable depthTexture:[[L2DMetal sharedInstance] depthTexture] metalLayerSize:metalLayerSize];
 }
 
 // 创建图形渲染命令编码器，立刻渲染精灵模型以外的绘图（精灵）
