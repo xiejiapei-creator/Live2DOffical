@@ -8,6 +8,8 @@
 #import "ViewController.h"
 #import <Masonry/Masonry.h>
 
+#import "L2DBridge.h"
+
 @implementation ViewController
 
 #pragma mark - 生命周期
@@ -16,6 +18,8 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
+    
+
     
     [self.view addSubview:self.live2DView];
     self.live2DView.frame = self.view.bounds;

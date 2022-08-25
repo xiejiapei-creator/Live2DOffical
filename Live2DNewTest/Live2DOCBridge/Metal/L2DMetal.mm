@@ -10,7 +10,7 @@
 
 #import "Rendering/Metal/CubismRenderingInstanceSingleton_Metal.h"// 必须在 Metal 框架端保留的值
 #import <Math/CubismMatrix44.hpp>// 从设备到屏幕的矩阵
-#import "L2DSprite.h"// 精灵
+#import "L2DRender.h"// 渲染
 
 @implementation L2DMetal
 
@@ -92,7 +92,7 @@
 
 // 重新绘制回调
 - (void)renderToMetalLayer:(nonnull CAMetalLayer *)metalLayer {
-    [[L2DSprite sharedInstance] renderToMetalLayer:metalLayer];
+    [L2DRender renderToMetalLayer:metalLayer];
 }
 
 /// 创建纹理图像

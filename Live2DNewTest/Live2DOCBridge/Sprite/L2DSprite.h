@@ -7,7 +7,6 @@
 
 #import <Foundation/Foundation.h>
 #import "LAppSprite.h"// 精灵
-#import "L2DMetal.h"// Metal
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,8 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 销毁角色模型以外的精灵（绘图）
 - (void)destroySprite;
 
-/// 渲染到视图上
-- (void)renderToMetalLayer:(nonnull CAMetalLayer *)layer;
+/// 立刻渲染角色模型以外的绘图（精灵）
+- (void)renderSprite:(id<MTLRenderCommandEncoder>)renderEncoder;
 
 @end
 

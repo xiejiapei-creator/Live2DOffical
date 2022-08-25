@@ -41,15 +41,9 @@
     [[L2DCubism sharedInstance] restoreRoleState];
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application {
-    self.viewController = nil;
-}
-
 - (void)finishApplication
 {
     [[L2DCubism sharedInstance] disposeCubism];
-
-    self.viewController = nil;
 
     self.window = nil;
     exit(0);
