@@ -6,16 +6,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#include "ViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-/**
- * @brief   退出应用程序
- */
-- (void)finishApplication;
 
 @end
 

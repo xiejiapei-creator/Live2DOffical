@@ -8,8 +8,35 @@
 #import "Live2DBridge.h"
 #import "L2DBridge.h"
 #import "L2DTouch.h"
+#import "L2DCubism.h"
 
 @implementation Live2DBridge
+
+#pragma mark - Cubism SDK
+
++ (void)initializeCubism {
+    [[L2DCubism sharedInstance] initializeCubism];
+}
+
++ (void)disposeCubism {
+    [[L2DCubism sharedInstance] disposeCubism];
+}
+
++ (void)createTextureManager {
+    [[L2DCubism sharedInstance] createTextureManager];
+}
+
++ (void)destroyTextureManager {
+    [[L2DCubism sharedInstance] destroyTextureManager];
+}
+
++ (void)saveRoleState {
+    [[L2DCubism sharedInstance] saveRoleState];
+}
+
++ (void)restoreRoleState {
+    [[L2DCubism sharedInstance] restoreRoleState];
+}
 
 #pragma mark - 渲染视图
 
