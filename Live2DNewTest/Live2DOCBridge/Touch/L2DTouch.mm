@@ -12,8 +12,6 @@
 #import "L2DMetal.h"// metal
 #import "L2DSprite.h"// 精灵
 
-#import "AppDelegate.h"
-
 @interface L2DTouch ()
 
 @property (nonatomic, strong) LTouchManager *touchManager;// 触摸管理器
@@ -112,8 +110,7 @@
     // 点击电源按钮则让APP结束运行
     if ([[[L2DSprite sharedInstance] power] isHit:x PointY:y])
     {
-        AppDelegate *delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-        [delegate finishApplication];
+        exit(0);
     }
 }
 

@@ -6,8 +6,6 @@
 //
 
 #import "L2DMetal.h"
-#import "AppDelegate.h"
-
 #import "Rendering/Metal/CubismRenderingInstanceSingleton_Metal.h"// 必须在 Metal 框架端保留的值
 #import <Math/CubismMatrix44.hpp>// 从设备到屏幕的矩阵
 #import "L2DRender.h"// 渲染

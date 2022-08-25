@@ -6,8 +6,7 @@
 //
 
 #import "Live2DView.h"
-#import "L2DBridge.h"
-#import "L2DTouch.h"
+#import "Live2DBridge.h"
 
 @implementation Live2DView
 
@@ -30,26 +29,26 @@
 }
 
 - (void)commonInit {
-    [L2DBridge createLive2DView: self];
+    [Live2DBridge createLive2DView: self];
 }
 
 - (void)dealloc {
-    [[L2DTouch sharedInstance] destroyTouchManager];
-    [L2DBridge destroyLive2DView];
+    [Live2DBridge destroyTouchManager];
+    [Live2DBridge destroyLive2DView];
 }
 
 #pragma mark - 触摸事件
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [[L2DTouch sharedInstance] touchesBegan:touches view:self];
+    [Live2DBridge touchesBegan:touches view:self];
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [[L2DTouch sharedInstance] touchesMoved:touches view:self];
+    [Live2DBridge touchesMoved:touches view:self];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [[L2DTouch sharedInstance] touchesEnded:touches view:self];
+    [Live2DBridge touchesEnded:touches view:self];
 }
 
 @end

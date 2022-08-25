@@ -7,7 +7,6 @@
 
 #import "LAppSprite.h"
 #import <Foundation/Foundation.h>
-#import "AppDelegate.h"
 #import <CubismFramework.hpp>
 #import <Rendering/Metal/CubismRenderer_Metal.hpp>
 #import "Rendering/Metal/CubismRenderingInstanceSingleton_Metal.h"

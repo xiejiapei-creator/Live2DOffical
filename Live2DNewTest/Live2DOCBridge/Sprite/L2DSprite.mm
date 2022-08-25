@@ -6,8 +6,6 @@
 //
 
 #import "L2DSprite.h"
-#import "AppDelegate.h"
-
 #import "LAppTextureManager.h"// 纹理
 #import "LAppDefine.h"// SDK头文件
 #import "L2DCubism.h"// SDK桥接

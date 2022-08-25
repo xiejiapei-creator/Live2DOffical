@@ -39,9 +39,6 @@
 - (void)finishApplication
 {
     [[L2DCubism sharedInstance] disposeCubism];
-
-    self.window = nil;
-    exit(0);
 }
 
 @end
