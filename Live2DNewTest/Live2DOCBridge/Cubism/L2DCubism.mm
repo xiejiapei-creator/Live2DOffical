@@ -47,12 +47,7 @@
     _textureManager = [[LAppTextureManager alloc] init];
 
     Csm::CubismFramework::StartUp(&_cubismAllocator,&_cubismOption);
-
     Csm::CubismFramework::Initialize();
-
-    [LAppLive2DManager getInstance];
-
-    Csm::CubismMatrix44 projection;
 
     LAppPal::UpdateTime();
 }
