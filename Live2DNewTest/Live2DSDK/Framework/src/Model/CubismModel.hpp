@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -207,24 +207,24 @@ public:
     csmFloat32  GetParameterValue(csmInt32 parameterIndex);
 
     /**
-     * @brief パラメータの値の設定
+     * @brief 参数值的设定
      *
-     * パラメータの値を設定する。
+     * 设定参数的值。
      *
-     * @param[in]   parameterId パラメータID
-     * @param[in]   value       パラメータの値
-     * @param[in]   weight      重み
+     * @param[in]   parameterId 参数ID
+     * @param[in]   value       参数的值
+     * @param[in]   weight      重量
      */
     void        SetParameterValue(CubismIdHandle parameterId, csmFloat32 value, csmFloat32 weight = 1.0f);
 
     /**
-     * @brief パラメータの値の設定
+     * @brief 参数值的设定
      *
-     * パラメータの値を設定する。
+     * 设定参数的值。
      *
-     * @param[in]   parameterIndex  パラメータのインデックス
-     * @param[in]   value           パラメータの値
-     * @param[in]   weight          重み
+     * @param[in]   parameterIndex  参数的索引
+     * @param[in]   value           参数的值
+     * @param[in]   weight          重量
      */
     void        SetParameterValue(csmInt32 parameterIndex, csmFloat32 value, csmFloat32 weight = 1.0f);
 

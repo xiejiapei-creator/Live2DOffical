@@ -17,6 +17,7 @@
 
 - (id)init;
 - (void)dealloc;
+
 @end
 
 @implementation LAppLive2DManager
@@ -341,5 +342,15 @@ void FinishedMotion(Csm::ACubismMotion* self)
     _clearColorG = g;
     _clearColorB = b;
 }
+
+- (void)SetParameterValue:(ParamType)type value:(Float32)value
+{
+    for (Csm::csmUint32 i = 0; i < _models.GetSize(); i++)
+    {
+        _models[i]->SetParameterValue(<#const Csm::CubismId *paramId#>, value)
+    }
+}
+
+
 @end
 
