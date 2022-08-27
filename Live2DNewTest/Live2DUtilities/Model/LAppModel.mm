@@ -580,6 +580,12 @@ void LAppModel::SetRandomExpression()
     }
 }
 
+void LAppModel::SetParameterValue(const char* paramId, Csm::csmInt32 value)
+{
+    const auto cid = CubismFramework::GetIdManager()->GetId(paramId);
+    _model->SetParameterValue(cid, value);
+}
+
 void LAppModel::ReloadRenderer()
 {
     DeleteRenderer();

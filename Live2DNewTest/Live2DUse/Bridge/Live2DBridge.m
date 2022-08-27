@@ -6,7 +6,6 @@
 //
 
 #import "Live2DBridge.h"
-#import "L2DBridge.h"
 #import "L2DTouch.h"
 #import "L2DCubism.h"
 
@@ -80,6 +79,12 @@
 /// 销毁触摸事件管理器
 + (void)destroyTouchManager {
     [[L2DTouch sharedInstance] destroyTouchManager];
+}
+
+#pragma mark - 模型运动
+
++ (void)setParameterValue:(ParamType)type value:(float)value {
+    [L2DBridge setParameterValue:type value:value];
 }
 
 @end

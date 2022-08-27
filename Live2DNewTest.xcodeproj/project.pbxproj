@@ -14,6 +14,7 @@
 		E933EE8D28B79670002A61DB /* Live2DBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E933EE8C28B79670002A61DB /* Live2DBridge.m */; };
 		E9532EAD28B8C29F00870293 /* Live2DARConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9532EAC28B8C29F00870293 /* Live2DARConstants.swift */; };
 		E9532EAF28B8C58500870293 /* Live2DARContentUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9532EAE28B8C58500870293 /* Live2DARContentUpdater.swift */; };
+		E9532EB228B9C37300870293 /* LAppModelParamType.m in Sources */ = {isa = PBXBuildFile; fileRef = E9532EB128B9C37300870293 /* LAppModelParamType.m */; };
 		E958954B28B5B4AE00D7F6BB /* L2DTouch.mm in Sources */ = {isa = PBXBuildFile; fileRef = E958954A28B5B4AE00D7F6BB /* L2DTouch.mm */; };
 		E958956328B5F84800D7F6BB /* Live2DView.m in Sources */ = {isa = PBXBuildFile; fileRef = E958956228B5F84800D7F6BB /* Live2DView.m */; };
 		E958956A28B605B500D7F6BB /* L2DBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = E958956928B605B500D7F6BB /* L2DBridge.mm */; };
@@ -91,6 +92,8 @@
 		E9532EAB28B8C29F00870293 /* Live2DNewTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Live2DNewTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		E9532EAC28B8C29F00870293 /* Live2DARConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Live2DARConstants.swift; sourceTree = "<group>"; };
 		E9532EAE28B8C58500870293 /* Live2DARContentUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Live2DARContentUpdater.swift; sourceTree = "<group>"; };
+		E9532EB028B9C37300870293 /* LAppModelParamType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LAppModelParamType.h; sourceTree = "<group>"; };
+		E9532EB128B9C37300870293 /* LAppModelParamType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LAppModelParamType.m; sourceTree = "<group>"; };
 		E958954928B5B4AE00D7F6BB /* L2DTouch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = L2DTouch.h; sourceTree = "<group>"; };
 		E958954A28B5B4AE00D7F6BB /* L2DTouch.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = L2DTouch.mm; sourceTree = "<group>"; };
 		E958956128B5F84800D7F6BB /* Live2DView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Live2DView.h; sourceTree = "<group>"; };
@@ -596,6 +599,8 @@
 			children = (
 				E98E199128B4C18D005EE294 /* LAppModel.mm */,
 				E98E199028B4C180005EE294 /* LAppModel.h */,
+				E9532EB028B9C37300870293 /* LAppModelParamType.h */,
+				E9532EB128B9C37300870293 /* LAppModelParamType.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -829,6 +834,7 @@
 				E96B252F28AD0AE000678943 /* CubismId.cpp in Sources */,
 				E98E199E28B4C23B005EE294 /* LAppTextureManager.mm in Sources */,
 				E96B254028AD0AE000678943 /* CubismMotion.cpp in Sources */,
+				E9532EB228B9C37300870293 /* LAppModelParamType.m in Sources */,
 				E96B254128AD0AE000678943 /* CubismMotionManager.cpp in Sources */,
 				E96B1DA328ACDE6800678943 /* main.m in Sources */,
 				E933EE8D28B79670002A61DB /* Live2DBridge.m in Sources */,

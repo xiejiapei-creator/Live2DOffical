@@ -90,7 +90,13 @@ public:
      *
      */
     void SetRandomExpression();
-
+    
+    /**
+     * @brief   设置角色参数值来让人物动起来
+     *
+     */
+    void SetParameterValue(const char* paramId, Csm::csmInt32 value);
+    
     /**
      * @brief   点燃运动事件
      *
@@ -163,13 +169,17 @@ private:
 
     Csm::ICubismModelSetting* _modelSetting; /// 模型设置信息
     Csm::csmString _modelHomeDir; /// 有模型设置的目录
+    
     Csm::csmFloat32 _userTimeSeconds; /// 增量时间的累计值[秒]
+    
     Csm::csmVector<Csm::CubismIdHandle> _eyeBlinkIds; /// 在模型中设置的眨眼功能参数ID
     Csm::csmVector<Csm::CubismIdHandle> _lipSyncIds; /// 模型中设置的口型同步功能的参数ID
     Csm::csmMap<Csm::csmString, Csm::ACubismMotion*>   _motions; /// 加载的动作列表
     Csm::csmMap<Csm::csmString, Csm::ACubismMotion*>   _expressions; /// 已加载的面部表情列表
+
     Csm::csmVector<Csm::csmRectF> _hitArea;
     Csm::csmVector<Csm::csmRectF> _userArea;
+    
     const Csm::CubismId* _idParamAngleX; /// 参数ID: ParamAngleX
     const Csm::CubismId* _idParamAngleY; /// 参数ID: ParamAngleX
     const Csm::CubismId* _idParamAngleZ; /// 参数ID: ParamAngleX

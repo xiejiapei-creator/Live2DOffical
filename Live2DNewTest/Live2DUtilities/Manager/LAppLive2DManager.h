@@ -13,6 +13,7 @@
 #import <Type/csmVector.hpp>
 #import "LAppModel.h"
 #import "LAppSprite.h"
+#import "LAppModelParamType.h"
 
 /// 模型管理器
 @interface LAppLive2DManager : NSObject
@@ -22,34 +23,6 @@ typedef NS_ENUM(NSUInteger, SelectTarget)
     SelectTarget_None,                ///< 在默认帧缓冲器中呈现
     SelectTarget_ModelFrameBuffer,    ///< 在LAppModel各自拥有的帧缓冲器中呈现
     SelectTarget_ViewFrameBuffer,     ///< 在LAppView具有的帧缓冲器中呈现
-};
-
-/// 模型中可以产生运动动画的参数
-typedef NS_ENUM(NSUInteger, ParamType)
-{
-    ParamType_AngleY = LAppModel::_idParamCheek,/// 头部围绕节点的x轴旋转(以弧度为单位)
-    ParamType_AngleX,/// 头部围绕节点y轴的旋转(以弧度为单位)
-    ParamType_AngleZ,/// 头部围绕节点的z轴旋转(以弧度为单位)
-    
-    ParamType_BodyPosition,/// 确定接收者的位置
-    ParamType_BodyAngleZ,/// 身体角度Z
-    ParamType_BodyAngleY,/// 身体角度Y
-    
-    ParamType_EyeBallX,/// 眼球位置X
-    ParamType_EyeBallY,/// 眼球位置Y
-    
-    ParamType_BrowLY,/// 描述双眉内部部分向上运动的系数 X
-    ParamType_BrowRY,/// 描述双眉内部部分向上运动的系数 Y
-    ParamType_BrowLAngle,/// 描述左眉外侧部分向上运动的系数
-    ParamType_BrowRAngle,/// 描述右眉外侧部分向上运动的系数
-    
-    ParamType_EyeLOpen,/// 左眼上眼睑的闭合系数
-    ParamType_EyeROpen,/// 右眼上眼睑的闭合系数
-    
-    ParamType_MouthOpenY,/// 描述下颚开口的系数 Y
-    ParamType_MouthForm,/// 描述双唇收缩成张开形状的系数
-    
-    ParamType_Cheek/// 描述双颊向外运动的系数
 };
 
 /// 用于模型绘制的View矩阵
@@ -152,6 +125,11 @@ typedef NS_ENUM(NSUInteger, ParamType)
  * @param[in]   b   青(0.0~1.0)
  */
 - (void)SetRenderTargetClearColor:(float)r g:(float)g b:(float)b;
+
+/**
+ * @brief 设置人物模型提供的参数来产生动画效果
+ */
+- (void)SetParameterValue:(ParamType)type value:(Float32)value;
 
 @end
 

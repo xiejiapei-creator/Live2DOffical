@@ -11,10 +11,6 @@ import SceneKit
 
 class ContentUpdater: NSObject, ARSCNViewDelegate {
     
-    // MARK: - 属性
-
-    var live2DModel: Live2DModelOpenGL!
-
     // MARK: - ARSCNViewDelegate
 
     /// - Tag: ARNodeTracking
@@ -78,39 +74,39 @@ class ContentUpdater: NSObject, ARSCNViewDelegate {
         // 偏航(y分量)是绕节点y轴的旋转(以弧度为单位)
         // 滚动(z分量)是围绕节点的z轴旋转(以弧度为单位)
         // SceneKit按照组件的相反顺序应用这些旋转：先滚动(z分量)——>再偏航(y分量)——>最后螺距(x分量)
-        // 面部在 XYZ 轴的旋转角度
-        live2DModel.setParam("ParamAngleY", value: faceNode.eulerAngles.x * -360 / Float.pi)
-        live2DModel.setParam("ParamAngleX", value: faceNode.eulerAngles.y * 360 / Float.pi)
-        live2DModel.setParam("ParamAngleZ", value: faceNode.eulerAngles.z * -360 / Float.pi)
+        
+        // 面部
+        Live2DBridge.setParameterValue(.angleX, value: faceNode.eulerAngles.y * 360 / Float.pi)
+        Live2DBridge.setParameterValue(.angleY, value: faceNode.eulerAngles.x * -360 / Float.pi)
+        Live2DBridge.setParameterValue(.angleZ, value: faceNode.eulerAngles.z * -360 / Float.pi)
 
-        // 确定接收者的位置，可以做成动画
-        // 身体位置
-        live2DModel.setParam("ParamBodyPosition", value: 10 + faceNode.position.z * 20)
-        live2DModel.setParam("ParamBodyAngleZ", value: faceNode.position.x * 20)
-        live2DModel.setParam("ParamBodyAngleY", value: faceNode.position.y * 20)
+        // 身体
+        Live2DBridge.setParameterValue(.bodyPosition, value: 10 + faceNode.position.z * 20)
+        Live2DBridge.setParameterValue(.angleZ, value: faceNode.position.x * 20)
+        Live2DBridge.setParameterValue(.angleY, value: faceNode.position.y * 20)
 
-        // 查看相对于锚点原点的点
-        // 眼球位置
-        live2DModel.setParam("ParamEyeBallX", value: faceAnchor.lookAtPoint.x * 2)
-        live2DModel.setParam("ParamEyeBallY", value: faceAnchor.lookAtPoint.y * 2)
+        // 眼球
+        Live2DBridge.setParameterValue(.eyeBallX, value: faceAnchor.lookAtPoint.x * 2)
+        Live2DBridge.setParameterValue(.eyeBallY, value: faceAnchor.lookAtPoint.y * 2)
 
-        // 描述双眉内部部分向上运动的系数
-        // 描述左、右眉外侧部分向上运动的系数
-        live2DModel.setParam("ParamBrowLY", value: -(0.5 - browOuterUpLeft))
-        live2DModel.setParam("ParamBrowRY", value: -(0.5 - browOuterUpRight))
-        live2DModel.setParam("ParamBrowLAngle", value: 16 * (browInnerUp - browOuterUpLeft) - 1.6)
-        live2DModel.setParam("ParamBrowRAngle", value: 16 * (browInnerUp - browOuterUpRight) - 1.6)
+        // 双眉内部部分向上运动
+        Live2DBridge.setParameterValue(.browLY, value: -(0.5 - browOuterUpLeft))
+        Live2DBridge.setParameterValue(.browRY, value: -(0.5 - browOuterUpRight))
+        
+        // 左、右眉外侧部分向上运动
+        Live2DBridge.setParameterValue(.browLAngle, value: 16 * (browInnerUp - browOuterUpLeft) - 1.6)
+        Live2DBridge.setParameterValue(.browRAngle, value: 16 * (browInnerUp - browOuterUpRight) - 1.6)
 
         // 左、右眼上眼睑的闭合系数
-        live2DModel.setParam("ParamEyeLOpen", value: 1.0 - eyeBlinkLeft)
-        live2DModel.setParam("ParamEyeROpen", value: 1.0 - eyeBlinkRight)
+        Live2DBridge.setParameterValue(.eyeLOpen, value: 1.0 - eyeBlinkLeft)
+        Live2DBridge.setParameterValue(.eyeROpen, value: 1.0 - eyeBlinkRight)
 
-        // 描述下颚开口的系数
-        live2DModel.setParam("ParamMouthOpenY", value: jawOpen * 1.8)
-        // 描述双唇收缩成张开形状的系数
-        live2DModel.setParam("ParamMouthForm", value: 1 - mouthFunnel * 2)
+        // 下颚开口
+        Live2DBridge.setParameterValue(.mouthOpenY, value: jawOpen * 1.8)
+        // 双唇收缩成张开形状
+        Live2DBridge.setParameterValue(.mouthForm, value: 1 - mouthFunnel * 2)
 
-        // 描述双颊向外运动的系数
-        live2DModel.setParam("ParamCheek", value: cheekPuff)
+        // 双颊向外运动
+        Live2DBridge.setParameterValue(.cheek, value: cheekPuff)
     }
 }

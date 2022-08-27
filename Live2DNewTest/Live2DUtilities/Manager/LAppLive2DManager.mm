@@ -345,12 +345,14 @@ void FinishedMotion(Csm::ACubismMotion* self)
 
 - (void)SetParameterValue:(ParamType)type value:(Float32)value
 {
+    NSString *paramIdStr = [LAppModelParamType getParamTypeValue:type];
+    const char* paramId = [paramIdStr UTF8String];
+    
     for (Csm::csmUint32 i = 0; i < _models.GetSize(); i++)
     {
-        _models[i]->SetParameterValue(<#const Csm::CubismId *paramId#>, value)
+        _models[i]->SetParameterValue(paramId, value);
     }
 }
-
 
 @end
 

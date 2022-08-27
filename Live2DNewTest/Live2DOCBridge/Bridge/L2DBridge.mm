@@ -31,6 +31,12 @@
     [[LAppLive2DManager getInstance] nextScene];
 }
 
+#pragma mark - 模型运动
+
++ (void)setParameterValue:(ParamType)type value:(float)value {
+    [[LAppLive2DManager getInstance] SetParameterValue:type value:value];
+}
+
 #pragma mark - Sprite
 
 // 创建角色模型以外的精灵（绘图）

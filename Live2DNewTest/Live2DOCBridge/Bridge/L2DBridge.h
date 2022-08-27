@@ -6,6 +6,7 @@
 //
 
 #import "LMetalUIView.h"// Metal视图
+#import "LAppModelParamType.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 创建角色模型以外的精灵（绘图）
 + (void)createSprite:(CGSize)metalViewSize;
+
+/// 设置人物模型提供的参数来产生动画效果
++ (void)setParameterValue:(ParamType)type value:(float)value;
 
 @end
 
