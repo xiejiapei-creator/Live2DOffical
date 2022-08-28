@@ -35,6 +35,7 @@ namespace LAppDefine {
 
     // 放置模型的目录名数组
     const csmChar* ModelDir[] = {
+        "hiyori_movie_pro_t01",
         "Haru",
         "Hiyori",
         "Mark",

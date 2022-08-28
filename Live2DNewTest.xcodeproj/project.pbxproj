@@ -15,6 +15,8 @@
 		E9532EAD28B8C29F00870293 /* Live2DARConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9532EAC28B8C29F00870293 /* Live2DARConstants.swift */; };
 		E9532EAF28B8C58500870293 /* Live2DARContentUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9532EAE28B8C58500870293 /* Live2DARContentUpdater.swift */; };
 		E9532EB228B9C37300870293 /* LAppModelParamType.m in Sources */ = {isa = PBXBuildFile; fileRef = E9532EB128B9C37300870293 /* LAppModelParamType.m */; };
+		E9532EB728B9EA4000870293 /* Live2DARSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9532EB528B9EA4000870293 /* Live2DARSettingViewController.swift */; };
+		E9532EB828B9EA4000870293 /* Live2DARSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9532EB628B9EA4000870293 /* Live2DARSettingViewController.xib */; };
 		E958954B28B5B4AE00D7F6BB /* L2DTouch.mm in Sources */ = {isa = PBXBuildFile; fileRef = E958954A28B5B4AE00D7F6BB /* L2DTouch.mm */; };
 		E958956328B5F84800D7F6BB /* Live2DView.m in Sources */ = {isa = PBXBuildFile; fileRef = E958956228B5F84800D7F6BB /* Live2DView.m */; };
 		E958956A28B605B500D7F6BB /* L2DBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = E958956928B605B500D7F6BB /* L2DBridge.mm */; };
@@ -76,6 +78,8 @@
 		E98E19B628B4CADF005EE294 /* L2DCubism.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19B528B4CADF005EE294 /* L2DCubism.mm */; };
 		E98E19C028B5039B005EE294 /* L2DMetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19BF28B5039B005EE294 /* L2DMetal.mm */; };
 		E98E19C428B53C28005EE294 /* L2DSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19C328B53C28005EE294 /* L2DSprite.mm */; };
+		E9B7959128BB56CA0051A4D3 /* Live2DARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B7958F28BB56CA0051A4D3 /* Live2DARViewController.swift */; };
+		E9B7959228BB56CA0051A4D3 /* Live2DARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B7959028BB56CA0051A4D3 /* Live2DARViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +98,8 @@
 		E9532EAE28B8C58500870293 /* Live2DARContentUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Live2DARContentUpdater.swift; sourceTree = "<group>"; };
 		E9532EB028B9C37300870293 /* LAppModelParamType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LAppModelParamType.h; sourceTree = "<group>"; };
 		E9532EB128B9C37300870293 /* LAppModelParamType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LAppModelParamType.m; sourceTree = "<group>"; };
+		E9532EB528B9EA4000870293 /* Live2DARSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Live2DARSettingViewController.swift; sourceTree = "<group>"; };
+		E9532EB628B9EA4000870293 /* Live2DARSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Live2DARSettingViewController.xib; sourceTree = "<group>"; };
 		E958954928B5B4AE00D7F6BB /* L2DTouch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = L2DTouch.h; sourceTree = "<group>"; };
 		E958954A28B5B4AE00D7F6BB /* L2DTouch.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = L2DTouch.mm; sourceTree = "<group>"; };
 		E958956128B5F84800D7F6BB /* Live2DView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Live2DView.h; sourceTree = "<group>"; };
@@ -225,6 +231,8 @@
 		E98E19BF28B5039B005EE294 /* L2DMetal.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = L2DMetal.mm; sourceTree = "<group>"; };
 		E98E19C228B53C28005EE294 /* L2DSprite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = L2DSprite.h; sourceTree = "<group>"; };
 		E98E19C328B53C28005EE294 /* L2DSprite.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = L2DSprite.mm; sourceTree = "<group>"; };
+		E9B7958F28BB56CA0051A4D3 /* Live2DARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Live2DARViewController.swift; sourceTree = "<group>"; };
+		E9B7959028BB56CA0051A4D3 /* Live2DARViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Live2DARViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,9 +303,13 @@
 		E933EF8428B8C1C8002A61DB /* Live2DARKit */ = {
 			isa = PBXGroup;
 			children = (
+				E9532EAB28B8C29F00870293 /* Live2DNewTest-Bridging-Header.h */,
 				E9532EAE28B8C58500870293 /* Live2DARContentUpdater.swift */,
 				E9532EAC28B8C29F00870293 /* Live2DARConstants.swift */,
-				E9532EAB28B8C29F00870293 /* Live2DNewTest-Bridging-Header.h */,
+				E9532EB528B9EA4000870293 /* Live2DARSettingViewController.swift */,
+				E9532EB628B9EA4000870293 /* Live2DARSettingViewController.xib */,
+				E9B7958F28BB56CA0051A4D3 /* Live2DARViewController.swift */,
+				E9B7959028BB56CA0051A4D3 /* Live2DARViewController.xib */,
 			);
 			path = Live2DARKit;
 			sourceTree = "<group>";
@@ -763,10 +775,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9532EB828B9EA4000870293 /* Live2DARSettingViewController.xib in Resources */,
 				E96B254C28AD0B4D00678943 /* Live2DResources in Resources */,
 				E96B1DA028ACDE6800678943 /* LaunchScreen.storyboard in Resources */,
 				E933EDB428B72944002A61DB /* ViewController.xib in Resources */,
 				E96B1D9D28ACDE6800678943 /* Assets.xcassets in Resources */,
+				E9B7959228BB56CA0051A4D3 /* Live2DARViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -825,6 +839,7 @@
 				E98E19A928B4C276005EE294 /* LTouchManager.mm in Sources */,
 				E96B253128AD0AE000678943 /* CubismViewMatrix.cpp in Sources */,
 				E96B254428AD0AE000678943 /* CubismMotionJson.cpp in Sources */,
+				E9B7959128BB56CA0051A4D3 /* Live2DARViewController.swift in Sources */,
 				E96B253028AD0AE000678943 /* CubismModelMatrix.cpp in Sources */,
 				E98E19A528B4C261005EE294 /* LMetalUIView.m in Sources */,
 				E98E197E28B4BC77005EE294 /* CubismOffscreenSurface_Metal.mm in Sources */,
@@ -842,6 +857,7 @@
 				E98E19A428B4C261005EE294 /* LMetalView.m in Sources */,
 				E96B252B28AD0AE000678943 /* CubismEyeBlink.cpp in Sources */,
 				E96B253E28AD0AE000678943 /* csmRectF.cpp in Sources */,
+				E9532EB728B9EA4000870293 /* Live2DARSettingViewController.swift in Sources */,
 				E96B254728AD0AE000678943 /* CubismRenderer.cpp in Sources */,
 				E96B252728AD0AE000678943 /* CubismString.cpp in Sources */,
 				E98E19C428B53C28005EE294 /* L2DSprite.mm in Sources */,
@@ -1002,6 +1018,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MRMHT335N6;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -1048,6 +1065,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MRMHT335N6;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
