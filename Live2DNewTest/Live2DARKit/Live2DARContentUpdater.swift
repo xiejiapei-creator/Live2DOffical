@@ -82,8 +82,8 @@ class ContentUpdater: NSObject, ARSCNViewDelegate {
 
         // 身体
         Live2DBridge.setParameterValue(.bodyPosition, value: 10 + faceNode.position.z * 20)
-        Live2DBridge.setParameterValue(.angleZ, value: faceNode.position.x * 20)
-        Live2DBridge.setParameterValue(.angleY, value: faceNode.position.y * 20)
+        Live2DBridge.setParameterValue(.bodyAngleZ, value: faceNode.position.x * 20)
+        Live2DBridge.setParameterValue(.bodyAngleY, value: faceNode.position.y * 20)
 
         // 眼球
         Live2DBridge.setParameterValue(.eyeBallX, value: faceAnchor.lookAtPoint.x * 2)
@@ -92,7 +92,7 @@ class ContentUpdater: NSObject, ARSCNViewDelegate {
         // 双眉内部部分向上运动
         Live2DBridge.setParameterValue(.browLY, value: -(0.5 - browOuterUpLeft))
         Live2DBridge.setParameterValue(.browRY, value: -(0.5 - browOuterUpRight))
-        
+
         // 左、右眉外侧部分向上运动
         Live2DBridge.setParameterValue(.browLAngle, value: 16 * (browInnerUp - browOuterUpLeft) - 1.6)
         Live2DBridge.setParameterValue(.browRAngle, value: 16 * (browInnerUp - browOuterUpRight) - 1.6)
