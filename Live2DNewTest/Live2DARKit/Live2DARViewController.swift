@@ -79,11 +79,6 @@ class Live2DARViewController: UIViewController {
         session.pause()
     }
     
-    // 当视图控制器显示时，控制应用程序的首选屏幕边缘延迟系统手势。默认是UIRectEdgeNone
-    override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
-        return .bottom
-    }
-    
     // 错误信息
     private func errorString(_ error: Error) -> String {
         let errorWithInfo = error as NSError

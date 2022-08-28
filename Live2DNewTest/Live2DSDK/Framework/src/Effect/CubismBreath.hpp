@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -22,9 +22,9 @@ class CubismBreath
 {
 public:
     /**
-     * @brief 呼吸のパラメータ情報
+     * @brief 呼吸参数信息
      *
-     * 呼吸のパラメータ情報。
+     * 呼吸参数信息
      */
     struct BreathParameterData
     {

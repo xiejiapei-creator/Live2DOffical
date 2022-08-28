@@ -46,9 +46,6 @@
     BOOL isFirstRun = [defaults boolForKey:@"FIRST_RUN"];
     if (isFirstRun) {
         [defaults setBool:NO forKey: @"FIRST_RUN"];
-        [defaults setFloat:0.65 forKey:@"RED_COLOR"];
-        [defaults setFloat:0.65 forKey:@"GREEN_COLOR"];
-        [defaults setFloat:0.65 forKey:@"BLUE_COLOR"];
         [defaults setFloat:1 forKey:@"ZOOM"];
         [defaults setFloat:0 forKey:@"X_POS"];
         [defaults setFloat:-0.8 forKey:@"Y_POS"];

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -264,33 +264,33 @@ public:
     */
     static void   CubismDefaultMotionEventCallback(const CubismMotionQueueManager* caller, const csmString& eventValue, void* customData);
 protected:
-    CubismMoc*              _moc;                       ///< Mocデータ
-    CubismModel*            _model;                     ///< Modelインスタンス
+    CubismMoc*              _moc;                       ///< Moc数据
+    CubismModel*            _model;                     ///< 模型实例
 
-    CubismMotionManager*    _motionManager;             ///< モーション管理
+    CubismMotionManager*    _motionManager;             ///< 运动管理
     CubismMotionManager*    _expressionManager;         ///< 表情管理
-    CubismEyeBlink*         _eyeBlink;                  ///< 自動まばたき
+    CubismEyeBlink*         _eyeBlink;                  ///< 自动眨眼
     CubismBreath*           _breath;                    ///< 呼吸
-    CubismModelMatrix*      _modelMatrix;               ///< モデル行列
-    CubismPose*             _pose;                      ///< ポーズ管理
-    CubismTargetPoint*      _dragManager;               ///< マウスドラッグ
+    CubismModelMatrix*      _modelMatrix;               ///< 模型矩阵
+    CubismPose*             _pose;                      ///< 姿势管理
+    CubismTargetPoint*      _dragManager;               ///< 鼠标拖动
     CubismPhysics*          _physics;                   ///< 物理演算
-    CubismModelUserData*    _modelUserData;             ///< ユーザデータ
+    CubismModelUserData*    _modelUserData;             ///< 用户数据
 
-    csmBool     _initialized;                   ///< 初期化されたかどうか
-    csmBool     _updating;                      ///< 更新されたかどうか
+    csmBool     _initialized;                   ///< 是否初始化
+    csmBool     _updating;                      ///< 是否已更新
     csmFloat32  _opacity;                       ///< 不透明度
-    csmBool     _lipSync;                       ///< リップシンクするかどうか
-    csmFloat32  _lastLipSyncValue;              ///< 最後のリップシンクの制御値
-    csmFloat32  _dragX;                         ///< マウスドラッグのX位置
-    csmFloat32  _dragY;                         ///< マウスドラッグのY位置
-    csmFloat32  _accelerationX;                 ///< X軸方向の加速度
-    csmFloat32  _accelerationY;                 ///< Y軸方向の加速度
-    csmFloat32  _accelerationZ;                 ///< Z軸方向の加速度
-    csmBool     _debugMode;                     ///< デバッグモードかどうか
+    csmBool     _lipSync;                       ///< 是否唇部填充
+    csmFloat32  _lastLipSyncValue;              ///< 最后一个唇同步控制值
+    csmFloat32  _dragX;                         ///< 鼠标拖动的X位置
+    csmFloat32  _dragY;                         ///< 鼠标拖动Y位置
+    csmFloat32  _accelerationX;                 ///< X轴方向加速度
+    csmFloat32  _accelerationY;                 ///< Y轴方向加速度
+    csmFloat32  _accelerationZ;                 ///< Z轴方向加速度
+    csmBool     _debugMode;                     ///< 是否处于调试模式
 
 private:
-    Rendering::CubismRenderer* _renderer;       ///< レンダラ
+    Rendering::CubismRenderer* _renderer;       ///< 渲染器
 };
 
 }}}

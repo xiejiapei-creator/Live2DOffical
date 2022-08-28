@@ -74,7 +74,7 @@ class ContentUpdater: NSObject, ARSCNViewDelegate {
         // 偏航(y分量)是绕节点y轴的旋转(以弧度为单位)
         // 滚动(z分量)是围绕节点的z轴旋转(以弧度为单位)
         // SceneKit按照组件的相反顺序应用这些旋转：先滚动(z分量)——>再偏航(y分量)——>最后螺距(x分量)
-        
+
         // 面部
         Live2DBridge.setParameterValue(.angleX, value: faceNode.eulerAngles.y * 360 / Float.pi)
         Live2DBridge.setParameterValue(.angleY, value: faceNode.eulerAngles.x * -360 / Float.pi)

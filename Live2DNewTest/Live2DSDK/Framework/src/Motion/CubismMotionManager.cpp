@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -52,7 +52,7 @@ csmBool CubismMotionManager::UpdateMotion(CubismModel* model, csmFloat32 deltaTi
 
     if (IsFinished())
     {
-        _currentPriority = 0;           // 再生中モーションの優先度を解除
+        _currentPriority = 0;           // 取消播放中运动的优先级
     }
 
     return updated;

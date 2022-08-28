@@ -517,9 +517,9 @@ public:
     csmBool     IsUsingMasking() const;
 
     /**
-     * @brief 保存されたパラメータの読み込み
+     * @brief 导入保存的参数
      *
-     * 保存されたパラメータを読み込む
+     * 导入保存的参数
      */
     void    LoadParameters();
 
@@ -560,21 +560,21 @@ private:
      */
     void Initialize();
 
-    csmMap<csmInt32, csmFloat32>        _notExistPartOpacities;             ///< 存在していないパーツの不透明度のリスト
-    csmMap<CubismIdHandle, csmInt32>   _notExistPartId;                    ///< 存在していないパーツIDのリスト
+    csmMap<csmInt32, csmFloat32>        _notExistPartOpacities;             ///< 不存在的部件不透明度列表
+    csmMap<CubismIdHandle, csmInt32>   _notExistPartId;                    ///< 不存在的部件标识列表
 
-    csmMap<csmInt32, csmFloat32>        _notExistParameterValues;           ///< 存在していないパラメータの値のリスト
-    csmMap<CubismIdHandle, csmInt32>   _notExistParameterId;               ///< 存在していないパラメータIDのリスト
+    csmMap<csmInt32, csmFloat32>        _notExistParameterValues;           ///< 不存在的参数值列表
+    csmMap<CubismIdHandle, csmInt32>   _notExistParameterId;               ///< 不存在的参数标识列表
 
-    csmVector<csmFloat32>   _savedParameters;                   ///< 保存されたパラメータ
+    csmVector<csmFloat32>   _savedParameters;                   ///< 保存的参数
 
-    Core::csmModel*     _model;                                 ///< モデル
+    Core::csmModel*     _model;                                 ///< 模型
 
-    csmFloat32*         _parameterValues;                       ///< パラメータの値のリスト
-    const csmFloat32*   _parameterMaximumValues;                ///< パラメータの最大値のリスト
-    const csmFloat32*   _parameterMinimumValues;                ///< パラメータの最小値のリスト
+    csmFloat32*         _parameterValues;                       ///< 参数值列表
+    const csmFloat32*   _parameterMaximumValues;                ///< 参数的最大值列表
+    const csmFloat32*   _parameterMinimumValues;                ///< 参数最小值列表
 
-    csmFloat32*         _partOpacities;                         ///< パーツの不透明度のリスト
+    csmFloat32*         _partOpacities;                         ///< 部件不透明度列表
 
     csmVector<CubismIdHandle> _parameterIds;
     csmVector<CubismIdHandle> _partIds;

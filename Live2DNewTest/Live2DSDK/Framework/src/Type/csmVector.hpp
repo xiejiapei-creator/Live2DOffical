@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Copyright(c) Live2D Inc. All rights reserved.
  *
  * Use of this source code is governed by the Live2D Open Software license
@@ -86,11 +86,11 @@ public:
     }
 
     /**
-     * @brief   PushBack処理.コンテナに新たな要素を追加する。
+     * @brief   PushBack 向容器添加新元素
      *
-     * @param[in]   value            -> PushBack処理で追加する値。
-     * @param[in]   callPlacementNew -> PushBack時に配置newを呼び出す場合はtrue（クラスインスタンス）
-     *                                   PushBack時に値を単純に代入する場合はfalse（プリミティブ、ポインタ）
+     * @param[in]   value            -> 要在活动中添加的值
+     * @param[in]   callPlacementNew -> 如果在PushBack时调用部署new，则为真（类实例）
+     *                                  在PushBack时简单地代入值时为false
      */
     void PushBack(const T& value, csmBool callPlacementNew = true);
 
