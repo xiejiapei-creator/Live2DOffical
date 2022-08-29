@@ -11,6 +11,7 @@ platform :ios, '12.0'
 target 'Live2DNewTest' do
   
   pod 'Masonry'
+  pod 'SnapKit'
 
 end
 

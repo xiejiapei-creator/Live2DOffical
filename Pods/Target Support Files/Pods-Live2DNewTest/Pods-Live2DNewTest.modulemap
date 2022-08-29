@@ -1,4 +1,4 @@
-framework module Pods_Live2DNewTest {
+module Pods_Live2DNewTest {
   umbrella header "Pods-Live2DNewTest-umbrella.h"
 
   export *
