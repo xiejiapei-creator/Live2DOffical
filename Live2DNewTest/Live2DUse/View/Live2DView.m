@@ -37,6 +37,11 @@
     [Live2DBridge destroyLive2DView];
 }
 
+- (void)setIsLiveBroadcast:(BOOL)isLiveBroadcast {
+    _isLiveBroadcast = isLiveBroadcast;
+    [Live2DBridge isLiveBroadcast:isLiveBroadcast];
+}
+
 #pragma mark - 触摸事件
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

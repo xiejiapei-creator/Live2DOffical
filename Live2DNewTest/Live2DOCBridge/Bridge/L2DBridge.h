@@ -27,6 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 设置人物模型提供的参数来产生动画效果
 + (void)setParameterValue:(ParamType)type value:(float)value;
 
+/// 判断是否直播 直播使用AR来更新运动参数
++ (void)isLiveBroadcast:(BOOL)isLive;
+
 @end
 
 NS_ASSUME_NONNULL_END

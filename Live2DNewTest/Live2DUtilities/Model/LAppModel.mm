@@ -322,78 +322,12 @@ void LAppModel::ReleaseExpressions()
     _expressions.Clear();
 }
 
-void LAppModel::Update()
+void LAppModel::UpdateAR()
 {
- 
     // 增量时间的累计值
     const csmFloat32 deltaTimeSeconds = LAppPal::GetDeltaTime();
     _userTimeSeconds += deltaTimeSeconds;
-
-//    _dragManager->Update(deltaTimeSeconds);
-//    _dragX = _dragManager->GetX();
-//    _dragY = _dragManager->GetY();
-//
     
-    
-    
-    // 是否通过运动进行参数更新
-//    csmBool motionUpdated = false;
-
-    //-----------------------------------------------------------------
-//    _model->LoadParameters(); // 加载上次保存的状态
-//    if (_motionManager->IsFinished())
-//    {
-//        // 没有动作再生时，从待机动作中随机再生
-//        StartRandomMotion(MotionGroupIdle, PriorityIdle);
-//    }
-//    else
-//    {
-//        motionUpdated = _motionManager->UpdateMotion(_model, deltaTimeSeconds); // 更新运动
-//    }
-//    _model->SaveParameters(); // 保存状态
-    //-----------------------------------------------------------------
-    
-    
-    
-
-//    if (!motionUpdated)
-//    {
-//        if (_eyeBlink != NULL)
-//        {
-//            // 没有主动作更新的时候
-//            _eyeBlink->UpdateParameters(_model, deltaTimeSeconds); // 眨巴眼睛
-//        }
-//    }
-
-    
-    
-    
-//    if (_expressionManager != NULL)
-//    {
-//        _expressionManager->UpdateMotion(_model, deltaTimeSeconds); // 更新表情
-//    }
-//
-//    // 由于拖动而发生的变化
-//    // 通过拖动来调整脸部方向
-//    _model->AddParameterValue(_idParamAngleX, _dragX * 120);
-//    _model->AddParameterValue(_idParamAngleY, _dragY * 120);
-//    _model->AddParameterValue(_idParamAngleZ, _dragX * _dragY * -120);
-//
-//    // 通过拖动来调整身体方向
-//    _model->AddParameterValue(_idParamBodyAngleX, _dragX * 10);
-//
-//    // 拖动以调整眼睛方向
-//    _model->AddParameterValue(_idParamEyeBallX, _dragX);
-//    _model->AddParameterValue(_idParamEyeBallY, _dragY);
-    
-    
-    
-//    // 呼吸
-//    if (_breath != NULL)
-//    {
-//        _breath->UpdateParameters(_model, deltaTimeSeconds);
-//    }
-
     // 设置身体
     if (_physics != NULL)
     {
@@ -401,27 +335,97 @@ void LAppModel::Update()
     }
     
     SetParameterValue("ParamBreath", Float32((cos(deltaTimeSeconds) + 1.0) / 2.0));
+    
+    _model->Update();
+}
 
-//    // 嘴唇同步设置
-//    if (_lipSync)
-//    {
-//        csmFloat32 value = 0; // 实时对口型时，从系统获取音量并输入0到1的数值
-//
-//        for (csmUint32 i = 0; i < _lipSyncIds.GetSize(); ++i)
-//        {
-//            _model->AddParameterValue(_lipSyncIds[i], value, 0.8f);
-//        }
-//    }
+void LAppModel::UpdateDrag()
+{
+ 
+    // 增量时间的累计值
+    const csmFloat32 deltaTimeSeconds = LAppPal::GetDeltaTime();
+    _userTimeSeconds += deltaTimeSeconds;
+
+    _dragManager->Update(deltaTimeSeconds);
+    _dragX = _dragManager->GetX();
+    _dragY = _dragManager->GetY();
+    
+    // 是否通过运动进行参数更新
+    csmBool motionUpdated = false;
+
+    //-----------------------------------------------------------------
+    _model->LoadParameters(); // 加载上次保存的状态
+    if (_motionManager->IsFinished())
+    {
+        // 没有动作再生时，从待机动作中随机再生
+        StartRandomMotion(MotionGroupIdle, PriorityIdle);
+    }
+    else
+    {
+        motionUpdated = _motionManager->UpdateMotion(_model, deltaTimeSeconds); // 更新运动
+    }
+    _model->SaveParameters(); // 保存状态
+    //-----------------------------------------------------------------
+
+    if (!motionUpdated)
+    {
+        if (_eyeBlink != NULL)
+        {
+            // 没有主动作更新的时候
+            _eyeBlink->UpdateParameters(_model, deltaTimeSeconds); // 眨巴眼睛
+        }
+    }
+
+    if (_expressionManager != NULL)
+    {
+        _expressionManager->UpdateMotion(_model, deltaTimeSeconds); // 更新表情
+    }
+
+    // 由于拖动而发生的变化
+    // 通过拖动来调整脸部方向
+    _model->AddParameterValue(_idParamAngleX, _dragX * 120);
+    _model->AddParameterValue(_idParamAngleY, _dragY * 120);
+    _model->AddParameterValue(_idParamAngleZ, _dragX * _dragY * -120);
+
+    // 通过拖动来调整身体方向
+    _model->AddParameterValue(_idParamBodyAngleX, _dragX * 10);
+
+    // 拖动以调整眼睛方向
+    _model->AddParameterValue(_idParamEyeBallX, _dragX);
+    _model->AddParameterValue(_idParamEyeBallY, _dragY);
+    
+    
+    // 呼吸
+    if (_breath != NULL)
+    {
+        _breath->UpdateParameters(_model, deltaTimeSeconds);
+    }
+
+    // 设置身体
+    if (_physics != NULL)
+    {
+        _physics->Evaluate(_model, deltaTimeSeconds);
+    }
+
+    // 嘴唇同步设置
+    if (_lipSync)
+    {
+        csmFloat32 value = 0; // 实时对口型时，从系统获取音量并输入0到1的数值
+
+        for (csmUint32 i = 0; i < _lipSyncIds.GetSize(); ++i)
+        {
+            _model->AddParameterValue(_lipSyncIds[i], value, 0.8f);
+        }
+    }
     
 
-//    // 姿势设定
-//    if (_pose != NULL)
-//    {
-//        _pose->UpdateParameters(_model, deltaTimeSeconds);
-//    }
+    // 姿势设定
+    if (_pose != NULL)
+    {
+        _pose->UpdateParameters(_model, deltaTimeSeconds);
+    }
    
     _model->Update();
-
 }
 
 CubismMotionQueueEntryHandle LAppModel::StartMotion(const csmChar* group, csmInt32 no, csmInt32 priority, ACubismMotion::FinishedMotionCallback onFinishedMotionHandler)

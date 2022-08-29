@@ -45,10 +45,16 @@ public:
     void ReloadRenderer();
 
     /**
-     * @brief   模型更新处理。根据模型参数来决定绘图状态
+     * @brief   模型更新处理。根据手势拖动改变模型参数来决定绘图状态
      *
      */
-    void Update();
+    void UpdateDrag();
+    
+    /**
+     * @brief   模型更新处理。根据AR识别改变模型参数来决定绘图状态
+     *
+     */
+    void UpdateAR();
 
     /**
      * @brief   绘制模型的处理。传递绘制模型的空间View-Projection矩阵。

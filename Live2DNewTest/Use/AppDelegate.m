@@ -6,7 +6,7 @@
 //
 
 #import "AppDelegate.h"
-#include "ViewController.h"
+#import "ViewController.h"
 #import "Live2DBridge.h"
 #import "Live2DNewTest-Swift.h"
 
@@ -15,8 +15,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+//    ViewController *viewController = [[ViewController alloc] initWithNibName:nil bundle:nil];
     Live2DARViewController *viewController = [[Live2DARViewController alloc] initWithNibName:nil bundle:nil];
-    self.window.rootViewController = viewController;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    
+    self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
 
     [Live2DBridge initializeCubism];

@@ -20,14 +20,11 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZX-aR-WSy" customClass="Live2DView">
-                    <rect key="frame" x="32" y="205" width="350" height="500"/>
-                    <color key="backgroundColor" systemColor="systemYellowColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="500" id="Wyn-Pq-a5k"/>
-                    </constraints>
+                    <rect key="frame" x="0.0" y="95" width="414" height="757"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Tp-k4-5PO" userLabel="Change Model">
-                    <rect key="frame" x="166" y="124" width="82" height="31"/>
+                    <rect key="frame" x="166" y="54" width="82" height="31"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="切换模型"/>
                     <connections>
@@ -38,12 +35,12 @@
             <viewLayoutGuide key="safeArea" id="rWT-ep-I7J"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="EZX-aR-WSy" firstAttribute="top" secondItem="8Tp-k4-5PO" secondAttribute="bottom" constant="50" id="6QF-3C-JeL"/>
-                <constraint firstItem="EZX-aR-WSy" firstAttribute="centerX" secondItem="524-wC-A8O" secondAttribute="centerX" id="Pv3-Mi-Pfa"/>
-                <constraint firstItem="EZX-aR-WSy" firstAttribute="leading" secondItem="rWT-ep-I7J" secondAttribute="leading" constant="32" id="RjP-Te-YX8"/>
+                <constraint firstItem="rWT-ep-I7J" firstAttribute="bottom" secondItem="EZX-aR-WSy" secondAttribute="bottom" constant="10" id="2zI-9x-ul7"/>
+                <constraint firstItem="EZX-aR-WSy" firstAttribute="top" secondItem="8Tp-k4-5PO" secondAttribute="bottom" constant="10" id="6QF-3C-JeL"/>
+                <constraint firstItem="EZX-aR-WSy" firstAttribute="leading" secondItem="rWT-ep-I7J" secondAttribute="leading" id="RjP-Te-YX8"/>
                 <constraint firstItem="8Tp-k4-5PO" firstAttribute="centerX" secondItem="524-wC-A8O" secondAttribute="centerX" id="Yhw-Pn-xVA"/>
-                <constraint firstItem="8Tp-k4-5PO" firstAttribute="top" secondItem="rWT-ep-I7J" secondAttribute="top" constant="80" id="dxc-tK-nd3"/>
-                <constraint firstItem="rWT-ep-I7J" firstAttribute="trailing" secondItem="EZX-aR-WSy" secondAttribute="trailing" constant="32" id="p3N-2b-Auz"/>
+                <constraint firstItem="8Tp-k4-5PO" firstAttribute="top" secondItem="rWT-ep-I7J" secondAttribute="top" constant="10" id="dxc-tK-nd3"/>
+                <constraint firstItem="rWT-ep-I7J" firstAttribute="trailing" secondItem="EZX-aR-WSy" secondAttribute="trailing" id="p3N-2b-Auz"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="97.767857142857139"/>
         </view>
@@ -51,9 +48,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

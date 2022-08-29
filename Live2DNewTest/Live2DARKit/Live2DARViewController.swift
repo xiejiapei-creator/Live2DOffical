@@ -45,6 +45,8 @@ class Live2DARViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        UserDefaults.standard.set(true, forKey: "UseAR")
+        
         view.addSubview(live2DView)
         live2DView.frame = view.bounds
 

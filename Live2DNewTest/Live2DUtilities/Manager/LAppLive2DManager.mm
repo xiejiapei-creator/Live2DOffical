@@ -55,6 +55,7 @@ void FinishedMotion(Csm::ACubismMotion* self)
     if ( self ) {
         _viewMatrix = nil;
         _sceneIndex = 0;
+        _isLiveBroadcast = NO;
 
         _viewMatrix = new Csm::CubismMatrix44();
 
@@ -220,8 +221,20 @@ void FinishedMotion(Csm::ACubismMotion* self)
 
             Csm::Rendering::CubismRenderer_Metal::StartFrame(device, commandBuffer, _renderPassDescriptor);
         }
-
-        model->Update();
+           
+        
+//        if (_isLiveBroadcast) {// 直播使用AR更新运动参数
+//            model->UpdateAR();
+//        } else {// 其他场景使用手势更新运动参数
+//            model->UpdateDrag();
+//        }
+        
+        BOOL useAR = [[NSUserDefaults standardUserDefaults] boolForKey: @"UseAR"];
+        if (useAR) {// 直播使用AR更新运动参数
+            model->UpdateAR();
+        } else {// 其他场景使用手势更新运动参数
+            model->UpdateDrag();
+        }
         model->Draw(projection);/// 因为是参考传递，projection会变质
 
         if (_renderTarget == SelectTarget_ViewFrameBuffer && _renderBuffer && _sprite)

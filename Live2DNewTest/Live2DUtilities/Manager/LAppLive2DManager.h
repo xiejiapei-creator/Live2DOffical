@@ -43,6 +43,9 @@ typedef NS_ENUM(NSUInteger, SelectTarget)
 @property (nonatomic) float clearColorG;
 @property (nonatomic) float clearColorB;
 
+/// 是否直播
+@property (nonatomic, assign) BOOL isLiveBroadcast;
+
 
 /**
  * @brief 返回类的实例

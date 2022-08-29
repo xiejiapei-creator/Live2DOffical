@@ -37,6 +37,10 @@
     [[LAppLive2DManager getInstance] SetParameterValue:type value:value];
 }
 
++ (void)isLiveBroadcast:(BOOL)isLive {
+    [LAppLive2DManager getInstance].isLiveBroadcast = isLive;
+}
+
 #pragma mark - Sprite
 
 // 创建角色模型以外的精灵（绘图）

@@ -8,6 +8,7 @@
 #import "ViewController.h"
 #import "Live2DBridge.h"
 #import <Masonry/Masonry.h>
+#import "Live2DNewTest-Swift.h"
 
 @implementation ViewController
 
@@ -17,6 +18,8 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"UseAR"];
 
 //    [self.view addSubview:self.live2DView];
 //    self.live2DView.frame = self.view.bounds;
@@ -44,5 +47,9 @@
     [Live2DBridge changeNextLive2DModel];
 }
 
+- (IBAction)enterARView:(UIButton *)sender {
+    Live2DARViewController *viewController = [[Live2DARViewController alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
 
 @end

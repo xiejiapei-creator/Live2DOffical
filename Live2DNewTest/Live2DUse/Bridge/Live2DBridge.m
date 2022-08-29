@@ -87,4 +87,9 @@
     [L2DBridge setParameterValue:type value:value];
 }
 
+/// 判断是否直播 直播使用AR来更新运动参数
++ (void)isLiveBroadcast:(BOOL)isLive {
+    [L2DBridge isLiveBroadcast:isLive];
+}
+
 @end
