@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZX-aR-WSy" customClass="Live2DView">
-                    <rect key="frame" x="0.0" y="182" width="414" height="650"/>
+                    <rect key="frame" x="0.0" y="186" width="414" height="646"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cyl-13-jAL" userLabel="Change Name Model">
@@ -130,7 +130,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3h-dM-Vpa" userLabel="ChangeClothes">
-                    <rect key="frame" x="215" y="146" width="179" height="36"/>
+                    <rect key="frame" x="215" y="150" width="179" height="36"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="Fcx-fd-GsO"/>
                     </constraints>
@@ -194,7 +194,7 @@
                 <constraint firstItem="rWT-ep-I7J" firstAttribute="bottom" secondItem="EZX-aR-WSy" secondAttribute="bottom" constant="30" id="g58-B3-s6f"/>
                 <constraint firstItem="rWT-ep-I7J" firstAttribute="trailing" secondItem="o3h-dM-Vpa" secondAttribute="trailing" constant="20" id="i1m-Mb-K7U"/>
                 <constraint firstItem="tW8-L3-Ciz" firstAttribute="top" secondItem="cZj-ds-ViH" secondAttribute="top" id="jgJ-fa-b6F"/>
-                <constraint firstItem="o3h-dM-Vpa" firstAttribute="top" secondItem="Cyl-13-jAL" secondAttribute="bottom" constant="16" id="miL-bl-DZc"/>
+                <constraint firstItem="o3h-dM-Vpa" firstAttribute="top" secondItem="ZWD-9a-Z2w" secondAttribute="top" id="miL-bl-DZc"/>
                 <constraint firstItem="60j-we-iiN" firstAttribute="centerX" secondItem="524-wC-A8O" secondAttribute="centerX" id="ml4-9l-Aul"/>
                 <constraint firstItem="rWT-ep-I7J" firstAttribute="trailing" secondItem="EZX-aR-WSy" secondAttribute="trailing" id="p3N-2b-Auz"/>
                 <constraint firstItem="ZWD-9a-Z2w" firstAttribute="leading" secondItem="rWT-ep-I7J" secondAttribute="leading" constant="20" id="qI5-PN-bzp"/>
