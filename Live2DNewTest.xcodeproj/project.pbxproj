@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49A6079355FB4B011846F9FB /* libPods-Live2DNewTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF089F2DCC64F4E0008D953 /* libPods-Live2DNewTest.a */; };
 		E933EDAE28B60E52002A61DB /* LAppDefine.mm in Sources */ = {isa = PBXBuildFile; fileRef = E933EDAC28B60E52002A61DB /* LAppDefine.mm */; };
 		E933EDB228B70C75002A61DB /* L2DRender.mm in Sources */ = {isa = PBXBuildFile; fileRef = E933EDB128B70C75002A61DB /* L2DRender.mm */; };
 		E933EDB428B72944002A61DB /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E933EDB328B72944002A61DB /* ViewController.xib */; };
@@ -224,7 +223,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49A6079355FB4B011846F9FB /* libPods-Live2DNewTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -977,6 +975,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MRMHT335N6;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

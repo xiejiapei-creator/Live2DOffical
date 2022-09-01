@@ -7,7 +7,7 @@
 
 #import "ViewController.h"
 #import "Live2DBridge.h"
-#import <Masonry/Masonry.h>
+//#import <Masonry/Masonry.h>
 
 @implementation ViewController
 
@@ -30,7 +30,7 @@
     
     // 创建角色模型以外的精灵（绘图）
     // 必须保证精灵在初始化 Cubism SDK 和视图呈现之后创建，因为顺序颠倒会崩溃
-    [Live2DBridge createSprite: self.live2DXibView.bounds.size];
+    //[Live2DBridge createSprite: self.live2DXibView.bounds.size];
 }
 
 - (Live2DView *)live2DView {
