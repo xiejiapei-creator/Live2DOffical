@@ -19,6 +19,10 @@
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
     
+    self.pickerController = [[UIImagePickerController alloc] init];
+    self.pickerController.delegate = self;
+    self.pickerController.allowsEditing = YES;
+    
 //    [self.view addSubview:self.live2DView];
 //    self.live2DView.frame = self.view.bounds;
 //    [self.live2DView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -76,17 +80,28 @@
 }
 
 - (IBAction)changeClothes:(UIButton *)sender {
-    NSString* castFilePath = [[NSBundle mainBundle]
-                              pathForResource:@"replaceImage"
-                              ofType:@"png"
-                              inDirectory:@""];
-    NSData *data = [NSData dataWithContentsOfFile:castFilePath];
+    self.pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:self.pickerController animated:YES completion:nil];
     
-    [Live2DChangeClothes replaceModelPNG:self.live2DXibView.modelName pngIndexStr:@"01" newPNGData:data];
+//    NSString* castFilePath = [[NSBundle mainBundle]
+//                              pathForResource:@"replaceImage"
+//                              ofType:@"png"
+//                              inDirectory:@""];
+//    NSData *data = [NSData dataWithContentsOfFile:castFilePath];
 }
 
 - (IBAction)resetModel:(UIButton *)sender {
     [Live2DChangeClothes resetModelPNG:self.live2DXibView.modelName pngIndexStr:@"01"];
+}
+
+#pragma mark - 相册
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    NSData *data = UIImagePNGRepresentation(image);
+    [Live2DChangeClothes replaceModelPNG:self.live2DXibView.modelName pngIndexStr:@"01" newPNGData:data];
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

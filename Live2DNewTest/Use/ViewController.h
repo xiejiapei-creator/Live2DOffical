@@ -8,11 +8,13 @@
 #import <UIKit/UIKit.h>
 #import "Live2DView.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet Live2DView *live2DXibView;
 
 /// 展示 live2d 的 View
 @property (nonatomic, strong) Live2DView *live2DView;
+
+@property (nonatomic, strong) UIImagePickerController *pickerController;
 
 @end
