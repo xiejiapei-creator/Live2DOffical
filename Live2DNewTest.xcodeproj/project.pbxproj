@@ -52,7 +52,6 @@
 		E96B254628AD0AE000678943 /* CubismModelSettingJson.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E96B251828AD0AE000678943 /* CubismModelSettingJson.cpp */; };
 		E96B254728AD0AE000678943 /* CubismRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E96B251C28AD0AE000678943 /* CubismRenderer.cpp */; };
 		E96B254A28AD0AE000678943 /* CubismCdiJson.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E96B252528AD0AE000678943 /* CubismCdiJson.cpp */; };
-		E96B254C28AD0B4D00678943 /* Live2DResources in Resources */ = {isa = PBXBuildFile; fileRef = E96B254B28AD0B4D00678943 /* Live2DResources */; };
 		E98E197D28B4BC77005EE294 /* CubismCommandBuffer_Metal.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E197328B4BC77005EE294 /* CubismCommandBuffer_Metal.mm */; };
 		E98E197E28B4BC77005EE294 /* CubismOffscreenSurface_Metal.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E197728B4BC77005EE294 /* CubismOffscreenSurface_Metal.mm */; };
 		E98E197F28B4BC77005EE294 /* CubismRenderingInstanceSingleton_Metal.m in Sources */ = {isa = PBXBuildFile; fileRef = E98E197928B4BC77005EE294 /* CubismRenderingInstanceSingleton_Metal.m */; };
@@ -72,6 +71,8 @@
 		E98E19B628B4CADF005EE294 /* L2DCubism.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19B528B4CADF005EE294 /* L2DCubism.mm */; };
 		E98E19C028B5039B005EE294 /* L2DMetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19BF28B5039B005EE294 /* L2DMetal.mm */; };
 		E98E19C428B53C28005EE294 /* L2DSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19C328B53C28005EE294 /* L2DSprite.mm */; };
+		E9EC7BE928C0614500BD111F /* Live2DResources in Resources */ = {isa = PBXBuildFile; fileRef = E9EC7BE828C0614500BD111F /* Live2DResources */; };
+		E9EC7BEB28C094DF00BD111F /* replaceImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EC7BEA28C094DF00BD111F /* replaceImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -175,7 +176,6 @@
 		E96B252328AD0AE000678943 /* CubismCdiJson.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = CubismCdiJson.hpp; path = Live2DSDK/Framework/src/CubismCdiJson.hpp; sourceTree = "<group>"; };
 		E96B252428AD0AE000678943 /* ICubismAllocator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ICubismAllocator.hpp; path = Live2DSDK/Framework/src/ICubismAllocator.hpp; sourceTree = "<group>"; };
 		E96B252528AD0AE000678943 /* CubismCdiJson.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CubismCdiJson.cpp; path = Live2DSDK/Framework/src/CubismCdiJson.cpp; sourceTree = "<group>"; };
-		E96B254B28AD0B4D00678943 /* Live2DResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Live2DResources; sourceTree = "<group>"; };
 		E98E197328B4BC77005EE294 /* CubismCommandBuffer_Metal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CubismCommandBuffer_Metal.mm; sourceTree = "<group>"; };
 		E98E197428B4BC77005EE294 /* CubismRenderingInstanceSingleton_Metal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CubismRenderingInstanceSingleton_Metal.h; sourceTree = "<group>"; };
 		E98E197528B4BC77005EE294 /* MetalShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalShaderTypes.h; sourceTree = "<group>"; };
@@ -216,6 +216,8 @@
 		E98E19BF28B5039B005EE294 /* L2DMetal.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = L2DMetal.mm; sourceTree = "<group>"; };
 		E98E19C228B53C28005EE294 /* L2DSprite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = L2DSprite.h; sourceTree = "<group>"; };
 		E98E19C328B53C28005EE294 /* L2DSprite.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = L2DSprite.mm; sourceTree = "<group>"; };
+		E9EC7BE828C0614500BD111F /* Live2DResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Live2DResources; sourceTree = "<group>"; };
+		E9EC7BEA28C094DF00BD111F /* replaceImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = replaceImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,11 +323,11 @@
 		E96B1D8F28ACDE6700678943 /* Live2DNewTest */ = {
 			isa = PBXGroup;
 			children = (
+				E9EC7BE828C0614500BD111F /* Live2DResources */,
 				E96B24BD28AD076D00678943 /* Use */,
 				E933EE8E28B79740002A61DB /* Live2DUse */,
 				E98E19B228B4CA7E005EE294 /* Live2DOCBridge */,
 				E98E198228B4C00E005EE294 /* Live2DUtilities */,
-				E96B254B28AD0B4D00678943 /* Live2DResources */,
 				E96B24C828AD0AB400678943 /* Live2DSDK */,
 				E96B1DA928ACE04800678943 /* Origin */,
 				E96B1DA128ACDE6800678943 /* Info.plist */,
@@ -346,6 +348,7 @@
 		E96B24BD28AD076D00678943 /* Use */ = {
 			isa = PBXGroup;
 			children = (
+				E9EC7BEA28C094DF00BD111F /* replaceImage.png */,
 				E98E19AE28B4C526005EE294 /* AppDelegate.h */,
 				E98E19AF28B4C526005EE294 /* AppDelegate.m */,
 				E98E19AB28B4C51C005EE294 /* ViewController.h */,
@@ -739,7 +742,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E96B254C28AD0B4D00678943 /* Live2DResources in Resources */,
+				E9EC7BE928C0614500BD111F /* Live2DResources in Resources */,
+				E9EC7BEB28C094DF00BD111F /* replaceImage.png in Resources */,
 				E96B1DA028ACDE6800678943 /* LaunchScreen.storyboard in Resources */,
 				E933EDB428B72944002A61DB /* ViewController.xib in Resources */,
 				E96B1D9D28ACDE6800678943 /* Assets.xcassets in Resources */,

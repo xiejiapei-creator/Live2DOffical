@@ -35,8 +35,50 @@ csmByte* LAppPal::LoadFileAsBytes(const string filePath, csmSizeInt* outSize)
                               pathForResource:[NSString stringWithUTF8String:filename.c_str()]
                               ofType:[NSString stringWithUTF8String:extname.c_str()]
                               inDirectory:[NSString stringWithUTF8String:pathname.c_str()]];
+    
+    NSString *filePathOCStr = [NSString stringWithUTF8String:filePath.c_str()];
+    NSString *fileNameWithExt = [filePathOCStr lastPathComponent];
+    NSString *folderName = [filePathOCStr stringByReplacingOccurrencesOfString: fileNameWithExt withString:@""] ;
+    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *folderPath = [NSString stringWithFormat:@"%@/%@", documentDirectory, folderName];
+    
+    // 创建目录
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL folderPathIsDir = NO;
+    BOOL folderExisted = [fileManager fileExistsAtPath:folderPath isDirectory:&folderPathIsDir];
+    if (!(folderPathIsDir == YES && folderExisted == YES)) {
+        [fileManager createDirectoryAtPath:folderPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    // 创建文件夹
+    NSString *filePathFullStr = [folderPath stringByAppendingString:fileNameWithExt];
+    NSData *bundleData = [NSData dataWithContentsOfFile:castFilePath];
+    BOOL filePathFullStrIsDir = NO;
+    BOOL fileExisted = [fileManager fileExistsAtPath:filePathFullStr isDirectory:&filePathFullStrIsDir];
+    if ((filePathFullStrIsDir == NO && fileExisted == NO)) {
+        [fileManager createFileAtPath:filePathFullStr contents:bundleData attributes:nil];
+    }
+    
+    NSArray *pathList = [fileManager subpathsAtPath:folderPath];
+    NSMutableArray *modelPNGPathList = [NSMutableArray array];
+    for (NSString *path in pathList)
+    {
+        if ([path containsString:@".png"])
+        {
+            [modelPNGPathList addObject:path];
 
-    NSData *data = [NSData dataWithContentsOfFile:castFilePath];
+        }
+    }
+    NSLog(@"谢佳培：%@",modelPNGPathList);
+
+//    NSData *data;
+    NSData *data = [NSData dataWithContentsOfFile:filePathFullStr];
+//    if (sandboxData == nil || sandboxData.length == 0) {
+//        data = bundleData;
+//    } else {
+//        data = sandboxData;
+//    }
+    
     NSUInteger len = [data length];
     Byte *byteData = (Byte*)malloc(len);
     memcpy(byteData, [data bytes], len);

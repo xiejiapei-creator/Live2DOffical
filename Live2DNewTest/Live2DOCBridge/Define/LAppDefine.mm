@@ -36,10 +36,7 @@ namespace LAppDefine {
     // 放置模型的目录名数组
     const csmChar* ModelDir[] = {
         "Haru",
-        "Hiyori",
-        "Mark",
-        "Natori",
-        "Rice"
+        "Hiyori"
     };
 
     const csmInt32 ModelDirSize = sizeof(ModelDir) / sizeof(const csmChar*);

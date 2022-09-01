@@ -34,6 +34,15 @@
                         <action selector="changeModel:" destination="-1" eventType="touchUpInside" id="clk-gH-OdI"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKc-Iq-c8i">
+                    <rect key="frame" x="59" y="84" width="129" height="51"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                    <connections>
+                        <action selector="changeadsfsdaf:" destination="-1" eventType="touchUpInside" id="8ag-tK-tWc"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="rWT-ep-I7J"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
