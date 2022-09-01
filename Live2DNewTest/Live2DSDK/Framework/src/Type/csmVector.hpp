@@ -163,11 +163,11 @@ public:
     void Assign(csmInt32 newSize, T value = T(), csmBool callPlacementNew = true);
 
     /**
-     * @brief   コンテナからインデックスで指定した要素を削除する
+     * @brief   从容器中删除索引中指定的元素
      *
-     * @param[in]   index   ->  インデックス値
-     * @retval      true    ->  削除実行
-     * @retval      false   ->  削除範囲外
+     * @param[in]   index   ->  索引值
+     * @retval      true    ->  执行删除
+     * @retval      false   ->  删除范围之外
      */
     csmBool Remove(csmInt32 index)
     {

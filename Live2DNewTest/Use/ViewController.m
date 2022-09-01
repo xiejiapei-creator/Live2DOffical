@@ -18,7 +18,6 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
-
     
 //    [self.view addSubview:self.live2DView];
 //    self.live2DView.frame = self.view.bounds;
@@ -37,7 +36,6 @@
 - (Live2DView *)live2DView {
     if (!_live2DView) {
         _live2DView = [[Live2DView alloc] init];
-        _live2DView.modelName = @"Haru";
     }
     return _live2DView;
 }
@@ -53,8 +51,7 @@
                               inDirectory:@""];
     NSData *data = [NSData dataWithContentsOfFile:castFilePath];
     
-    NSString *currentModelName = self.live2DXibView.modelName;
-    [Live2DChangeClothes replaceModelPNG:currentModelName pngIndexStr:@"01" newPNGData:data];
+    [Live2DChangeClothes replaceModelPNG:self.live2DXibView.modelName pngIndexStr:@"01" newPNGData:data];
 }
 
 @end

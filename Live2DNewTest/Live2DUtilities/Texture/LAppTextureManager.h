@@ -57,7 +57,7 @@ typedef struct
  * @param[in] fileName  读取的图像文件路径名
  * @return 图像信息。读入失败时返回空
  */
-- (TextureInfo*)createTextureFromPngFile:(std::string)fileName;
+- (TextureInfo*)createTextureFromPngFile:(std::string)fileName needReloadTexture:(BOOL)needReloadTexture;
 
 /**
  * @brief 释放纹理图像

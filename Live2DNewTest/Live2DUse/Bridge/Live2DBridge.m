@@ -54,8 +54,8 @@
     return  [L2DBridge nextLive2DModelName];
 }
 
-+ (void)changeLive2DModelWithName:(NSString *)name {
-    [L2DBridge changeLive2DModelWithName:name];
++ (void)changeLive2DModelWithName:(NSString *)name needReloadTexture:(BOOL)needReloadTexture {
+    [L2DBridge changeLive2DModelWithName:name needReloadTexture:needReloadTexture];
 }
 
 #pragma mark - 精灵

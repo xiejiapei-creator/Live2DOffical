@@ -77,7 +77,7 @@
 }
 
 - (void)restoreRoleState {
-    [[LAppLive2DManager getInstance] changeScene:_roleIndex];
+    [[LAppLive2DManager getInstance] changeScene:_roleIndex needReloadTexture:NO];
 }
 
 @end

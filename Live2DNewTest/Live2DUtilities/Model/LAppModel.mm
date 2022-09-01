@@ -30,19 +30,11 @@ using namespace LAppDefine;
 namespace {
     csmByte* CreateBuffer(const csmChar* path, csmSizeInt* size)
     {
-        if (DebugLogEnable)
-        {
-            LAppPal::PrintLog("[APP]create buffer: %s ", path);
-        }
         return LAppPal::LoadFileAsBytes(path,size);
     }
 
     void DeleteBuffer(csmByte* buffer, const csmChar* path = "")
     {
-        if (DebugLogEnable)
-        {
-            LAppPal::PrintLog("[APP]delete buffer: %s", path);
-        }
         LAppPal::ReleaseBytes(buffer);
     }
 }
@@ -80,15 +72,9 @@ LAppModel::~LAppModel()
     delete _modelSetting;
 }
 
-void LAppModel::LoadAssets(const csmChar* dir, const csmChar* fileName)
+void LAppModel::LoadAssets(const csmChar* dir, const csmChar* fileName, csmBool needReloadTexture)
 {
     _modelHomeDir = dir;
-
-    if (_debugMode)
-    {
-        LAppPal::PrintLog("[APP]load model setting: %s", fileName);
-    }
-
     csmSizeInt size;
     const csmString path = csmString(dir) + fileName;
 
@@ -100,7 +86,7 @@ void LAppModel::LoadAssets(const csmChar* dir, const csmChar* fileName)
 
     CreateRenderer();
 
-    SetupTextures();
+    SetupTextures(needReloadTexture);
 }
 
 
@@ -119,12 +105,6 @@ void LAppModel::SetupModel(ICubismModelSetting* setting)
     {
         csmString path = _modelSetting->GetModelFileName();
         path = _modelHomeDir + path;
-
-        if (_debugMode)
-        {
-            LAppPal::PrintLog("[APP]create model: %s", setting->GetModelFileName());
-        }
-
         buffer = CreateBuffer(path.GetRawString(), &size);
         LoadModel(buffer, size);
         DeleteBuffer(buffer, path.GetRawString());
@@ -254,11 +234,6 @@ void LAppModel::PreloadMotionGroup(const csmChar* group)
         csmString name = Utils::CubismString::GetFormatedString("%s_%d", group, i);
         csmString path = _modelSetting->GetMotionFileName(group, i);
         path = _modelHomeDir + path;
-
-        if (_debugMode)
-        {
-            LAppPal::PrintLog("[APP]load motion: %s => [%s_%d] ", path.GetRawString(), group, i);
-        }
 
         csmByte* buffer;
         csmSizeInt size;
@@ -418,10 +393,6 @@ CubismMotionQueueEntryHandle LAppModel::StartMotion(const csmChar* group, csmInt
     }
     else if (!_motionManager->ReserveMotion(priority))
     {
-        if (_debugMode)
-        {
-            LAppPal::PrintLog("[APP]can't start motion.");
-        }
         return InvalidMotionQueueEntryHandleValue;
     }
 
@@ -470,10 +441,6 @@ CubismMotionQueueEntryHandle LAppModel::StartMotion(const csmChar* group, csmInt
         path = _modelHomeDir + path;
     }
 
-    if (_debugMode)
-    {
-        LAppPal::PrintLog("[APP]start motion: [%s_%d]", group, no);
-    }
     return  _motionManager->StartMotionPriority(motion, autoDelete, priority);
 }
 
@@ -540,21 +507,9 @@ csmBool LAppModel::HitTest(const csmChar* hitAreaName, csmFloat32 x, csmFloat32 
 void LAppModel::SetExpression(const csmChar* expressionID)
 {
     ACubismMotion* motion = _expressions[expressionID];
-    if (_debugMode)
-    {
-        LAppPal::PrintLog("[APP]expression: [%s]", expressionID);
-    }
-
     if (motion != NULL)
     {
         _expressionManager->StartMotionPriority(motion, false, PriorityForce);
-    }
-    else
-    {
-        if (_debugMode)
-        {
-            LAppPal::PrintLog("[APP]expression[%s] is null ", expressionID);
-        }
     }
 }
 
@@ -586,10 +541,10 @@ void LAppModel::ReloadRenderer()
 
     CreateRenderer();
 
-    SetupTextures();
+    SetupTextures(true);
 }
 
-void LAppModel::SetupTextures()
+void LAppModel::SetupTextures(csmBool needReloadTexture)
 {
     for (csmInt32 modelTextureNumber = 0; modelTextureNumber < _modelSetting->GetTextureCount(); modelTextureNumber++)
         {
@@ -604,7 +559,7 @@ void LAppModel::SetupTextures()
             texturePath = _modelHomeDir + texturePath;
 
             LAppTextureManager* textureManager = [[L2DCubism sharedInstance] getTextureManager];
-            TextureInfo* texture = [textureManager createTextureFromPngFile:texturePath.GetRawString()];
+            TextureInfo* texture = [textureManager createTextureFromPngFile:texturePath.GetRawString() needReloadTexture:needReloadTexture];
             id <MTLTexture> mtlTextueNumber = texture->id;
 
             // Metal

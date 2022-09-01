@@ -40,17 +40,26 @@
 }
 
 
-- (TextureInfo*)createTextureFromPngFile:(std::string)fileName
+- (TextureInfo*)createTextureFromPngFile:(std::string)fileName needReloadTexture:(BOOL)needReloadTexture
 {
-
-    // 倘若纹理已经加载则直接返回
-//    for (Csm::csmUint32 i = 0; i < _textures.GetSize(); i++)
-//    {
-//        if (_textures[i]->fileName == fileName)
-//        {
-//            return _textures[i];
-//        }
-//    }
+    Csm::csmInt32 removeIndex = 0;
+    for (Csm::csmUint32 i = 0; i < _textures.GetSize(); i++)
+    {
+        if (_textures[i]->fileName == fileName)
+        {
+            if (needReloadTexture) {
+                // 换装必须重新加载纹理，需要删除旧纹理
+                removeIndex = i;
+                break;
+            } else {
+                // 切换模型不一定需要重新加载纹理，倘若纹理已经加载则直接返回
+                return _textures[i];
+            }
+        }
+    }
+    if (needReloadTexture) {
+        _textures.Remove(removeIndex);
+    }
 
     int width, height, channels;
     unsigned int size;

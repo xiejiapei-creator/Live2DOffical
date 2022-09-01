@@ -36,7 +36,7 @@ public:
      * @brief 提供model3.json文件所在的目录和名称来生成模型
      *
      */
-    void LoadAssets(const Csm::csmChar* dir, const  Csm::csmChar* fileName);
+    void LoadAssets(const Csm::csmChar* dir, const  Csm::csmChar* fileName, Csm::csmBool needReloadTexture);
 
     /**
      * @brief 重新加载渲染器
@@ -129,9 +129,9 @@ private:
 
     /**
      * @brief 加载纹理
-     *
+     * @param needReloadTexture 是否需要重新加载纹理
      */
-    void SetupTextures();
+    void SetupTextures(Csm::csmBool needReloadTexture);
 
     /**
      * @brief   从组名中统一加载运动数据

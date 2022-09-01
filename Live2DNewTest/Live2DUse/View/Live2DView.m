@@ -34,7 +34,7 @@
 
 - (void)setModelName:(NSString *)modelName {
     _modelName = modelName;
-    [Live2DBridge changeLive2DModelWithName:modelName];
+    [Live2DBridge changeLive2DModelWithName:modelName needReloadTexture:NO];
 }
 
 - (void)dealloc {

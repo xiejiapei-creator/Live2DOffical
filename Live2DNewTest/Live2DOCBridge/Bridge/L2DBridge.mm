@@ -32,7 +32,7 @@
 }
 
 /// 切换到指定人物
-+ (void)changeLive2DModelWithName:(NSString *)name {
++ (void)changeLive2DModelWithName:(NSString *)name needReloadTexture:(BOOL)needReloadTexture {
     if (name == nil || [name isEqualToString:@""]) {
         return;
     }
@@ -42,7 +42,7 @@
         const csmChar* modelJsonName = LAppDefine::ModelDir[index];
         NSString *modelName = [NSString stringWithUTF8String:modelJsonName];
         if ([name isEqualToString:modelName]) {
-            [[LAppLive2DManager getInstance] changeScene:index];
+            [[LAppLive2DManager getInstance] changeScene:index needReloadTexture:needReloadTexture];
             break;
         }
     }

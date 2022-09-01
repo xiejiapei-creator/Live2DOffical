@@ -266,13 +266,9 @@ void FinishedMotion(Csm::ACubismMotion* self)
     return modelName;
 }
 
-- (void)changeScene:(Csm::csmInt32)index
+- (void)changeScene:(Csm::csmInt32)index needReloadTexture:(BOOL)needReloadTexture
 {
     _sceneIndex = index;
-    if (LAppDefine::DebugLogEnable)
-    {
-        LAppPal::PrintLog("[APP]model index: %d", _sceneIndex);
-    }
 
     // ModelDir[]中保存的目录名称
     // model3.json的路径
@@ -284,7 +280,7 @@ void FinishedMotion(Csm::ACubismMotion* self)
 
     [self releaseAllModel];
     _models.PushBack(new LAppModel());
-    _models[0]->LoadAssets(modelPath.c_str(), modelJsonName.c_str());
+    _models[0]->LoadAssets(modelPath.c_str(), modelJsonName.c_str(), needReloadTexture);
 
     /*
      * 提供进行模型半透明显示的样本。
@@ -305,7 +301,7 @@ void FinishedMotion(Csm::ACubismMotion* self)
 #if defined(USE_RENDER_TARGET) || defined(USE_MODEL_RENDER_TARGET)
         // 给模型单独添加α作为样本，制作另一个模型，稍微移开位置
         _models.PushBack(new LAppModel());
-        _models[1]->LoadAssets(modelPath.c_str(), modelJsonName.c_str());
+        _models[1]->LoadAssets(modelPath.c_str(), modelJsonName.c_str(), needReloadTexture);
         _models[1]->GetModelMatrix()->TranslateX(0.2f);
 #endif
 

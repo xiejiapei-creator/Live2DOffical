@@ -39,7 +39,7 @@ using namespace LAppDefine;
     string imageName = BackImageName;
     
     // 读取图像信息来创建纹理
-    TextureInfo* backgroundTexture = [textureManager createTextureFromPngFile: resourcesPath+imageName];
+    TextureInfo* backgroundTexture = [textureManager createTextureFromPngFile: resourcesPath+imageName needReloadTexture:NO];
     
     // 获取渲染视图的宽、高
     float width = metalViewSize.width;
@@ -54,7 +54,7 @@ using namespace LAppDefine;
 
     // 变换模型按钮
     imageName = GearImageName;
-    TextureInfo* gearTexture = [textureManager createTextureFromPngFile: resourcesPath+imageName];
+    TextureInfo* gearTexture = [textureManager createTextureFromPngFile: resourcesPath+imageName needReloadTexture:NO];
     x = static_cast<float>(width - gearTexture->width * 0.5f);
     y = static_cast<float>(height - gearTexture->height * 0.5f - 50);
     fWidth = static_cast<float>(gearTexture->width);
@@ -63,7 +63,7 @@ using namespace LAppDefine;
 
     // 电源按钮
     imageName = PowerImageName;
-    TextureInfo* powerTexture = [textureManager createTextureFromPngFile:resourcesPath+imageName];
+    TextureInfo* powerTexture = [textureManager createTextureFromPngFile:resourcesPath+imageName needReloadTexture:NO];
     x = static_cast<float>(width - powerTexture->width * 0.5f);
     y = static_cast<float>(powerTexture->height * 0.5f + 50);
     fWidth = static_cast<float>(powerTexture->width);

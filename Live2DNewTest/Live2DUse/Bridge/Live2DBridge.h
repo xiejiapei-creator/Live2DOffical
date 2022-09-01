@@ -35,8 +35,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 切换下一个人物模型
 + (NSString *)nextLive2DModelName;
-/// 切换到指定人物
-+ (void)changeLive2DModelWithName:(NSString *)name;
+
+/// 切换到指定人物，并指定是否必须要重新渲染纹理
+/// 切换模型：如果之前已经加载过纹理则不需要重新加载，所以非必需重新加载 needReloadTexture 为 NO
+/// 换装：不管之前有没有加载过纹理都必须要重新加载
++ (void)changeLive2DModelWithName:(NSString *)name needReloadTexture:(BOOL)needReloadTexture;
+
 /// 创建角色模型以外的精灵（绘图）
 /// 必须保证精灵在初始化 Cubism SDK 和视图呈现之后创建，因为顺序颠倒会崩溃，可以放在viewDidAppear中
 + (void)createSprite:(CGSize)metalViewSize;

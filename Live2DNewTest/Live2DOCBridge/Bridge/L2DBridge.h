@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)nextLive2DModelName;
 
 /// 切换到指定人物
-+ (void)changeLive2DModelWithName:(NSString *)name;
++ (void)changeLive2DModelWithName:(NSString *)name needReloadTexture:(BOOL)needReloadTexture;
 
 // 创建角色模型以外的精灵（绘图）
 + (void)createSprite:(CGSize)metalViewSize;

@@ -76,7 +76,7 @@
     }
     
     // 重新渲染模型
-    [Live2DBridge changeLive2DModelWithName:modelName];
+    [Live2DBridge changeLive2DModelWithName:modelName needReloadTexture:YES];
 }
 
 

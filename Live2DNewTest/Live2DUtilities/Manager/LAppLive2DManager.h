@@ -91,7 +91,7 @@ typedef NS_ENUM(NSUInteger, SelectTarget)
  * @brief   切换场景
  *          在样本应用中进行模型集的切换
  */
-- (void)changeScene:(Csm::csmInt32)index;
+- (void)changeScene:(Csm::csmInt32)index needReloadTexture:(BOOL)needReloadTexture;
 
 /**
  * @brief   得到模型个数
