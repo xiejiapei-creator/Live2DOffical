@@ -17,31 +17,21 @@
     NSString *live2DResourcesPath = [NSString stringWithFormat:@"%@/%@", documentDirectory, @"Live2DResources"];
     NSArray *pathList = [fileManager subpathsAtPath:live2DResourcesPath];
 
-    NSMutableArray *modelPNGPathList = [NSMutableArray array];
+    NSMutableArray *modelPNGList = [NSMutableArray array];
     for (NSString *path in pathList)
     {
         if ([path containsString:@".png"] && [path containsString:modelName])
         {
             NSString *fullPath = [NSString stringWithFormat:@"%@/Live2DResources/%@", documentDirectory, path];
-            [modelPNGPathList addObject:fullPath];
+            [modelPNGList addObject:fullPath];
         }
     }
 
-    return [modelPNGPathList copy];
+    return [modelPNGList copy];
 }
 
-+ (void)replaceModelPNG:(NSString *)modelName pngIndexStr:(NSString *)pngIndexStr newPNGData:(NSData *)newPNGData {
-    // 判空处理
-    if (modelName == nil || [modelName isEqualToString:@""]) {
-        return;
-    }
-    if (pngIndexStr == nil || [pngIndexStr isEqualToString:@""]) {
-        return;
-    }
-    if (newPNGData == nil || newPNGData.length == 0) {
-        return;
-    }
-    
+/// 找到要替换的纹理图片路径
++ (NSString *)getReplaceModelPNGFilePath:(NSString *)modelName pngIndexStr:(NSString *)pngIndexStr {
     // 获取模型的PNG图片列表
     NSArray *modelPNGPathList = [Live2DChangeClothes getModelPNGList:modelName];
     
@@ -58,15 +48,29 @@
             break;
         }
     }
-    if (modelPNGPath == nil || [modelPNGPath isEqualToString:@""]) {
+    
+    return modelPNGPath;
+}
+
++ (void)replaceModelPNG:(NSString *)modelName pngIndexStr:(NSString *)pngIndexStr newPNGData:(NSData *)newPNGData {
+    // 判空处理
+    if (modelName == nil || [modelName isEqualToString:@""]) {
+        return;
+    }
+    if (pngIndexStr == nil || [pngIndexStr isEqualToString:@""]) {
+        return;
+    }
+    if (newPNGData == nil || newPNGData.length == 0) {
         return;
     }
     
-    // 修改原来的纹理图片名称
-    NSString *pngName = [modelPNGPath lastPathComponent];
-    NSString *modifyPNGFilePath = [modelPNGPath stringByReplacingOccurrencesOfString:pngName withString:@"texture_origin.png"];
+    // 删除要换装的图片
+    NSString *modelPNGPath = [self getReplaceModelPNGFilePath:modelName pngIndexStr:pngIndexStr];
+    if (modelPNGPath == nil || [modelPNGPath isEqualToString:@""]) {
+        return;
+    }
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager moveItemAtPath:modelPNGPath toPath:modifyPNGFilePath error:nil];
+    [fileManager removeItemAtPath:modelPNGPath error:nil];
     
     // 根据新纹理图片的数据和原来的纹理图片名称创建新的换装后的图片
     BOOL filePathIsDir = NO;
@@ -79,5 +83,37 @@
     [Live2DBridge changeLive2DModelWithName:modelName needReloadTexture:YES];
 }
 
++ (void)resetModelPNG:(NSString *)modelName pngIndexStr:(NSString *)pngIndexStr {
+    if (modelName == nil || [modelName isEqualToString:@""]) {
+        return;
+    }
+    if (pngIndexStr == nil || [pngIndexStr isEqualToString:@""]) {
+        return;
+    }
+
+    // 获取要换装的图片删除之
+    NSString *modelPNGFullPath = [self getReplaceModelPNGFilePath:modelName pngIndexStr:pngIndexStr];
+    if (modelPNGFullPath == nil || [modelPNGFullPath isEqualToString:@""]) {
+        return;
+    }
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:modelPNGFullPath error:nil];
+    
+    // 渲染模型
+    [Live2DBridge changeLive2DModelWithName:modelName needReloadTexture:YES];
+}
+
++ (void)clearSandBoxModelFiles {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *live2DResourcesPath = [NSString stringWithFormat:@"%@/%@", documentDirectory, @"Live2DResources"];
+    NSArray *pathList = [fileManager subpathsAtPath:live2DResourcesPath];
+
+    for (NSString *path in pathList)
+    {
+        NSString *fullPath = [NSString stringWithFormat:@"%@/Live2DResources/%@", documentDirectory, path];
+        [fileManager removeItemAtPath:fullPath error:nil];
+    }
+}
 
 @end

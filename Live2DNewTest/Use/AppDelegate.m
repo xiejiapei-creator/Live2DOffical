@@ -8,22 +8,14 @@
 #import "AppDelegate.h"
 #include "ViewController.h"
 #import "Live2DBridge.h"
+#import "Live2DChangeClothes.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *live2DResourcesPath = [NSString stringWithFormat:@"%@/%@", documentDirectory, @"Live2DResources"];
-    NSArray *pathList = [fileManager subpathsAtPath:live2DResourcesPath];
+    
+    [Live2DChangeClothes clearSandBoxModelFiles];
 
-    for (NSString *path in pathList)
-    {
-        NSString *fullPath = [NSString stringWithFormat:@"%@/Live2DResources/%@", documentDirectory, path];
-        [fileManager removeItemAtPath:fullPath error:nil];
-    }
-    
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     ViewController *viewController = [[ViewController alloc] initWithNibName:nil bundle:nil];
     self.window.rootViewController = viewController;
