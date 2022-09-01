@@ -27,8 +27,25 @@
 #pragma mark - 切换模型
 
 /// 切换下一个人物模型
-+ (void)changeNextLive2DModel {
-    [[LAppLive2DManager getInstance] nextScene];
++ (NSString *)nextLive2DModelName {
+    return [[LAppLive2DManager getInstance] nextSceneName];
+}
+
+/// 切换到指定人物
++ (void)changeLive2DModelWithName:(NSString *)name {
+    if (name == nil || [name isEqualToString:@""]) {
+        return;
+    }
+
+    Csm::csmInt32 modelSize = LAppDefine::ModelDirSize;
+    for (Csm::csmInt32 index = 0; index < modelSize; index++) {
+        const csmChar* modelJsonName = LAppDefine::ModelDir[index];
+        NSString *modelName = [NSString stringWithUTF8String:modelJsonName];
+        if ([name isEqualToString:modelName]) {
+            [[LAppLive2DManager getInstance] changeScene:index];
+            break;
+        }
+    }
 }
 
 #pragma mark - Sprite

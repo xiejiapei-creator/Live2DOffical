@@ -283,32 +283,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "40DE1ED0-E47A-41F2-98DE-FC96D40336C0"
-            shouldBeEnabled = "Yes"
+            uuid = "38D65E2C-9EAF-433F-914D-5ED555BCACB7"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Live2DNewTest/Live2DUse/View/Live2DView.m"
+            filePath = "Live2DNewTest/Live2DSDK/Framework/src/CubismFramework.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "-dealloc"
+            startingLineNumber = "366"
+            endingLineNumber = "366"
+            landmarkName = "operator new(size, tag)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6781866A-CE80-42E7-8E5E-381386340F00"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Live2DNewTest/Live2DSDK/Framework/src/CubismFramework.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
+            landmarkName = "CubismFramework::Allocate(size)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DB202CAC-F81E-458D-AE81-84EE3E187003"
+            uuid = "5C2F4887-0FB1-4DF5-8103-77FB6F50D966"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Live2DNewTest/Live2DUtilities/Texture/LAppTextureManager.mm"
+            filePath = "Live2DNewTest/Live2DOCBridge/Cubism/L2DCubism.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "-createTextureFromPngFile:"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-saveRoleState"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3AD9E49B-1E76-46AA-8F97-5A553169A1C3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Live2DNewTest/Live2DOCBridge/Cubism/L2DCubism.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-restoreRoleState"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

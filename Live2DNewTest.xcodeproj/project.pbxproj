@@ -72,7 +72,8 @@
 		E98E19C028B5039B005EE294 /* L2DMetal.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19BF28B5039B005EE294 /* L2DMetal.mm */; };
 		E98E19C428B53C28005EE294 /* L2DSprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = E98E19C328B53C28005EE294 /* L2DSprite.mm */; };
 		E9EC7BE928C0614500BD111F /* Live2DResources in Resources */ = {isa = PBXBuildFile; fileRef = E9EC7BE828C0614500BD111F /* Live2DResources */; };
-		E9EC7BEB28C094DF00BD111F /* replaceImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EC7BEA28C094DF00BD111F /* replaceImage.png */; };
+		E9EC7BEF28C0F8EB00BD111F /* Live2DChangeClothes.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EC7BEE28C0F8EB00BD111F /* Live2DChangeClothes.m */; };
+		E9EC7BF128C1009000BD111F /* replaceImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E9EC7BF028C1009000BD111F /* replaceImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -217,7 +218,9 @@
 		E98E19C228B53C28005EE294 /* L2DSprite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = L2DSprite.h; sourceTree = "<group>"; };
 		E98E19C328B53C28005EE294 /* L2DSprite.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = L2DSprite.mm; sourceTree = "<group>"; };
 		E9EC7BE828C0614500BD111F /* Live2DResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Live2DResources; sourceTree = "<group>"; };
-		E9EC7BEA28C094DF00BD111F /* replaceImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = replaceImage.png; sourceTree = "<group>"; };
+		E9EC7BED28C0F8EB00BD111F /* Live2DChangeClothes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Live2DChangeClothes.h; sourceTree = "<group>"; };
+		E9EC7BEE28C0F8EB00BD111F /* Live2DChangeClothes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Live2DChangeClothes.m; sourceTree = "<group>"; };
+		E9EC7BF028C1009000BD111F /* replaceImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = replaceImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +272,7 @@
 		E933EE8E28B79740002A61DB /* Live2DUse */ = {
 			isa = PBXGroup;
 			children = (
+				E9EC7BEC28C0F86900BD111F /* ChangeClothes */,
 				E958956028B5F81900D7F6BB /* View */,
 				E933EE8F28B79753002A61DB /* Bridge */,
 			);
@@ -348,7 +352,7 @@
 		E96B24BD28AD076D00678943 /* Use */ = {
 			isa = PBXGroup;
 			children = (
-				E9EC7BEA28C094DF00BD111F /* replaceImage.png */,
+				E9EC7BF028C1009000BD111F /* replaceImage.png */,
 				E98E19AE28B4C526005EE294 /* AppDelegate.h */,
 				E98E19AF28B4C526005EE294 /* AppDelegate.m */,
 				E98E19AB28B4C51C005EE294 /* ViewController.h */,
@@ -684,6 +688,15 @@
 			path = Touch;
 			sourceTree = "<group>";
 		};
+		E9EC7BEC28C0F86900BD111F /* ChangeClothes */ = {
+			isa = PBXGroup;
+			children = (
+				E9EC7BED28C0F8EB00BD111F /* Live2DChangeClothes.h */,
+				E9EC7BEE28C0F8EB00BD111F /* Live2DChangeClothes.m */,
+			);
+			path = ChangeClothes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -743,7 +756,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9EC7BE928C0614500BD111F /* Live2DResources in Resources */,
-				E9EC7BEB28C094DF00BD111F /* replaceImage.png in Resources */,
+				E9EC7BF128C1009000BD111F /* replaceImage.png in Resources */,
 				E96B1DA028ACDE6800678943 /* LaunchScreen.storyboard in Resources */,
 				E933EDB428B72944002A61DB /* ViewController.xib in Resources */,
 				E96B1D9D28ACDE6800678943 /* Assets.xcassets in Resources */,
@@ -804,6 +817,7 @@
 				E98E19A928B4C276005EE294 /* LTouchManager.mm in Sources */,
 				E96B253128AD0AE000678943 /* CubismViewMatrix.cpp in Sources */,
 				E96B254428AD0AE000678943 /* CubismMotionJson.cpp in Sources */,
+				E9EC7BEF28C0F8EB00BD111F /* Live2DChangeClothes.m in Sources */,
 				E96B253028AD0AE000678943 /* CubismModelMatrix.cpp in Sources */,
 				E98E19A528B4C261005EE294 /* LMetalUIView.m in Sources */,
 				E98E197E28B4BC77005EE294 /* CubismOffscreenSurface_Metal.mm in Sources */,

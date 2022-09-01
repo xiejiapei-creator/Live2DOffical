@@ -82,10 +82,10 @@ typedef NS_ENUM(NSUInteger, SelectTarget)
 - (void)onUpdate:(id <MTLCommandBuffer>)commandBuffer currentDrawable:(id<CAMetalDrawable>)drawable depthTexture:(id<MTLTexture>)depthTarget metalLayerSize:(CGSize)metalLayerSize;
 
 /**
- * @brief   切换到下一个场景
+ * @brief   下一个场景的名称
  *          在样本应用中进行模型集的切换
  */
-- (void)nextScene;
+- (NSString *)nextSceneName;
 
 /**
  * @brief   切换场景

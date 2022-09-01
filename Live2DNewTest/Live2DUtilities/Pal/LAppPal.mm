@@ -50,7 +50,7 @@ csmByte* LAppPal::LoadFileAsBytes(const string filePath, csmSizeInt* outSize)
         [fileManager createDirectoryAtPath:folderPath withIntermediateDirectories:YES attributes:nil error:nil];
     }
     
-    // 创建文件夹
+    // 创建PNG文件
     NSString *filePathFullStr = [folderPath stringByAppendingString:fileNameWithExt];
     NSData *bundleData = [NSData dataWithContentsOfFile:castFilePath];
     BOOL filePathFullStrIsDir = NO;
@@ -58,26 +58,15 @@ csmByte* LAppPal::LoadFileAsBytes(const string filePath, csmSizeInt* outSize)
     if ((filePathFullStrIsDir == NO && fileExisted == NO)) {
         [fileManager createFileAtPath:filePathFullStr contents:bundleData attributes:nil];
     }
-    
-    NSArray *pathList = [fileManager subpathsAtPath:folderPath];
-    NSMutableArray *modelPNGPathList = [NSMutableArray array];
-    for (NSString *path in pathList)
-    {
-        if ([path containsString:@".png"])
-        {
-            [modelPNGPathList addObject:path];
 
-        }
+    // 获取PNG文件数据
+    NSData *data;
+    NSData *sandboxData = [NSData dataWithContentsOfFile:filePathFullStr];
+    if (sandboxData == nil || sandboxData.length == 0) {
+        data = bundleData;
+    } else {
+        data = sandboxData;
     }
-    NSLog(@"谢佳培：%@",modelPNGPathList);
-
-//    NSData *data;
-    NSData *data = [NSData dataWithContentsOfFile:filePathFullStr];
-//    if (sandboxData == nil || sandboxData.length == 0) {
-//        data = bundleData;
-//    } else {
-//        data = sandboxData;
-//    }
     
     NSUInteger len = [data length];
     Byte *byteData = (Byte*)malloc(len);

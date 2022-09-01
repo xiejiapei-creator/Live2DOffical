@@ -50,8 +50,12 @@
 
 #pragma mark - 切换模型
 
-+ (void)changeNextLive2DModel {
-    [L2DBridge changeNextLive2DModel];
++ (NSString *)nextLive2DModelName {
+    return  [L2DBridge nextLive2DModelName];
+}
+
++ (void)changeLive2DModelWithName:(NSString *)name {
+    [L2DBridge changeLive2DModelWithName:name];
 }
 
 #pragma mark - 精灵

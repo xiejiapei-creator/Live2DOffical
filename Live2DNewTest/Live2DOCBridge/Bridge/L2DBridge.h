@@ -17,8 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 销毁 Live2D 视图
 + (void)destroyLive2DView;
 
-/// 切换下一个人物模型
-+ (void)changeNextLive2DModel;
+/// 下一个人物模型的名称
++ (NSString *)nextLive2DModelName;
+
+/// 切换到指定人物
++ (void)changeLive2DModelWithName:(NSString *)name;
 
 // 创建角色模型以外的精灵（绘图）
 + (void)createSprite:(CGSize)metalViewSize;

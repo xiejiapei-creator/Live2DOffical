@@ -63,8 +63,6 @@ void FinishedMotion(Csm::ACubismMotion* self)
         _renderPassDescriptor.depthAttachment.loadAction = MTLLoadActionClear;
         _renderPassDescriptor.depthAttachment.storeAction = MTLStoreActionDontCare;
         _renderPassDescriptor.depthAttachment.clearDepth = 1.0;
-
-        [self changeScene:_sceneIndex];
     }
     return self;
 }
@@ -260,10 +258,12 @@ void FinishedMotion(Csm::ACubismMotion* self)
     }
 }
 
-- (void)nextScene
+- (NSString *)nextSceneName
 {
     Csm::csmInt32 no = (_sceneIndex + 1) % LAppDefine::ModelDirSize;
-    [self changeScene:no];
+    std::string modelJsonName = LAppDefine::ModelDir[no];
+    NSString *modelName = [NSString stringWithUTF8String:modelJsonName.c_str()];
+    return modelName;
 }
 
 - (void)changeScene:(Csm::csmInt32)index

@@ -34,8 +34,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)destroyLive2DView;
 
 /// 切换下一个人物模型
-+ (void)changeNextLive2DModel;
-// 创建角色模型以外的精灵（绘图）
++ (NSString *)nextLive2DModelName;
+/// 切换到指定人物
++ (void)changeLive2DModelWithName:(NSString *)name;
+/// 创建角色模型以外的精灵（绘图）
+/// 必须保证精灵在初始化 Cubism SDK 和视图呈现之后创建，因为顺序颠倒会崩溃，可以放在viewDidAppear中
 + (void)createSprite:(CGSize)metalViewSize;
 
 /// 触摸开始

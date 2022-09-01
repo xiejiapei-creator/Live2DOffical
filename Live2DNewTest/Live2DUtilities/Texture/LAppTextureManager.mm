@@ -44,13 +44,13 @@
 {
 
     // 倘若纹理已经加载则直接返回
-    for (Csm::csmUint32 i = 0; i < _textures.GetSize(); i++)
-    {
-        if (_textures[i]->fileName == fileName)
-        {
-            return _textures[i];
-        }
-    }
+//    for (Csm::csmUint32 i = 0; i < _textures.GetSize(); i++)
+//    {
+//        if (_textures[i]->fileName == fileName)
+//        {
+//            return _textures[i];
+//        }
+//    }
 
     int width, height, channels;
     unsigned int size;

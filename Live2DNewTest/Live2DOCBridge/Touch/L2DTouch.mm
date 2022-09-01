@@ -101,17 +101,17 @@
 // 点击精灵按钮触发的操作
 - (void)touchSpriteAction:(CGFloat)x y:(CGFloat)y live2DManager:(LAppLive2DManager*)live2DManager
 {
-    // 点击了齿轮则切换到下一个人物模型
-    if ([[[L2DSprite sharedInstance] gear] isHit:x PointY:y])
-    {
-        [live2DManager nextScene];
-    }
-
-    // 点击电源按钮则让APP结束运行
-    if ([[[L2DSprite sharedInstance] power] isHit:x PointY:y])
-    {
-        exit(0);
-    }
+//    // 点击了齿轮则切换到下一个人物模型
+//    if ([[[L2DSprite sharedInstance] gear] isHit:x PointY:y])
+//    {
+//        [live2DManager nextScene];
+//    }
+//
+//    // 点击电源按钮则让APP结束运行
+//    if ([[[L2DSprite sharedInstance] power] isHit:x PointY:y])
+//    {
+//        exit(0);
+//    }
 }
 
 #pragma mark - 坐标变换

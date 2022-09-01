@@ -32,6 +32,11 @@
     [Live2DBridge createLive2DView: self];
 }
 
+- (void)setModelName:(NSString *)modelName {
+    _modelName = modelName;
+    [Live2DBridge changeLive2DModelWithName:modelName];
+}
+
 - (void)dealloc {
     [Live2DBridge destroyTouchManager];
     [Live2DBridge destroyLive2DView];
